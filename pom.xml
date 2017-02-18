@@ -288,6 +288,12 @@
             <version>1.0-RC6</version>
         </dependency>
 
+        <dependency>
+            <groupId>net.sourceforge.pjl-comp-filter</groupId>
+            <artifactId>pjl-comp-filter</artifactId>
+            <version>1.7</version>
+        </dependency>
+
     </dependencies>
 
     <build>
