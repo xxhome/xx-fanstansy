@@ -40,6 +40,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>4.3.6.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -211,29 +217,17 @@
 
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.21</version>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.23</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
+            <artifactId>logback-classic</artifactId>
             <version>1.2.1</version>
         </dependency>
 
         <!--=========================================================================================================-->
-        <!--<dependency>-->
-            <!--<groupId>org.ow2.asm</groupId>-->
-            <!--<artifactId>asm</artifactId>-->
-            <!--<version>5.2</version>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-            <!--<groupId>org.ow2.asm</groupId>-->
-            <!--<artifactId>asm-commons</artifactId>-->
-            <!--<version>5.2</version>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -286,6 +280,12 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>2.7.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.octo.captcha</groupId>
+            <artifactId>jcaptcha-all</artifactId>
+            <version>1.0-RC6</version>
         </dependency>
 
     </dependencies>
@@ -361,10 +361,10 @@
                     <classesDirectory>xx-web/target/classes/, xx-base/target/classes/, xx-plus/target/classes/, xx-blog/target/classes/
                     </classesDirectory>
                     <webAppSourceDirectory>${project.basedir}/xx-web/src/main/webapp</webAppSourceDirectory>
-                    <testClassesDirectory>xx-web/src/test/resources</testClassesDirectory>
+                    <testClassesDirectory>${project.basedir}xx-web/src/test/resources</testClassesDirectory>
                     <webAppConfig>
                         <contextPath>/${project.build.finalName}</contextPath>
-                        <defaultsDescriptor>xx-web/src/main/resources/webdefault.xml</defaultsDescriptor>
+                        <defaultsDescriptor>${project.basedir}/xx-web/src/main/webapp/WEB-INF/webdefault.xml</defaultsDescriptor>
                     </webAppConfig>
                 </configuration>
             </plugin>
