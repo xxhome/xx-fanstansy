@@ -1,5 +1,7 @@
 package com.xxbase.cache;
 
+import com.xxbase.entity.AbstractBaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -11,17 +13,25 @@ import java.util.Collection;
  */
 public interface CacheProvider {
 
-    <T extends Serializable> void put(String key, T obj);
+    <T extends Serializable> void put(String category, String key, T obj);
 
-    <T extends Serializable> void put(String key, T obj, int timeToLiveSeconds);
+    <T extends Serializable> void put(String category, String key, T obj, int timeToLiveSeconds);
 
-    <T extends Serializable> void put(String key, Collection<T> objs);
+    <T extends AbstractBaseEntity> void put(String category, Collection<T> objs);
 
-    <T extends Serializable> void put(String key, Collection<T> objs, int timeToLiveSeconds);
+    <T extends AbstractBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds);
 
-    <T extends Serializable> T get(String key);
+    <T extends Serializable> T get(String category, String key) throws CacheNotExistException;
 
-    <T extends Serializable> Collection<T> getCollection(String key);
+    <T extends AbstractBaseEntity> Collection<T> getCollection(String category);
 
-    void remove(String key);
+    long getCacheSize();
+
+    boolean isExist(String category, String key);
+
+    void removeAll();
+
+    void remove(String category);
+
+    void remove(String category, String key);
 }

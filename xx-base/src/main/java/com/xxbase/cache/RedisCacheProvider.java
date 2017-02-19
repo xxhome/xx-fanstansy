@@ -1,5 +1,7 @@
 package com.xxbase.cache;
 
+import com.xxbase.entity.AbstractBaseEntity;
+
 import java.io.Serializable;
 import java.util.Collection;
 
@@ -12,37 +14,57 @@ import java.util.Collection;
 public class RedisCacheProvider implements CacheProvider {
 
     @Override
-    public <T extends Serializable> void put(String key, T obj) {
+    public <T extends Serializable> void put(String category, String key, T obj) {
 
     }
 
     @Override
-    public <T extends Serializable> void put(String key, T obj, int timeToLiveSeconds) {
+    public <T extends Serializable> void put(String category, String key, T obj, int timeToLiveSeconds) {
 
     }
 
     @Override
-    public <T extends Serializable> void put(String key, Collection<T> objs) {
+    public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs) {
 
     }
 
     @Override
-    public <T extends Serializable> void put(String key, Collection<T> objs, int timeToLiveSeconds) {
+    public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds) {
 
     }
 
     @Override
-    public <T extends Serializable> T get(String key) {
+    public <T extends Serializable> T get(String category, String key) {
         return null;
     }
 
     @Override
-    public <T extends Serializable> Collection<T> getCollection(String key) {
+    public <T extends AbstractBaseEntity> Collection<T> getCollection(String category) {
         return null;
     }
 
     @Override
-    public void remove(String key) {
+    public long getCacheSize() {
+        return 0;
+    }
+
+    @Override
+    public boolean isExist(String category, String key) {
+        return false;
+    }
+
+    @Override
+    public void removeAll() {
+
+    }
+
+    @Override
+    public void remove(String category) {
+
+    }
+
+    @Override
+    public void remove(String category, String key) {
 
     }
 }
