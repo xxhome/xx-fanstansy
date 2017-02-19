@@ -1,6 +1,5 @@
 package com.xxblog.auth;
 
-import com.xxbase.entity.AbstractAccountEntity;
 import com.xxbase.util.CipherUtils;
 import com.xxbase.vo.SimpleDataVO;
 import com.xxblog.entity.AccountEntity;
@@ -16,9 +15,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.security.Principal;
-import java.util.Date;
 
 /**
  * Created by lifang on 2015/1/24.
@@ -81,7 +77,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(String.valueOf(password))) {
             throw new UnknownAccountException();
         }
-        AccountEntity accountEntity = accountService.findByName(username);
+        AccountEntity accountEntity = accountService.findOneByName(username);
         if (accountEntity != null) {
             if (accountEntity.isLocked()) {
 //                Date nowDate = new Date();

@@ -6,12 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Created by admin on 17/02/17.
+ * @author li.fang
+ * @since 2017/02/18
  */
 @Entity
 @Table(name = "t_account")
 public class AccountEntity extends AbstractAccountEntity{
-
 
 
 }

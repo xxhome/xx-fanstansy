@@ -1,6 +1,9 @@
 package com.xxbase.service;
 
 import com.xxbase.dao.BaseDao;
+import com.xxbase.entity.AbstractBaseEntity;
+import com.xxbase.exception.EntityNoExistNameException;
+import com.xxbase.method.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,9 +14,10 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Created by lifang on 2015/1/22.
+ * @author li.fang
+ * @since 2017/02/18
  */
-public class BaseServiceImpl<T, ID extends Long> implements BaseService<T, ID> {
+public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> implements BaseService<T, ID> {
 
     public Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 
@@ -34,19 +38,25 @@ public class BaseServiceImpl<T, ID extends Long> implements BaseService<T, ID> {
 
     @Override
     @Transactional(readOnly = true)
-    public T findByName(String name) {
+    public T findOneByName(String name) {
         try {
-            return baseDao.findByName(name);
-        } catch (Exception e) {
-            logger.warn(e.getMessage());
+            return baseDao.findOneByName(name);
+        } catch (EntityNoExistNameException e) {
+            logger.error(e.getMessage(), e);
         }
         return null;
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<T> findAll() {
+    public Page<T> findAll() {
         return baseDao.findAll();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<T> findPages(int pageNo, int pageSize) {
+        return baseDao.findPages(pageNo, pageSize);
     }
 
     @Override
@@ -94,7 +104,12 @@ public class BaseServiceImpl<T, ID extends Long> implements BaseService<T, ID> {
     }
 
     @Override
-    public List<T> findAllByName(String name) {
-        return findAllByName(name);
+    public Page<T> findByName(String name) {
+        try {
+            return baseDao.findByName(name);
+        } catch (EntityNoExistNameException e) {
+            logger.error(e.getMessage(), e);
+            return null;
+        }
     }
 }

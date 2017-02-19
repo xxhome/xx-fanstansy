@@ -4,7 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 /**
- * Created by admin on 17/02/17.
+ * @author li.fang
+ * @sine 2017/02/17.
  */
 @MappedSuperclass
 public class AbstractSimpleEntity extends AbstractBaseEntity {

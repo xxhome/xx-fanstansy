@@ -1,5 +1,8 @@
 package com.xxbase.service;
 
+import com.xxbase.entity.AbstractBaseEntity;
+import com.xxbase.method.Page;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Collection;
@@ -8,13 +11,15 @@ import java.util.List;
 /**
  * Created by lifang on 2015/1/22.
  */
-public interface BaseService<T, ID extends Serializable> {
+public interface BaseService<T extends AbstractBaseEntity, ID extends Serializable> {
 
     T findById(@NotNull ID id);
 
-    T findByName(String name);
+    T findOneByName(String name);
 
-    List<T> findAll();
+    Page<T> findAll();
+
+    Page<T> findPages(int pageNo, int pageSize);
 
     void persist(@NotNull T t);
 
@@ -26,6 +31,6 @@ public interface BaseService<T, ID extends Serializable> {
 
     void remove(@NotNull ID id);
 
-    List<T> findAllByName(String name);
+    Page<T> findByName(String name);
 
 }

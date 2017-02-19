@@ -1,7 +1,10 @@
 package com.xxbase.dao;
 
 
-import org.hibernate.service.spi.ServiceException;
+import com.xxbase.entity.AbstractBaseEntity;
+import com.xxbase.exception.EntityNoExistNameException;
+import com.xxbase.method.Page;
+import com.xxbase.method.Queryable;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -12,19 +15,27 @@ import java.util.List;
  * </pre>
  * Created by lifang on 2015/1/21.
  */
-public interface BaseDao<T, ID extends Long> {
+public interface BaseDao<T extends AbstractBaseEntity, ID extends Long> {
+
+    Page<T> find(List<Queryable> queryables);
 
     T findById(@NotNull ID id);
 
-    T findByName(String name) throws ServiceException;
+    Page<T> findByName(String name) throws EntityNoExistNameException;
 
-    List<T> findAll();
+    T findOneByName(String name) throws EntityNoExistNameException;
+
+    Page<T> findAll();
+
+    Page<T> findPages(int pageNo, int pageSize);
+
+    long count();
+
+    long count(String name) throws EntityNoExistNameException;
 
     void persist(@NotNull T t);
 
     T merge(@NotNull T t);
 
     void remove(@NotNull T t);
-
-    List<T> findAllByName(String name);
 }
