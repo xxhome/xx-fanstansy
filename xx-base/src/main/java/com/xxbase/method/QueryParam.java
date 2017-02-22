@@ -1,12 +1,10 @@
 package com.xxbase.method;
 
-import com.mysema.query.types.Ops;
-
 /**
  * @author li.fang
  * @sine 17/02/19
  */
-public class Queryable {
+public class QueryParam{
 
     private String field;
 
@@ -14,7 +12,7 @@ public class Queryable {
 
     private Operator ops = Operator.EQ;
 
-    public Queryable(String field, String value, Operator ops) {
+    public QueryParam(String field, String value, Operator ops) {
         this.field = field;
         this.value = value;
         this.ops = ops;

@@ -4,7 +4,8 @@ package com.xxbase.dao;
 import com.xxbase.entity.AbstractBaseEntity;
 import com.xxbase.exception.EntityNoExistNameException;
 import com.xxbase.method.Page;
-import com.xxbase.method.Queryable;
+import com.xxbase.method.Pageable;
+import com.xxbase.method.QueryParam;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.List;
  */
 public interface BaseDao<T extends AbstractBaseEntity, ID extends Long> {
 
-    Page<T> find(List<Queryable> queryables);
+    Page<T> find(List<QueryParam> queryParams);
+    Page<T> find(List<QueryParam> queryParams, Pageable pageable);
 
     T findById(@NotNull ID id);
 
@@ -30,8 +32,6 @@ public interface BaseDao<T extends AbstractBaseEntity, ID extends Long> {
     Page<T> findPages(int pageNo, int pageSize);
 
     long count();
-
-    long count(String name) throws EntityNoExistNameException;
 
     void persist(@NotNull T t);
 

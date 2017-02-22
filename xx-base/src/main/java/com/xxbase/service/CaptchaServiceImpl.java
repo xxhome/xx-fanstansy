@@ -7,7 +7,8 @@ import org.springframework.stereotype.Service;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by admin on 17/02/18.
+ * @author li.fang
+ * @since 2017/02/18.
  */
 @Service
 public class CaptchaServiceImpl implements CaptchaService {

@@ -14,11 +14,12 @@ import java.security.SecureRandom;
 
 /**
  * 密码工具类
- * Created by Li.fang on 2014/11/13.
+ * @author li.fang
+ * @since 2017/02/19
  */
-public class CipherUtils {
+public final class XXCipherUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(CipherUtils.class);
+    private static Logger logger = LoggerFactory.getLogger(XXCipherUtils.class);
 
     //指定DES加密解密所用密钥
     private static Key key;

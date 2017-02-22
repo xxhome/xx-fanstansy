@@ -4,6 +4,8 @@ import com.xxbase.dao.BaseDao;
 import com.xxbase.entity.AbstractBaseEntity;
 import com.xxbase.exception.EntityNoExistNameException;
 import com.xxbase.method.Page;
+import com.xxbase.method.Pageable;
+import com.xxbase.method.QueryParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,6 +27,19 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
 
     public void setBaseDao(BaseDao<T, ID> baseDao) {
         this.baseDao = baseDao;
+    }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<T> find(List<QueryParam> queryParams) {
+        return baseDao.find(queryParams);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Page<T> find(List<QueryParam> queryParams, Pageable pageable) {
+        return baseDao.find(queryParams, pageable);
     }
 
     @Override

@@ -11,11 +11,12 @@ import java.util.Date;
 import java.util.Locale;
 
 /**
- * Created by lifang on 2015/5/31.
+ * @author li.fang
+ * @sine 17/02/19
  */
-public class DateUtils {
+public class XXDateUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(DateUtils.class);
+    private static Logger logger = LoggerFactory.getLogger(XXDateUtils.class);
 
     public static Date getDate(String dateString) {
         if (StringUtils.isBlank(dateString)) {

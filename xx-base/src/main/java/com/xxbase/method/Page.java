@@ -16,7 +16,7 @@ public class Page<T extends AbstractBaseEntity> extends Pageable{
     public Page() {
     }
 
-    public Page(int pageNo, int pageSize, long total, List<T> context) {
+    public Page(long pageNo, long pageSize, long total, List<T> context) {
         this.setPageNo(pageNo);
         this.setPageSize(pageSize);
         this.setTotal(total);

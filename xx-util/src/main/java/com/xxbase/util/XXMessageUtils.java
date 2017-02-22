@@ -13,20 +13,20 @@ import java.util.Locale;
 /**
  * 读取国际化资源文件
  *
- * @author jerry
- *         2014/08/02
+ * @author li.fang
+ * @sine 17/02/19
  */
 @Component
 @Lazy(false)
-public class MessageUtils implements ApplicationContextAware, DisposableBean {
+public class XXMessageUtils implements ApplicationContextAware, DisposableBean {
 
     private static ApplicationContext applicationContext;
 
-    private MessageUtils() {
+    private XXMessageUtils() {
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) {
-        MessageUtils.applicationContext = applicationContext;
+        XXMessageUtils.applicationContext = applicationContext;
     }
 
     public void destroy() throws Exception {

@@ -1,9 +1,14 @@
 package com.xxtest.service;
 
+import com.xxbase.method.Operator;
+import com.xxbase.method.QueryParam;
 import com.xxblog.service.AccountService;
 import com.xxtest.base.SpringTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author li.fang
@@ -27,6 +32,17 @@ public class AccountServiceTest extends SpringTest{
     @Test
     public void testFindOneByName(){
         accountService.findOneByName("lisi");
+    }
+
+    @Test
+    public void testFind(){
+        List<QueryParam> queryParamList = new ArrayList<>();
+
+        queryParamList.add(new QueryParam("id", "1000", Operator.EQ));
+        queryParamList.add(new QueryParam("name", "lisi", Operator.LIKE));
+
+        accountService.find(queryParamList);
+        accountService.find(queryParamList);
     }
 
 }

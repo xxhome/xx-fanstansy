@@ -1,6 +1,6 @@
 package com.xxbase.method;
 
-import com.xxbase.util.MessageUtils;
+import com.xxbase.util.XXMessageUtils;
 import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateMethodModel;
 import freemarker.template.TemplateModelException;
@@ -20,9 +20,9 @@ public class MessageMethod implements TemplateMethodModel {
             String code = arguments.get(0).toString();
             if (arguments.size() > 1) {
                 Object[] args = arguments.subList(1, arguments.size()).toArray();
-                message = MessageUtils.getMessage(code, args);
+                message = XXMessageUtils.getMessage(code, args);
             } else {
-                message = MessageUtils.getMessage(code);
+                message = XXMessageUtils.getMessage(code);
             }
             return new SimpleScalar(message);
         }

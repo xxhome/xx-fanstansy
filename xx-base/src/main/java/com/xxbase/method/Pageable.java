@@ -14,6 +14,10 @@ public class Pageable implements Serializable{
 
     private long total;
 
+    public boolean isPage(){
+        return pageNo >= 0 || pageSize > 0;
+    }
+
     public long getPageSize() {
         return pageSize;
     }

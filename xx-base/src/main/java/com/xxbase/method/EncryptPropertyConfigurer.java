@@ -1,6 +1,6 @@
 package com.xxbase.method;
 
-import com.xxbase.util.CipherUtils;
+import com.xxbase.util.XXCipherUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class EncryptPropertyConfigurer extends PropertyPlaceholderConfigurer {
     protected String convertProperty(String propertyName, String propertyValue) {
         logger.info("The properties name is : {}, value is : ", propertyName, propertyValue);
         if (isEncryptProp(propertyName)) {
-            String decryptValue = CipherUtils.getDecryptString(propertyValue);
+            String decryptValue = XXCipherUtils.getDecryptString(propertyValue);
             logger.info(decryptValue);
             return decryptValue;
         } else {

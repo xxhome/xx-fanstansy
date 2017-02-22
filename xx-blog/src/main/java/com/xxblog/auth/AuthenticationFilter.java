@@ -1,6 +1,6 @@
 package com.xxblog.auth;
 
-import com.xxbase.util.CipherUtils;
+import com.xxbase.util.XXCipherUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
@@ -35,7 +35,7 @@ public class AuthenticationFilter extends FormAuthenticationFilter {
     @Override
     protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         String username = getUsername(request);
-        String password = CipherUtils.getTime64MD5(getPassword(request));
+        String password = XXCipherUtils.getTime64MD5(getPassword(request));
         String host = getHost(request);
         boolean rememberMe = true;
         return new UsernamePasswordToken(username, password, rememberMe, host);

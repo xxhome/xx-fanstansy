@@ -9,15 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>xx-base</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>xx-fanstasy</groupId>
-            <artifactId>xx-util</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-    </dependencies>
+    <artifactId>xx-util</artifactId>
 
 
 </project>

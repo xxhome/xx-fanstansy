@@ -14,6 +14,7 @@
         <module>xx-base</module>
         <module>xx-blog</module>
         <module>xx-test</module>
+        <module>xx-util</module>
     </modules>
 
     <properties>

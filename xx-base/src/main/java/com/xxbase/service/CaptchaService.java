@@ -3,7 +3,8 @@ package com.xxbase.service;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by admin on 17/02/18.
+ * @author li.fang
+ * @since  2017/02/18.
  */
 public interface CaptchaService {
 

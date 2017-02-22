@@ -1,6 +1,6 @@
 package com.xxblog.auth;
 
-import com.xxbase.util.CipherUtils;
+import com.xxbase.util.XXCipherUtils;
 import com.xxbase.vo.SimpleDataVO;
 import com.xxblog.entity.AccountEntity;
 import com.xxblog.service.AccountService;
@@ -87,7 +87,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
                     throw new LockedAccountException();
 //                }
             }
-            if (CipherUtils.isMD5Equal(new String(accountEntity.getPassword()), password)) {
+            if (XXCipherUtils.isMD5Equal(new String(accountEntity.getPassword()), password)) {
                 //登录成功,登录次数加1,失败次数归零,并记录登录日志
                 Long loginCount = accountEntity.getLoginSucceedCount() + 1L;
                 accountEntity.setLoginSucceedCount(loginCount);

@@ -16,6 +16,7 @@ public class AbstractBaseEntity implements Serializable{
             pkColumnName = "gen_key", valueColumnName = "gen_value",
             pkColumnValue = "id", allocationSize = 2, initialValue = 1000)
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN_INDEX")
+    @Column(length = 30, unique = true, nullable = false)
     private String id;
 
     /**
