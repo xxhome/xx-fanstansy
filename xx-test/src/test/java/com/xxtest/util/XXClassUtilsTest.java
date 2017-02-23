@@ -1,6 +1,6 @@
 package com.xxtest.util;
 
-import com.xxbase.util.XXClassUtils;
+import com.xxutil.util.XXClassUtils;
 import com.xxblog.entity.AccountEntity;
 import org.springframework.util.CollectionUtils;
 import org.testng.Assert;

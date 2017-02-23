@@ -1,6 +1,6 @@
 package com.xxblog.auth;
 
-import com.xxbase.util.XXCipherUtils;
+import com.xxutil.util.XXCipherUtils;
 import com.xxbase.vo.SimpleDataVO;
 import com.xxblog.entity.AccountEntity;
 import com.xxblog.service.AccountService;

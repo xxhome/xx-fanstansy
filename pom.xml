@@ -11,10 +11,10 @@
 
     <modules>
         <module>xx-web</module>
+        <module>xx-util</module>
         <module>xx-base</module>
         <module>xx-blog</module>
         <module>xx-test</module>
-        <module>xx-util</module>
     </modules>
 
     <properties>
@@ -365,7 +365,7 @@
                         </systemProperty>
                     </systemProperties>
                     <useTestClasspath>true</useTestClasspath>
-                    <classesDirectory>xx-web/target/classes/, xx-base/target/classes/, xx-plus/target/classes/, xx-blog/target/classes/
+                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/, xx-plus/target/classes/, xx-blog/target/classes/
                     </classesDirectory>
                     <webAppSourceDirectory>${project.basedir}/xx-web/src/main/webapp</webAppSourceDirectory>
                     <testClassesDirectory>${project.basedir}xx-web/src/test/resources</testClassesDirectory>

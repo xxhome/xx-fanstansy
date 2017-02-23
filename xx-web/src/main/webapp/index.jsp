@@ -1,8 +1,7 @@
 <html>
-<body>
-<h2>Hello World!</h2>
+    <body>
 
-<img id="captchaImage" class="captchaImage" src="./xxbase/captcha/get.xhtml?captchaId=<%=session.getId()%>"/>
+        <jsp:forward page="./xxblog/view/index.xhtml"/>
 
-</body>
+    </body>
 </html>

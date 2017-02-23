@@ -11,7 +11,7 @@ import com.xxbase.exception.EntityNoExistNameException;
 import com.xxbase.method.Page;
 import com.xxbase.method.Pageable;
 import com.xxbase.method.QueryParam;
-import com.xxbase.util.XXClassUtils;
+import com.xxutil.util.XXClassUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

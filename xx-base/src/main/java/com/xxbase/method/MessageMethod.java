@@ -1,6 +1,6 @@
 package com.xxbase.method;
 
-import com.xxbase.util.XXMessageUtils;
+import com.xxutil.util.XXMessageUtils;
 import freemarker.template.SimpleScalar;
 import freemarker.template.TemplateMethodModel;
 import freemarker.template.TemplateModelException;

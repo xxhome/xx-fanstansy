@@ -1,4 +1,4 @@
-package com.xxbase.util;
+package com.xxutil.util;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.ApplicationContext;

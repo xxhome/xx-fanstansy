@@ -1,6 +1,6 @@
 package com.xxbase.method;
 
-import com.xxbase.util.XXCipherUtils;
+import com.xxutil.util.XXCipherUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

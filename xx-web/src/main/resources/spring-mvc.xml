@@ -10,18 +10,19 @@
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <mvc:annotation-driven validator="validator">
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>text/plain;charset=UTF-8</value>
-                        <value>text/html;charset=UTF-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
+    <!--<mvc:annotation-driven validator="validator">-->
+        <!--<mvc:message-converters>-->
+            <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+                <!--<property name="supportedMediaTypes">-->
+                    <!--<list>-->
+                        <!--<value>text/plain;charset=UTF-8</value>-->
+                        <!--<value>text/html;charset=UTF-8</value>-->
+                    <!--</list>-->
+                <!--</property>-->
+            <!--</bean>-->
+        <!--</mvc:message-converters>-->
+    <!--</mvc:annotation-driven>-->
+    <mvc:annotation-driven/>
 
     <context:component-scan base-package="com.xxbase, com.xxblog" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
@@ -58,8 +59,9 @@
                 <entry key="systemVersion" value="${system.version}"/>
                 <entry key="systemDescription" value="${system.description}"/>
                 <entry key="systemShowPowered" value="${system.show_powered}"/>
-                <entry key="path" value="#{servletContext.contextPath}"/>
                 <entry key="locale" value="${system.locale}"/>
+                <entry key="path" value="#{servletContext.contextPath}"/>
+                <entry key="src" value="#{servletContext.contextPath}/resources"/>
                 <!--&lt;!&ndash; 解析XML配置文件 &ndash;&gt;-->
                 <!--<entry key="setting" value="#{T(com.xxplus.utils.SettingUtils).get()}"/>-->
                 <entry key="msg" value-ref="messageMethod"/>

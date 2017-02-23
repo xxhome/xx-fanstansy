@@ -1,4 +1,4 @@
-package com.xxbase.util;
+package com.xxutil.util;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -14,6 +14,7 @@ import java.security.SecureRandom;
 
 /**
  * 密码工具类
+ *
  * @author li.fang
  * @since 2017/02/19
  */
@@ -24,7 +25,7 @@ public final class XXCipherUtils {
     //指定DES加密解密所用密钥
     private static Key key;
 
-    private static String STR_SALT = "APLUS OFFICE SYSTEM";
+    private static String STR_SALT = "XX-FANSTASY";
 
     private static final String GENERATOR_DES = "DES";
 
@@ -37,7 +38,6 @@ public final class XXCipherUtils {
             KeyGenerator generator = KeyGenerator.getInstance(GENERATOR_DES);
             generator.init(new SecureRandom(STR_SALT.getBytes()));
             key = generator.generateKey();
-            generator = null;
         } catch (NoSuchAlgorithmException e) {
             logger.warn("Cryptographic failure");
             throw new RuntimeException(e);
@@ -85,7 +85,6 @@ public final class XXCipherUtils {
      * @return 加密后的字符串
      */
     public static String getEncryptBase64String(String str) {
-//        BASE64Encoder base64Encoder = new BASE64Encoder();
         try {
             byte[] strBytes = str.getBytes(ENCODING_UTF8);
             Cipher cipher = Cipher.getInstance(GENERATOR_DES);
@@ -105,7 +104,6 @@ public final class XXCipherUtils {
      * @return 解密后的字符串
      */
     public static String getDecryptString(String str) {
-//        BASE64Decoder base64Decoder = new BASE64Decoder();
         try {
             byte[] strBytes = Base64.decodeBase64(str);
             Cipher cipher = Cipher.getInstance(GENERATOR_DES);

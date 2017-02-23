@@ -1,6 +1,6 @@
 package com.xxblog.auth;
 
-import com.xxbase.util.XXCipherUtils;
+import com.xxutil.util.XXCipherUtils;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
