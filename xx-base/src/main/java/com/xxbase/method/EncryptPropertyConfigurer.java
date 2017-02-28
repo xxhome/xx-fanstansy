@@ -28,7 +28,7 @@ public class EncryptPropertyConfigurer extends PropertyPlaceholderConfigurer {
     protected String convertProperty(String propertyName, String propertyValue) {
         logger.info("The properties name is : {}, value is : ", propertyName, propertyValue);
         if (isEncryptProp(propertyName)) {
-            String decryptValue = XXCipherUtils.getDecryptString(propertyValue);
+            String decryptValue = XXCipherUtils.getDesDecryptText(propertyValue);
             logger.info(decryptValue);
             return decryptValue;
         } else {

@@ -52,7 +52,7 @@ public class AccountServiceTest extends SpringTest{
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setName("cook");
         accountEntity.setEmail("cook@gmail.com");
-        accountEntity.setPassword(XXCipherUtils.getEncryptBase64String("111111"));
+        accountEntity.setPassword(XXCipherUtils.getDesEncryptText("111111"));
         accountService.persist(accountEntity);
     }
 }

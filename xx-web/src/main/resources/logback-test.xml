@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true" scan="true" scanPeriod="1 seconds">
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -9,11 +9,19 @@
         </layout>
     </appender>
 
-    <logger name="org.springframework" level="info" additivity="false">
+    <logger name="org.springframework" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
     <logger name="com.xxtest" level="debug" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.xxbase" level="debug" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.xxutil" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
