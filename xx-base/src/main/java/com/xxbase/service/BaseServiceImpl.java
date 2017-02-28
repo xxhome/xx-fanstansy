@@ -31,19 +31,16 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
 
 
     @Override
-    @Transactional(readOnly = true)
     public Page<T> find(List<QueryParam> queryParams) {
         return baseDao.find(queryParams);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<T> find(List<QueryParam> queryParams, Pageable pageable) {
         return baseDao.find(queryParams, pageable);
     }
 
     @Override
-    @Transactional(readOnly = true)
     public T findById(@NotNull ID id) {
         if (id != null) {
             return baseDao.findById(id);
@@ -52,7 +49,6 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
     }
 
     @Override
-    @Transactional(readOnly = true)
     public T findOneByName(String name) {
         try {
             return baseDao.findOneByName(name);
@@ -63,19 +59,16 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<T> findAll() {
         return baseDao.findAll();
     }
 
     @Override
-    @Transactional(readOnly = true)
     public Page<T> findPages(int pageNo, int pageSize) {
         return baseDao.findPages(pageNo, pageSize);
     }
 
     @Override
-    @Transactional
     public void persist(@NotNull T t) {
         if (t != null) {
             baseDao.persist(t);
@@ -83,7 +76,6 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
     }
 
     @Override
-    @Transactional
     public void persist(@NotNull Collection<T> t) {
         if (CollectionUtils.isEmpty(t)) return;
         for (T e : t) {
@@ -92,7 +84,6 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
     }
 
     @Override
-    @Transactional
     public T merge(@NotNull T t) {
         if (t != null) {
             return baseDao.merge(t);
@@ -101,14 +92,13 @@ public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> impl
     }
 
     @Override
-    @Transactional
     public void remove(@NotNull T t) {
         if (t != null) {
             baseDao.remove(t);
         }
     }
 
-    @Transactional
+    @Override
     public void remove(@NotNull ID id) {
         if (id != null) {
             T t = findById(id);

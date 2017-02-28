@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+
+    <!--<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource"></property>-->
+    <!--</bean>-->
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" read-only="false" propagation="REQUIRED"></tx:method>
+            <tx:method name="update*" read-only="false" propagation="REQUIRED"></tx:method>
+            <tx:method name="insert*" read-only="false" propagation="REQUIRED"></tx:method>
+            <tx:method name="persist*" read-only="false" propagation="REQUIRED"></tx:method>
+            <tx:method name="merge*" read-only="false" propagation="REQUIRED"></tx:method>
+            <tx:method name="remove*" read-only="false" propagation="REQUIRED"></tx:method>
+
+            <tx:method name="get*" read-only="true" propagation="REQUIRED"></tx:method>
+            <tx:method name="find*" read-only="true" propagation="REQUIRED"></tx:method>
+            <tx:method name="query*" read-only="true" propagation="REQUIRED"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="allServiceMethod" expression="execution(* *..service*..*(..))" />
+        <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
+    </aop:config>
+
+
+</beans>

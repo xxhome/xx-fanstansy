@@ -1,5 +1,9 @@
 package com.xxbase.entity;
 
+
+import com.xxbase.listener.BaseEntityListener;
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -8,16 +12,24 @@ import java.util.Date;
  * Created by admin on 17/02/15.
  */
 @MappedSuperclass
+@EntityListeners(BaseEntityListener.class)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AbstractBaseEntity implements Serializable{
+public class AbstractBaseEntity implements Serializable {
 
     @Id
-    @TableGenerator(name = "GEN_INDEX", table = "t_generator",
-            pkColumnName = "gen_key", valueColumnName = "gen_value",
-            pkColumnValue = "id", allocationSize = 2, initialValue = 1000)
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "GEN_INDEX")
-    @Column(length = 30, unique = true, nullable = false)
-    private String id;
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "TableStringGenerator")
+    @GenericGenerator(name = "TableStringGenerator", strategy = "enhanced-table",
+            parameters = {
+                @org.hibernate.annotations.Parameter(name = "format", value = "%1$d"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.TABLE_PARAM, value = "t_generator"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.SEGMENT_COLUMN_PARAM, value = "gen_name"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.VALUE_COLUMN_PARAM, value = "gen_value"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.INITIAL_PARAM, value = "500000"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.INCREMENT_PARAM, value = "50"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.OPT_PARAM, value = "pooled-lo")
+    })
+    private Long id;
 
     /**
      * 创建时间，不更新
@@ -33,11 +45,11 @@ public class AbstractBaseEntity implements Serializable{
     @Column(updatable = false, nullable = false)
     private Date modifyTime;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

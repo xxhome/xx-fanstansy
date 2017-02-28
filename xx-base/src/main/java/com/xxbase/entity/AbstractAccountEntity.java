@@ -1,12 +1,15 @@
 package com.xxbase.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 
 /**
  * Created by admin on 17/02/17.
  */
 @MappedSuperclass
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class AbstractAccountEntity extends AbstractSimpleEntity {
 
     /**
@@ -25,7 +28,7 @@ public class AbstractAccountEntity extends AbstractSimpleEntity {
      * 盐
      */
     @Column(length = 64, nullable = false)
-    private String salt;
+    private String salt = "XX-FANSTASY";
 
     /**
      * 帐号是否锁定

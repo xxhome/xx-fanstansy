@@ -74,13 +74,13 @@ public class EhCacheProvider implements CacheProvider {
     @Override
     public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs) {
         Cache cache = getCache(category);
-        objs.forEach(obj -> put(cache, obj.getId(), obj, -1));
+        objs.forEach(obj -> put(cache, String.valueOf(obj.getId()), obj, -1));
     }
 
     @Override
     public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds) {
         Cache cache = getCache(category);
-        objs.forEach(obj -> put(cache, obj.getId(), obj, timeToLiveSeconds));
+        objs.forEach(obj -> put(cache, String.valueOf(obj.getId()), obj, timeToLiveSeconds));
     }
 
     @Override

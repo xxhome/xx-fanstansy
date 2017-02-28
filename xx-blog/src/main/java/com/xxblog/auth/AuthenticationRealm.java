@@ -40,7 +40,6 @@ public class AuthenticationRealm extends AuthorizingRealm {
      * @return
      */
     @Override
-    @Transactional(readOnly = true)
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo simpleAuthenticationInfo = new SimpleAuthorizationInfo();
 //        SimpleDataVO principal = (SimpleDataVO) principals.getPrimaryPrincipal();
@@ -63,7 +62,6 @@ public class AuthenticationRealm extends AuthorizingRealm {
      * @throws AuthenticationException
      */
     @Override
-    @Transactional
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
         String username = usernamePasswordToken.getUsername();
