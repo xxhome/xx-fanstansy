@@ -28,7 +28,7 @@ public class AbstractAccountEntity extends AbstractSimpleEntity {
      * 盐
      */
     @Column(length = 64, nullable = false)
-    private String salt = "XX-FANSTASY";
+    private String salt = "XX-FANTASY";
 
     /**
      * 帐号是否锁定

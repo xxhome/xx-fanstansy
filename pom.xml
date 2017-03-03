@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>xx-fanstasy</groupId>
-    <artifactId>xx-fanstasy</artifactId>
+    <groupId>xx-fantasy</groupId>
+    <artifactId>xx-fantasy</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
@@ -314,7 +314,7 @@
 
     <build>
 
-        <finalName>xx-fanstasy</finalName>
+        <finalName>xx-fantasy</finalName>
 
         <!--<resources>-->
             <!--<resource>-->

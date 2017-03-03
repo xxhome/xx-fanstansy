@@ -16,13 +16,13 @@ public class XXCipherUtilsTest extends BaseTest{
 
         String username = "root";
         String password = "123456";
-        String url = "jdbc:mysql://localhost:3306/db_fanstasy?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false";
+        String url = "jdbc:mysql://localhost:3306/db_fantasy?serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false";
 
-        String p1 = XXCipherUtils.getTime64MD5(username, "hello");
+        String p1 = XXCipherUtils.getTime64MD5(username);
         String p2 = XXCipherUtils.getTime64MD5(password);
         String p3 = XXCipherUtils.getTime64MD5(url);
 
-        String p11 = XXCipherUtils.getTime64MD5(username, "hello");
+        String p11 = XXCipherUtils.getTime64MD5(username);
         String p22 = XXCipherUtils.getTime64MD5(password);
         String p33 = XXCipherUtils.getTime64MD5(url);
 
@@ -31,9 +31,13 @@ public class XXCipherUtilsTest extends BaseTest{
         Assert.assertTrue(XXCipherUtils.isMD5Equal(p3, p33));
 
 
-        String s1 = XXCipherUtils.getDesEncryptText(username);
+        String usr1 = XXCipherUtils.getDesEncryptText(username);
+        String psw1 = XXCipherUtils.getDesEncryptText(password);
 
-        Assert.assertEquals(XXCipherUtils.getDesDecryptText(s1), username);
+        logger.debug("usr : {}", usr1);
+        logger.debug("psw : {}", psw1);
+
+        Assert.assertEquals(XXCipherUtils.getDesDecryptText(usr1), username);
     }
 
 }

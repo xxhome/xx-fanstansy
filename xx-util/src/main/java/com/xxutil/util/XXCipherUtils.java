@@ -25,7 +25,7 @@ public final class XXCipherUtils {
     //指定DES加密解密所用密钥
     private static Key key;
 
-    private static String DEFAULT_SALT = "XX-FANSTASY";
+    private static String DEFAULT_SALT = "XX-FANTASY";
 
     private static final String GENERATOR_DES = "DES";
 
@@ -145,22 +145,6 @@ public final class XXCipherUtils {
         } catch (Exception e) {
             logger.warn("Decryption failure");
             throw new RuntimeException(e);
-        }
-    }
-
-    /**
-     * 测试加密
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
-
-        //DES加密
-        String[] decryptStr = {"root", "123456", "jdbc:mysql://127.0.0.1/db_office?useUnicode=true&characterEncoding=utf-8"};
-
-        for (String str : decryptStr) {
-            logger.info("{} : ", str);
-            logger.info("{} \n", getTime64MD5(str));
         }
     }
 
