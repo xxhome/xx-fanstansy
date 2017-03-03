@@ -9,7 +9,7 @@
         </layout>
     </appender>
 
-    <logger name="org.springframework" level="debug" additivity="false">
+    <logger name="org.springframework" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
@@ -22,6 +22,10 @@
     </logger>
 
     <logger name="com.xxutil" level="debug" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <logger name="com.xxblog" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

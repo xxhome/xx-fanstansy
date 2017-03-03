@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @sine 17/02/22
  */
 @Controller
-@RequestMapping(value = "/xxblog/view")
+@RequestMapping(value = "/xxblog/view", produces = "application/json; charset=UTF-8")
 public class ViewController extends BaseController {
 
     private static final String VIEW_PATH_INDEX = "/xx-blog/%s";
