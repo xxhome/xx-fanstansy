@@ -20,8 +20,6 @@ public class LoginController extends BaseController {
 
     @ResponseBody
     public XXResponseBody login(@RequestBody LoginVO loginVO){
-
-
         return new XXResponseBody();
     }
 

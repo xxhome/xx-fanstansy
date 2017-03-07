@@ -10,13 +10,24 @@
          http://www.springframework.org/schema/context
          http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven validator="validator">
+        <mvc:message-converters>
+            <bean id="mappingJacksonHttpMessageConverter"
+                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=utf-8</value>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>text/json;charset=UTF-8</value>
+                        <value>application/json;charset=utf-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
-    <context:component-scan base-package="com.xxbase, com.xxblog" use-default-filters="false">
+    <context:component-scan base-package="com.xxbase,com.xxblog" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
 
 
@@ -30,8 +41,8 @@
         <property name="templateLoaderPaths" value="/WEB-INF/view"/>
         <property name="freemarkerSettings">
             <props>
-                <prop key="defaultEncoding">${system.charset}</prop>
-                <prop key="url_escaping_charset">${system.charset}</prop>
+                <prop key="defaultEncoding">UTF-8</prop>
+                <prop key="url_escaping_charset">UTF-8</prop>
                 <prop key="locale">${system.locale}</prop>
                 <prop key="template_update_delay">15</prop>
                 <prop key="tag_syntax">auto_detect</prop>

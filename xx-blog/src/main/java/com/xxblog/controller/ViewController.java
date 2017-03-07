@@ -1,6 +1,6 @@
 package com.xxblog.controller;
 
-import com.xxbase.controller.BaseController;
+import com.xxutil.util.XXStringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,17 +8,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author li.fang
- * @sine 17/02/22
+ * @sine 17/03/07
  */
 @Controller
-@RequestMapping(value = "/xxblog/view", produces = "application/json; charset=UTF-8")
-public class ViewController extends BaseController {
+@RequestMapping(value = "/xxblog/view")
+public class ViewController {
 
-    private static final String VIEW_PATH_INDEX = "/xx-blog/%s";
+    private static final String VIEW_BLOG_INDEX = "/xx-blog/%s";
 
-    @RequestMapping(value = "/{name}")
-    public ModelAndView view(@PathVariable String name) {
-        return new ModelAndView(String.format(VIEW_PATH_INDEX, name));
+    @RequestMapping("/{view}")
+    public ModelAndView forward(@PathVariable String view){
+        return new ModelAndView(String.format(VIEW_BLOG_INDEX, view));
     }
 
 }

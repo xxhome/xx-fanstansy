@@ -12,8 +12,6 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
  */
 public class EncryptPropertyConfigurer extends PropertyPlaceholderConfigurer {
 
-    private Logger logger = LoggerFactory.getLogger(EncryptPropertyConfigurer.class);
-
     //需要解密的属性
     private String[] encryptPropNames = {"jdbc.username", "jdbc.password"};
 
@@ -26,10 +24,8 @@ public class EncryptPropertyConfigurer extends PropertyPlaceholderConfigurer {
      */
     @Override
     protected String convertProperty(String propertyName, String propertyValue) {
-        logger.info("The properties name is : {}, value is : ", propertyName, propertyValue);
         if (isEncryptProp(propertyName)) {
             String decryptValue = XXCipherUtils.getDesDecryptText(propertyValue);
-            logger.info(decryptValue);
             return decryptValue;
         } else {
             return propertyValue;

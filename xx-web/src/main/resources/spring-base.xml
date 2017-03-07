@@ -5,12 +5,12 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 需要解密的文件 -->
-    <bean class="com.xxbase.method.EncryptPropertyConfigurer">
+    <bean class="com.xxbase.method.EncryptPropertyConfigurer" lazy-init="false">
         <property name="location" value="classpath:xx-jdbc.properties"/>
         <property name="fileEncoding" value="UTF-8"></property>
     </bean>
 
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">
         <property name="order" value="1"/>
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
         <property name="location" value="classpath:xx-config.properties"/>
@@ -19,7 +19,7 @@
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="cacheSeconds" value="${message.cache_seconds}"/>
         <property name="useCodeAsDefaultMessage" value="true"/>
-        <property name="fileEncodings" value="UTF-8"/>
+        <property name="fileEncodings" value="${system.charset}"/>
         <property name="basenames">
             <list>
                 <value>${message.common_path}</value>
