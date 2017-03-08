@@ -34,13 +34,13 @@ public class XXMessageUtils implements ApplicationContextAware, DisposableBean {
     }
 
     public static Object getBean(String name) {
-        Assert.hasText(name);
+        Assert.hasText(name, "name not be text");
         return applicationContext.getBean(name);
     }
 
     public static <T> T getBean(String name, Class<T> type) {
-        Assert.hasText(name);
-        Assert.notNull(type);
+        Assert.hasText(name, "name not be text");
+        Assert.notNull(type, "type can not be empty");
         return applicationContext.getBean(name, type);
     }
 

@@ -7,7 +7,7 @@
     <!-- 需要解密的文件 -->
     <bean class="com.xxbase.method.EncryptPropertyConfigurer" lazy-init="false">
         <property name="location" value="classpath:xx-jdbc.properties"/>
-        <property name="fileEncoding" value="UTF-8"></property>
+        <property name="fileEncoding" value="UTF-8"/>
     </bean>
 
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="false">

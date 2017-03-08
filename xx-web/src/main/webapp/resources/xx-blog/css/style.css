@@ -7,13 +7,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 html, body{
     font-size: 100%;
 	background:	#fff;
-	font-family: 'Open Sans', sans-serif;
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 }
 p,body{
 	margin:0;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Comfortaa', cursive;
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 	margin:0;
 }
 ul,label{
@@ -25,10 +25,10 @@ body a:hover{
 }
 .banner-body{
 	background:url(../images/banner.png) 0px 0px;
-	padding:5em 0;
+	padding:2em 0;
 }
 .banner-body-content {
-    padding: 4em 3em;
+    padding: 2em 2em;
     background: #fff;
 	box-shadow:0px 0px 10px #E0E0E0;
 	-webkit-box-shadow:0px 0px 10px #E0E0E0;
@@ -52,7 +52,7 @@ body a:hover{
     font-size: 1.5em;
     display: block;
     padding: 0.8em 0;
-	font-family: 'Great Vibes', cursive;
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
 }
 .logo h1 a span{
 	display:block;
@@ -259,7 +259,8 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 /*-- //latest-news --*/
 /*-- banner --*/
 .banner,.banner1,.banner2{
-	min-height:400px;
+	/*min-height:400px;*/
+	min-height: 64px;
 }
 .banner{
 	background:url(../images/2.jpg) no-repeat 0px 0px;
@@ -322,6 +323,10 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
     -moz-transition: .5s ease-in;
     -o-transition: .5s ease-in;
     -ms-transition: .5s ease-in;
+}
+.banner-margin{
+	margin-top: 10px;
+	height: 240px;
 }
 .banner-left22 span{
 	background:url(../images/img-sp.png) no-repeat -19px -61px;
@@ -400,8 +405,8 @@ ul.wmuSliderPagination {
 .wmuSliderPagination a {
 	display: block;
 	text-indent: -9999px;
-	width: 15px;
-	height: 15px;
+	width: 10px;
+	height: 10px;
 	background:#D57D39;
 	border-radius: 25px;
 	-webkit-border-radius: 25px;

@@ -21,10 +21,9 @@
     <!-- js -->
     <script src="${src}/xx-base/js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
-    <link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-          rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.useso.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'>
+    <#--<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>-->
+    <#--<link href='http://fonts.useso.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>-->
+    <#--<link href='http://fonts.useso.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'>-->
 </head>
 
 <body>
@@ -32,7 +31,7 @@
 <div class="banner-body">
     <div class="container">
         <div class="banner-body-content">
-            <div class="col-xs-3 banner-body-left">
+            <div class="col-xs-3 banner-body-left" id="banner-body-left">
                 <div class="logo">
                     <h1><a href="index.ftl">Great <span>Taste</span></a></h1>
                 </div>
@@ -53,8 +52,8 @@
                         <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                             <nav class="stroke">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="index.ftl"><i class="home"></i>主页</a></li>
-                                    <li><a href="./xxblog/view/blog.xhtml" class="hvr-underline-from-left"><i class="edit1"></i>博客</a></li>
+                                    <li class="active"><a href="${path}/xxblog/view/index.xhtml"><i class="home"></i>主页</a></li>
+                                    <li><a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left"><i class="edit1"></i>博客</a></li>
                                     <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>照片</a></li>
                                     <#--<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>Short Codes</a></li>-->
                                     <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>关于</a></li>
@@ -70,20 +69,17 @@
                     <div class="wmuSliderWrapper">
                         <article style="position: absolute; width: 100%; opacity: 0;">
                             <div class="banner-wrap">
-                                <div class="banner">
-                                </div>
+                                <div class="banner"></div>
                             </div>
                         </article>
                         <article style="position: absolute; width: 100%; opacity: 0;">
                             <div class="banner-wrap">
-                                <div class="banner1">
-                                </div>
+                                <div class="banner1"></div>
                             </div>
                         </article>
                         <article style="position: absolute; width: 100%; opacity: 0;">
                             <div class="banner-wrap">
-                                <div class="banner2">
-                                </div>
+                                <div class="banner2"></div>
                             </div>
                         </article>
                     </div>
@@ -96,21 +92,20 @@
                 </script>
 
                 <div class="banner-bottom">
-                    <div class="col-md-4 banner-left">
-                        <div class="col-xs-3 banner-left1">
+                    <div class="col-md-15 banner-left banner-margin">
+                        <div class="col-xs-1 banner-left1">
                             <div class="banner-left11">
-                                <span> </span>
+                                <span>  </span>
                             </div>
                         </div>
                         <div class="col-xs-9 banner-right1">
-                            <h3>cupidatat proi</h3>
+                            <h3>日志级别动态调整——小工具解决大问题</h3>
                         </div>
                         <div class="clearfix"></div>
-                        <p>Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui.</p>
+                        <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
                     </div>
-                    <div class="col-md-4 banner-left">
-                        <div class="col-xs-3 banner-left1">
+                    <div class="col-md-15 banner-left banner-margin">
+                        <div class="col-xs-1 banner-left1">
                             <div class="banner-left22">
                                 <span> </span>
                             </div>
@@ -119,11 +114,10 @@
                             <h3>sint occaecat</h3>
                         </div>
                         <div class="clearfix"></div>
-                        <p>Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui.</p>
+                        <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
                     </div>
-                    <div class="col-md-4 banner-left">
-                        <div class="col-xs-3 banner-left1">
+                    <div class="col-md-15 banner-left banner-margin">
+                        <div class="col-xs-1 banner-left1">
                             <div class="banner-left33">
                                 <span> </span>
                             </div>
@@ -132,8 +126,7 @@
                             <h3>cupida quisu</h3>
                         </div>
                         <div class="clearfix"></div>
-                        <p>Excepteur sint occaecat cupidatat non proident,
-                            sunt in culpa qui.</p>
+                        <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
