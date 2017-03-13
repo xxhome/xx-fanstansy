@@ -15,12 +15,11 @@
         window.scrollTo(0, 1);
     }
     </script>
-    <!-- //for-mobile-apps -->
-    <link href="${src}/xx-base/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="${src}/xx-blog/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <!-- js -->
-    <script src="${src}/xx-base/js/jquery-1.11.1.min.js"></script>
-    <!-- //js -->
+
+    <@resource path="${src}/xx-base/css/bootstrap.css, ${src}/xx-blog/css/style.css"/>
+
+    <@resource path="${src}/xx-base/js/jquery-1.11.1.min.js"/>
+
     <#--<link href='http://fonts.useso.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>-->
     <#--<link href='http://fonts.useso.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>-->
     <#--<link href='http://fonts.useso.com/css?family=Comfortaa:400,300,700' rel='stylesheet' type='text/css'>-->
@@ -31,7 +30,7 @@
 <div class="banner-body">
     <div class="container">
         <div class="banner-body-content">
-            <div class="col-xs-3 banner-body-left" id="banner-body-left">
+            <div class="col-xs-2 banner-body-left" id="banner-body-left">
                 <div class="logo">
                     <h1><a href="index.ftl">Great <span>Taste</span></a></h1>
                 </div>
@@ -64,7 +63,7 @@
                     </nav>
                 </div>
             </div>
-            <div class="col-xs-9 banner-body-right">
+            <div class="col-xs-10 banner-body-right">
                 <div class="wmuSlider example1">
                     <div class="wmuSliderWrapper">
                         <article style="position: absolute; width: 100%; opacity: 0;">
@@ -91,48 +90,29 @@
                     $('.example1').wmuSlider();
                 </script>
 
+
                 <div class="banner-bottom">
-                    <div class="col-md-15 banner-left banner-margin">
-                        <div class="col-xs-1 banner-left1">
-                            <div class="banner-left11">
-                                <span>  </span>
+
+                    <#list [1,2,3,4,5,6,7,9] as e>
+                        <div class="col-md-6 banner-left banner-margin">
+                            <div class="col-xs-1 banner-left1">
+                                <div class="banner-left11">
+                                    <span>  </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-xs-9 banner-right1">
-                            <h3>日志级别动态调整——小工具解决大问题</h3>
-                        </div>
-                        <div class="clearfix"></div>
-                        <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
-                    </div>
-                    <div class="col-md-15 banner-left banner-margin">
-                        <div class="col-xs-1 banner-left1">
-                            <div class="banner-left22">
-                                <span> </span>
+                            <div class="col-xs-10 banner-right1">
+                                <h3>日志级别动态调整——小工具解决大问题</h3>
                             </div>
+                            <div class="clearfix"></div>
+                            <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
                         </div>
-                        <div class="col-xs-9 banner-right1">
-                            <h3>sint occaecat</h3>
-                        </div>
-                        <div class="clearfix"></div>
-                        <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
-                    </div>
-                    <div class="col-md-15 banner-left banner-margin">
-                        <div class="col-xs-1 banner-left1">
-                            <div class="banner-left33">
-                                <span> </span>
-                            </div>
-                        </div>
-                        <div class="col-xs-9 banner-right1">
-                            <h3>cupida quisu</h3>
-                        </div>
-                        <div class="clearfix"></div>
-                        <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
-                    </div>
+                    </#list>
+
                     <div class="clearfix"></div>
                 </div>
             </div>
             <div class="clearfix"></div>
-            <div class="col-xs-3 banner-body-left">
+            <div class="col-xs-2 banner-body-left">
                 <div class="latest-news">
                     <h2>博客分类</h2>
                     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -271,8 +251,10 @@
     </div>
 </div>
 <!-- //banner-body -->
+
 <!-- for bootstrap working -->
-<script src="${src}/xx-base/js/bootstrap.js"></script>
+<@resource path="${src}/xx-base/js/bootstrap.js"/>
 <!-- //for bootstrap working -->
+
 </body>
 </html>

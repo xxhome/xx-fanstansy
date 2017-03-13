@@ -28,7 +28,7 @@ body a:hover{
 	padding:2em 0;
 }
 .banner-body-content {
-    padding: 2em 2em;
+    padding: 1em 1em;
     background: #fff;
 	box-shadow:0px 0px 10px #E0E0E0;
 	-webkit-box-shadow:0px 0px 10px #E0E0E0;
@@ -184,7 +184,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
   right: 0;
 }
 .top-nav {
-    margin: 2em 0;
+    margin: 1em 0;
 }
 .navbar-collapse {
     padding: 0;
@@ -326,7 +326,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 }
 .banner-margin{
 	margin-top: 10px;
-	height: 240px;
+	height: 260px;
 }
 .banner-left22 span{
 	background:url(../images/img-sp.png) no-repeat -19px -61px;
@@ -1876,4 +1876,12 @@ h2.typoh2{
 		font-size: .9em;
 		padding: 0.8em 0;
 	}
+}
+
+.banner-body .container{
+	width: 1400px;
+}
+
+.banner-body .container .top-nav .navbar{
+	width: 220px;
 }

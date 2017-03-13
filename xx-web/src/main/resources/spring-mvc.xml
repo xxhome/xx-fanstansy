@@ -68,12 +68,17 @@
                 <!--&lt;!&ndash; 解析XML配置文件 &ndash;&gt;-->
                 <!--<entry key="setting" value="#{T(com.xxutil.utils.SettingUtils).get()}"/>-->
                 <entry key="msg" value-ref="messageMethod"/>
+                <entry key="resource" value-ref="resourceTemplateTag"/>
             </map>
         </property>
     </bean>
 
     <!-- 获取国际化资源 -->
-    <bean id="messageMethod" class="com.xxbase.method.MessageMethod"/>
+    <bean id="messageMethod" class="com.xxbase.tag.MessageTemplateTag"/>
+    <!-- 获取script标签 -->
+    <bean id="resourceTemplateTag" class="com.xxbase.tag.ResourceTemplateTag">
+        <property name="isDevModel" value="true"></property>
+    </bean>
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
