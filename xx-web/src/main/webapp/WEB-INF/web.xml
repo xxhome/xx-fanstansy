@@ -41,6 +41,19 @@
     <!--=============================================================================================================-->
 
     <filter>
+        <filter-name>shallowEtagHeaderFilter</filter-name>
+        <filter-class>org.springframework.web.filter.ShallowEtagHeaderFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>shallowEtagHeaderFilter</filter-name>
+        <servlet-name>spring-mvc</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
+    </filter-mapping>
+
+    <!--=============================================================================================================-->
+
+    <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>

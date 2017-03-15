@@ -21,7 +21,7 @@
     <!--<property name="checkoutTimeout" value="${connection_pools.checkout_timeout}" />-->
     <!--</bean>-->
 
-    <context:component-scan base-package="com.xxbase,com.xxblog" use-default-filters="true">
+    <context:component-scan base-package="com.fantasy.xxbase, com.fantasy.xxblog" use-default-filters="true">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -61,7 +61,7 @@
     <!-- JPA配置  EntityManager配置 -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="packagesToScan" value="com.xxbase.entity, com.xxblog.entity"></property>
+        <property name="packagesToScan" value="com.fantasy.xxbase.entity, com.fantasy.xxblog.entity"></property>
         <!--<property name="persistenceUnitName" value="persistenceUnit"/>-->
         <!--<property name="persistenceXmlLocation" value="classpath:persistence.xml"></property>-->
         <property name="jpaVendorAdapter">

@@ -8,7 +8,7 @@
 
     <bean id="imageCaptchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
         <property name="captchaEngine">
-            <bean class="com.xxbase.captcha.CaptchaEngine"/>
+            <bean class="com.fantasy.xxbase.captcha.CaptchaEngine"/>
         </property>
         <property name="minGuarantedStorageDelayInSeconds" value="3600"/>
     </bean>

@@ -8,7 +8,7 @@
             http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 需要解密的文件 -->
-    <bean class="com.xxbase.method.EncryptPropertyConfigurer" lazy-init="true">
+    <bean class="com.fantasy.xxbase.method.EncryptPropertyConfigurer" lazy-init="true">
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
         <property name="location" value="classpath:xx-jdbc.properties"/>
         <property name="fileEncoding" value="UTF-8"/>
