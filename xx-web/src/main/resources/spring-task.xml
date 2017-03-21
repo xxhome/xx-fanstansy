@@ -2,8 +2,11 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:task="http://www.springframework.org/schema/task"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/task
        http://www.springframework.org/schema/task/spring-task.xsd">
 
@@ -17,7 +20,101 @@
         <property name="queueCapacity" value="${task.queue_capacity}"/>
         <!-- 线程池维护线程所允许的空闲时间 -->
         <property name="keepAliveSeconds" value="${task.keep_alive_seconds}"/>
+
+        <property name="rejectedExecutionHandler">
+            <!-- DiscardPolicy:线程池对拒绝任务的处理策略 -->
+            <bean class="java.util.concurrent.ThreadPoolExecutor$DiscardPolicy"/>
+        </property>
     </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="true">
+        <property name="order" value="1"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="location" value="classpath:quartz.properties"/>
+    </bean>
+
+    <!-- 调度工厂 -->
+    <bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" value="transactionManager"/>
+        <property name="configLocation" value="classpath:quartz.properties"/>
+        <property name="quartzProperties">
+            <props>
+                <prop key="org.quartz.scheduler.instanceName">${org.quartz.scheduler.instanceName}</prop>
+                <prop key="org.quartz.scheduler.instanceId">${org.quartz.scheduler.instanceId}</prop>
+
+                <!-- 线程池配置 -->
+                <prop key="org.quartz.threadPool.class">${org.quartz.threadPool.class}</prop>
+                <prop key="org.quartz.threadPool.threadCount">${org.quartz.threadPool.threadCount}</prop>
+                <prop key="org.quartz.threadPool.threadPriority">${org.quartz.threadPool.threadPriority}</prop>
+
+                <!-- JobStore 配置 -->
+                <!--org.quartz.jobStore.class属性为JobStoreTX，将任务持久化到数据中。因为集群中节点依赖于数据库来传播Scheduler实例的状态，你只能在使用JDBC JobStore时应用Quartz集群。-->
+                <prop key="org.quartz.jobStore.class">${org.quartz.jobStore.class}</prop>
+
+                <!-- 集群配置 -->
+                <!--org.quartz.jobStore.isClustered属性为true，通知Scheduler实例要它参与到一个集群当中。-->
+                <prop key="org.quartz.jobStore.isClustered">${org.quartz.jobStore.isClustered}</prop>
+
+                <!--org.quartz.jobStore.clusterCheckinInterval属性定义了Scheduler实例检入到数据库中的频率(单位：毫秒)。
+                    Scheduler检查是否其他的实例到了它们应当检入的时候未检入；
+                    这能指出一个失败的Scheduler实例，且当前 Scheduler会以此来接管任何执行失败并可恢复的Job。
+                    通过检入操作，Scheduler 也会更新自身的状态记录。
+                    clusterChedkinInterval越小，Scheduler节点检查失败的Scheduler实例就越频繁。默认值是 15000 (即15 秒)。-->
+                <prop key="org.quartz.jobStore.clusterCheckinInterval">${org.quartz.jobStore.clusterCheckinInterval}</prop>
+                <prop key="org.quartz.jobStore.maxMisfiresToHandleAtATime">${org.quartz.jobStore.maxMisfiresToHandleAtATime}</prop>
+                <prop key="org.quartz.jobStore.misfireThreshold">${org.quartz.jobStore.misfireThreshold}</prop>
+
+                <prop key="org.quartz.jobStore.tablePrefix">${org.quartz.jobStore.tablePrefix}</prop>
+            </props>
+
+        </property>
+
+        <property name="schedulerName" value="CRMscheduler"/>
+
+        <!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
+        <property name="startupDelay" value="30"/>
+
+        <property name="applicationContextSchedulerContextKey" value="applicationContextKey"/>
+
+        <!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
+        <property name="overwriteExistingJobs" value="true"/>
+
+        <!-- 设置自动启动 -->
+        <property name="autoStartup" value="true"/>
+
+        <!-- 注册触发器 -->
+        <property name="triggers">
+            <list>
+
+            </list>
+        </property>
+
+        <!-- 注册jobDetail -->
+        <property name="jobDetails">
+            <list>
+            </list>
+        </property>
+
+        <property name="schedulerListeners">
+            <list>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="myQuartzJobBean1" class="com.fantasy.xxbase.listener.MyQuartzJobBean1"></bean>
+
+    <bean id="simpleTrigger" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+        <!-- see the example of method invoking job above -->
+        <property name="jobDetail" ref="myQuartzJobBean1"/>
+        <!-- 10 seconds -->
+        <property name="startDelay" value="10000"/>
+        <!-- repeat every 50 seconds -->
+        <property name="repeatInterval" value="50000"/>
+    </bean>
+
+
+    <!--CRM后台目前可以做到对Quartz实例的监控、操作以及动态部署Trigger.-->
 
     <task:annotation-driven/>
 
