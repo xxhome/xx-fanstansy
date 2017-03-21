@@ -1885,3 +1885,28 @@ h2.typoh2{
 .banner-body .container .top-nav .navbar{
 	width: 220px;
 }
+
+.tags-list{
+	margin-top: 30px;
+}
+
+.bootstrap-tagsinput .tag-label-info{
+	font-size: 86%;
+	border: 1px solid #32D3C3;
+	color: #212121;
+}
+
+.banner-left:hover .bootstrap-tagsinput .tag-label-info{
+	color:#ffffff;
+}
+
+.banner-footer{
+	float: right;
+	color: #999;
+	font-size: 10px;
+	margin-top: 20px;
+}
+
+.banner-footer span{
+	margin-right: 8px;
+}

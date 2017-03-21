@@ -30,6 +30,7 @@
 <div class="banner-body">
     <div class="container">
         <div class="banner-body-content">
+
             <div class="col-xs-2 banner-body-left" id="banner-body-left">
                 <div class="logo">
                     <h1><a href="index.ftl">Great <span>Taste</span></a></h1>
@@ -52,9 +53,11 @@
                             <nav class="stroke">
                                 <ul class="nav navbar-nav">
                                     <li class="active"><a href="${path}/xxblog/view/index.xhtml"><i class="home"></i>主页</a></li>
-                                    <li><a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left"><i class="edit1"></i>博客</a></li>
-                                    <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>照片</a></li>
-                                    <#--<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>Short Codes</a></li>-->
+                                    <li><a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left"><i
+                                            class="edit1"></i>博客</a></li>
+                                    <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>照片</a>
+                                    </li>
+                                <#--<li><a href="short-codes.html" class="hvr-underline-from-left"><i class="text-size1"></i>Short Codes</a></li>-->
                                     <li><a href="mail.html" class="hvr-underline-from-left"><i class="envelope1"></i>关于</a></li>
                                 </ul>
                             </nav>
@@ -63,6 +66,7 @@
                     </nav>
                 </div>
             </div>
+
             <div class="col-xs-10 banner-body-right">
                 <div class="wmuSlider example1">
                     <div class="wmuSliderWrapper">
@@ -94,18 +98,32 @@
                 <div class="banner-bottom">
 
                     <#list [1,2,3,4,5,6,7,9] as e>
-                        <div class="col-md-6 banner-left banner-margin">
-                            <div class="col-xs-1 banner-left1">
-                                <div class="banner-left11">
-                                    <span>  </span>
+                        <a href="${path}/xxblog/view/context.xhtml">
+                            <div class="col-md-6 banner-left banner-margin">
+                                <div class="col-xs-1 banner-left1">
+                                    <div class="banner-left11">
+                                        <span>  </span>
+                                    </div>
+                                </div>
+                                <div class="col-xs-10 banner-right1">
+                                    <h3>日志级别动态调整——小工具解决大问题</h3>
+                                </div>
+                                <div class="clearfix"></div>
+                                <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
+
+                                <div class="bootstrap-tagsinput tags-list">
+                                    <#list [1,2,3,4,5] as t>
+                                        <span class="tag label tag-label-info">Amsterdam<span data-role="remove"></span></span>
+                                    </#list>
+                                </div>
+
+                                <div class="banner-footer">
+                                    <span>莫某 发布于 2小时前</span>
+                                    <span>阅读(1000)</span>
+                                    <span>点赞(2)</span>
                                 </div>
                             </div>
-                            <div class="col-xs-10 banner-right1">
-                                <h3>日志级别动态调整——小工具解决大问题</h3>
-                            </div>
-                            <div class="clearfix"></div>
-                            <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
-                        </div>
+                        </a>
                     </#list>
 
                     <div class="clearfix"></div>
@@ -179,9 +197,7 @@
                         <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
                     </div>
                     <div class="col-xs-10 msg-text-right">
-                        <p>But I must explain to you how all this mistaken idea of
-                            denouncing pleasure and praising pain was born and I will give
-                            you a complete account of the system.</p>
+                        <p>Do one thing, and do it well.</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -254,6 +270,7 @@
 
 <!-- for bootstrap working -->
 <@resource path="${src}/xx-base/js/bootstrap.js"/>
+<@resource path="${src}/xx-blog/js/blog.js"/>
 <!-- //for bootstrap working -->
 
 </body>
