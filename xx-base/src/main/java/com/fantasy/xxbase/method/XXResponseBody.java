@@ -6,11 +6,15 @@ package com.fantasy.xxbase.method;
  */
 public class XXResponseBody<T> {
 
+    public static final XXResponseBody SUCCEED = new XXResponseBody();
+
     private long code = 0L;
 
     private String message;
 
     private T data;
+
+    private String runtime;
 
     public long getCode() {
         return code;
@@ -34,5 +38,13 @@ public class XXResponseBody<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public String getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(String runtime) {
+        this.runtime = runtime;
     }
 }

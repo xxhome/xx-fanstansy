@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true" scan="true" scanPeriod="1 seconds">
+<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+    <contextName>XX-FANTASY</contextName>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+                OS-FANTASY %d{yyyy/MM/dd HH:mm:ss} %-5level %logger{36} - %msg%n
             </Pattern>
         </layout>
     </appender>
@@ -13,19 +15,19 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="com.xxtest" level="debug" additivity="false">
+    <logger name="com.fantasy.xxtest" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="com.xxbase" level="debug" additivity="false">
+    <logger name="com.fantasy.xxbase" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="com.xxutil" level="debug" additivity="false">
+    <logger name="com.fantasy.xxutil" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="com.xxblog" level="debug" additivity="false">
+    <logger name="com.fantasy.xxblog" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 

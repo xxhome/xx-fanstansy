@@ -3,33 +3,40 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
          http://www.springframework.org/schema/beans/spring-beans.xsd
          http://www.springframework.org/schema/mvc
          http://www.springframework.org/schema/mvc/spring-mvc.xsd
          http://www.springframework.org/schema/context
-         http://www.springframework.org/schema/context/spring-context.xsd">
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop
+         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <mvc:annotation-driven validator="validator">
-        <mvc:message-converters>
-            <bean id="mappingJacksonHttpMessageConverter"
-                  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-                <property name="supportedMediaTypes">
-                    <list>
-                        <value>text/plain;charset=utf-8</value>
-                        <value>text/html;charset=UTF-8</value>
-                        <value>text/json;charset=UTF-8</value>
-                        <value>application/json;charset=utf-8</value>
-                    </list>
-                </property>
-            </bean>
-        </mvc:message-converters>
-    </mvc:annotation-driven>
 
     <context:component-scan base-package="com.fantasy.xxbase,com.fantasy.xxblog" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+
+    <!-- 解决@ResponseBody注解直接返回对象并转换成JSON时出现406问题，同时解决了返回String类型乱码的问题 -->
+    <!-- favorPathExtension 是否支持后缀匹配-->
+    <!-- favorParameter 是否支持参数匹配 -->
+    <!-- ignoreAcceptHeader 是否忽略AcceptHeader匹配 -->
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="favorPathExtension" value="true"/>
+        <property name="favorParameter" value="false"/>
+        <property name="ignoreAcceptHeader" value="false"/>
+        <property name="defaultContentType" value="text/html"/>
+        <property name="mediaTypes">
+            <map>
+                <entry key="html" value="text/html;charset=UTF-8"/>
+                <entry key="json" value="application/json;charset=UTF-8"/>
+                <entry key="xhtml" value="application/json;charset=UTF-8"/>
+            </map>
+        </property>
+    </bean>
+    <mvc:annotation-driven validator="validator" content-negotiation-manager="contentNegotiationManager"/>
 
     <!-- 视图解析器  -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -88,5 +95,7 @@
     <!--<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
     <!--<property name="defaultErrorView" value="admin/common/404"/>-->
     <!--</bean>-->
+
+    <aop:aspectj-autoproxy/>
 
 </beans>
