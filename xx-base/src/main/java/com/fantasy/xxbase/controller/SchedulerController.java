@@ -20,7 +20,7 @@ public class SchedulerController {
 
     @RequestMapping(value = "/update")
     public XXResponseBody update() {
-        schedulerService.schedule("systemMemoryJobTrigger", "DEFAULT", "0/20 * * ? * * *");
+        schedulerService.schedule("sysMemoryListenerTrigger", "DEFAULT", "0/20 * * ? * * *");
         return XXResponseBody.SUCCEED;
     }
 
