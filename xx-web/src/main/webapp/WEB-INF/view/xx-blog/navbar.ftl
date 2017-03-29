@@ -19,12 +19,26 @@
             <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                 <nav class="stroke">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="${path}/xxblog/view/index.xhtml"><i class="home"></i>主页</a></li>
-                        <li><a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left"><i
-                                class="edit1"></i>博客</a></li>
-                        <li><a href="photos.html" class="hvr-underline-from-left"><i class="picture1"></i>照片</a>
+                        <li class="active">
+                            <a href="${path}/xxblog/view/index.xhtml">
+                                <i class="home"></i>主页
+                            </a>
                         </li>
-                        <li><a href="${path}/xxblog/view/about.xhtml" class="hvr-underline-from-left"><i class="envelope1"></i>关于</a></li>
+                        <li>
+                            <a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left">
+                                <i class="edit1"></i>博客
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${path}/xxblog/view/photos.xhtml" class="hvr-underline-from-left">
+                                <i class="picture1"></i>照片
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${path}/xxblog/view/about.xhtml" class="hvr-underline-from-left">
+                                <i class="envelope1"></i>关于
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

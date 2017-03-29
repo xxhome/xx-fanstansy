@@ -1,0 +1,28 @@
+<div class="wmuSlider example1">
+    <div class="wmuSliderWrapper">
+        <article style="position: absolute; width: 100%; opacity: 0;">
+            <div class="banner-wrap">
+                <div class="banner">
+                </div>
+            </div>
+        </article>
+        <article style="position: absolute; width: 100%; opacity: 0;">
+            <div class="banner-wrap">
+                <div class="banner1">
+                </div>
+            </div>
+        </article>
+        <article style="position: absolute; width: 100%; opacity: 0;">
+            <div class="banner-wrap">
+                <div class="banner2">
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+
+<@resource path="${src}/xx-base/js/jquery.wmuSlider.js"/>
+
+<script>
+    $('.example1').wmuSlider();
+</script>
