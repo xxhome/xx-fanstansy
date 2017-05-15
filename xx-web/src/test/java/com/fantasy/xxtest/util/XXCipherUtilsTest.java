@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
  * @author li.fang
  * @sine 17/02/28
  */
-public class XXCipherUtilsTest extends BaseTest{
+public class XXCipherUtilsTest extends BaseTest {
 
     @Test
     public void testGetTime64MD5(){

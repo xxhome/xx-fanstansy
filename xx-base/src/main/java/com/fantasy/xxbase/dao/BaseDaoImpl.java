@@ -1,7 +1,7 @@
 package com.fantasy.xxbase.dao;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
-import com.fantasy.xxbase.entity.AbstractSimpleEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
+import com.fantasy.xxbase.entity.XXSimpleEntity;
 import com.fantasy.xxbase.method.Page;
 import com.fantasy.xxbase.method.Pageable;
 import com.fantasy.xxbase.method.QueryParam;
@@ -29,7 +29,7 @@ import java.util.*;
  * @author li.fang
  * @since 2017/02/17
  */
-public abstract class BaseDaoImpl<T extends AbstractBaseEntity, ID extends Long> implements BaseDao<T, ID> {
+public abstract class BaseDaoImpl<T extends XXBaseEntity, ID extends Long> implements BaseDao<T, ID> {
 
     private Logger logger = LoggerFactory.getLogger(BaseDaoImpl.class);
 
@@ -141,7 +141,7 @@ public abstract class BaseDaoImpl<T extends AbstractBaseEntity, ID extends Long>
     public T findOneByName(String name) throws EntityNoExistNameException {
         PathBuilder<T> pathBuilder = new PathBuilder<T>(clazz, "o");
         JPAQuery jpaQuery = new JPAQuery(entityManager);
-        if (AbstractSimpleEntity.class.isAssignableFrom(clazz)) {
+        if (XXSimpleEntity.class.isAssignableFrom(clazz)) {
             return jpaQuery.from(pathBuilder).where(pathBuilder.getString("name").eq(name)).singleResult(pathBuilder);
         }
         throw new EntityNoExistNameException("%s不存在名称为name的属性", clazz.getName());
@@ -176,7 +176,7 @@ public abstract class BaseDaoImpl<T extends AbstractBaseEntity, ID extends Long>
     public Page<T> findByName(String name) throws EntityNoExistNameException {
         PathBuilder<T> pathBuilder = new PathBuilder<T>(clazz, "o");
         JPAQuery jpaQuery = new JPAQuery(entityManager);
-        if (AbstractSimpleEntity.class.isAssignableFrom(clazz)) {
+        if (XXSimpleEntity.class.isAssignableFrom(clazz)) {
             List<T> result = jpaQuery.from(pathBuilder).where(pathBuilder.getString("name").eq(name)).list(pathBuilder);
             return new Page<>(result.size(), result);
         }

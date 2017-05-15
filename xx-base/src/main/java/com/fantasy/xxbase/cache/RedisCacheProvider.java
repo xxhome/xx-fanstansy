@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.cache;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -24,12 +24,12 @@ public class RedisCacheProvider implements CacheProvider {
     }
 
     @Override
-    public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs) {
+    public <T extends XXBaseEntity> void put(String category, Collection<T> objs) {
 
     }
 
     @Override
-    public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds) {
+    public <T extends XXBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds) {
 
     }
 
@@ -39,7 +39,7 @@ public class RedisCacheProvider implements CacheProvider {
     }
 
     @Override
-    public <T extends AbstractBaseEntity> Collection<T> getCollection(String category) {
+    public <T extends XXBaseEntity> Collection<T> getCollection(String category) {
         return null;
     }
 

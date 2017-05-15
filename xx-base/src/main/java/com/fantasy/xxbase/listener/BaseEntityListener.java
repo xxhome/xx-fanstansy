@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.listener;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -18,7 +18,7 @@ public class BaseEntityListener {
      * @param baseEntity
      */
     @PrePersist
-    public void prePersist(AbstractBaseEntity baseEntity) {
+    public void prePersist(XXBaseEntity baseEntity) {
         baseEntity.setCreatedTime(new Date());
         baseEntity.setModifyTime(new Date());
     }
@@ -29,7 +29,7 @@ public class BaseEntityListener {
      * @param baseEntity
      */
     @PreUpdate
-    public void preUpdate(AbstractBaseEntity baseEntity) {
+    public void preUpdate(XXBaseEntity baseEntity) {
         baseEntity.setModifyTime(new Date());
     }
 

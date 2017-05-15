@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.method;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
  * @author li.fang
  * @sine 17/02/19
  */
-public class Page<T extends AbstractBaseEntity> extends Pageable{
+public class Page<T extends XXBaseEntity> extends Pageable{
 
     private List<T> context = new ArrayList<>();
 

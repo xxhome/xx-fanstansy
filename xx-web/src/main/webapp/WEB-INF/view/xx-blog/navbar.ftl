@@ -1,3 +1,4 @@
+
 <div class="col-xs-2 banner-body-left" id="banner-body-left">
     <div class="logo">
         <h1><a href="index.ftl">Great <span>Taste</span></a></h1>
@@ -44,7 +45,10 @@
             </div>
             <!-- /.navbar-collapse -->
         </nav>
+
     </div>
+
+
 
     <div class="latest-news">
         <h2>博客分类</h2>

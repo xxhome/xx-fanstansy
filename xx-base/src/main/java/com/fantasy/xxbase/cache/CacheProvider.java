@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.cache;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -17,13 +17,13 @@ public interface CacheProvider {
 
     <T extends Serializable> void put(String category, String key, T obj, int timeToLiveSeconds);
 
-    <T extends AbstractBaseEntity> void put(String category, Collection<T> objs);
+    <T extends XXBaseEntity> void put(String category, Collection<T> objs);
 
-    <T extends AbstractBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds);
+    <T extends XXBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds);
 
     <T extends Serializable> T get(String category, String key) throws CacheNotExistException;
 
-    <T extends AbstractBaseEntity> Collection<T> getCollection(String category);
+    <T extends XXBaseEntity> Collection<T> getCollection(String category);
 
     long getCacheSize();
 

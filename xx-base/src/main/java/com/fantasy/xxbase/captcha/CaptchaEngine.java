@@ -66,7 +66,8 @@ public class CaptchaEngine extends ListImageCaptchaEngine{
 
         String captchaImagePath = new ClassPathResource(BACKGROUND_IMAGE_PATH, this.getClass()).getPath();
 
-        BackgroundGenerator backgroundGenerator = new FileReaderRandomBackgroundGenerator(IMAGE_WIDTH, IMAGE_HEIGHT, captchaImagePath);
+        System.out.println("captchaImagePath : " + captchaImagePath);
+        BackgroundGenerator backgroundGenerator = new XXFileReadRandomBackgroundGenerator(IMAGE_WIDTH, IMAGE_HEIGHT, captchaImagePath);
 
         TextPaster textPaster = new DecoratedRandomTextPaster(MIN_WORD_LENGTH, MAX_WORD_LENGTH, new RandomListColorGenerator(COLORS), new TextDecorator[] {});
 

@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AbstractAccountEntity extends AbstractSimpleEntity {
+public class XXAccountEntity extends XXSimpleEntity {
 
     /**
      * 邮箱

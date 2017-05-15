@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
  * @author li.fang
  * @sine 17/02/19
  */
-public class CacheServiceTest extends SpringTest{
+public class CacheServiceTest extends SpringTest {
 
     @Autowired
     @Qualifier(value = "ehCacheProvider")

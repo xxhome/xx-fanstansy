@@ -14,7 +14,7 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners(BaseEntityListener.class)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AbstractBaseEntity implements Serializable {
+public class XXBaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TableStringGenerator")

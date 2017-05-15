@@ -10,7 +10,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_page_views_stat")
-public class PageViewsStatEntity extends AbstractBaseEntity{
+public class PageViewsStatEntity extends XXBaseEntity {
 
     @Column(length = 64)
     private String ip;

@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.service;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 import com.fantasy.xxbase.method.Page;
 import com.fantasy.xxbase.method.Pageable;
 import com.fantasy.xxbase.method.QueryParam;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by lifang on 2015/1/22.
  */
-public interface BaseService<T extends AbstractBaseEntity, ID extends Serializable> {
+public interface BaseService<T extends XXBaseEntity, ID extends Serializable> {
 
     Page<T> find(List<QueryParam> queryParams);
 

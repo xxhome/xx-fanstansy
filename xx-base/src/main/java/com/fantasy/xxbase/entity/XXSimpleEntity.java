@@ -11,7 +11,7 @@ import javax.persistence.MappedSuperclass;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AbstractSimpleEntity extends AbstractBaseEntity {
+public class XXSimpleEntity extends XXBaseEntity {
 
     @Column(length = 64, nullable = false)
     private String name;

@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.cache;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
@@ -72,13 +72,13 @@ public class EhCacheProvider implements CacheProvider {
     }
 
     @Override
-    public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs) {
+    public <T extends XXBaseEntity> void put(String category, Collection<T> objs) {
         Cache cache = getCache(category);
         objs.forEach(obj -> put(cache, String.valueOf(obj.getId()), obj, -1));
     }
 
     @Override
-    public <T extends AbstractBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds) {
+    public <T extends XXBaseEntity> void put(String category, Collection<T> objs, int timeToLiveSeconds) {
         Cache cache = getCache(category);
         objs.forEach(obj -> put(cache, String.valueOf(obj.getId()), obj, timeToLiveSeconds));
     }
@@ -101,7 +101,7 @@ public class EhCacheProvider implements CacheProvider {
 
 
     @Override
-    public <T extends AbstractBaseEntity> Collection<T> getCollection(String category) {
+    public <T extends XXBaseEntity> Collection<T> getCollection(String category) {
         Collection<T> collection = new ArrayList<>();
 
         Cache cache = getCache(category);

@@ -1,6 +1,6 @@
 package com.fantasy.xxblog.entity;
 
-import com.fantasy.xxbase.entity.AbstractAccountEntity;
+import com.fantasy.xxbase.entity.XXAccountEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "t_account")
-public class AccountEntity extends AbstractAccountEntity{
+public class AccountEntity extends XXAccountEntity {
 
 
 }

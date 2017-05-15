@@ -6,20 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
-    <script type="application/x-javascript">
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    }
-    </script>
-
-    <@resource path="${src}/xx-base/css/bootstrap.css, ${src}/xx-blog/css/style.css"/>
+    <@resource path="${src}/xx-base/bootstrap/css/bootstrap.css, ${src}/xx-blog/css/style.css"/>
 
     <@resource path="${src}/xx-base/js/jquery-1.11.1.min.js"/>
-
 </head>
 
 <body>
@@ -100,7 +90,7 @@
 <!-- //banner-body -->
 
 <!-- for bootstrap working -->
-<@resource path="${src}/xx-base/js/bootstrap.js"/>
+<@resource path="${src}/xx-base/bootstrap/js/bootstrap.js"/>
 <!-- //for bootstrap working -->
 
 </body>

@@ -1,6 +1,6 @@
 package com.fantasy.xxblog.entity;
 
-import com.fantasy.xxbase.entity.AbstractSimpleEntity;
+import com.fantasy.xxbase.entity.XXSimpleEntity;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -15,17 +15,17 @@ import java.util.List;
 @Entity
 @Table(name = "t_blog")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class BlogEntity extends AbstractSimpleEntity{
+public class BlogEntity extends XXSimpleEntity {
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name="tag_id")
-    private List<TagEntity> tags = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="blog_tag_id")
+    private List<BlogTagEntity> tags = new ArrayList<>();
 
-    public List<TagEntity> getTags() {
+    public List<BlogTagEntity> getTags() {
         return tags;
     }
 
-    public void setTags(List<TagEntity> tags) {
+    public void setTags(List<BlogTagEntity> tags) {
         this.tags = tags;
     }
 }

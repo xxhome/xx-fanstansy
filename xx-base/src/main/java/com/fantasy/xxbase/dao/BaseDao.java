@@ -1,7 +1,7 @@
 package com.fantasy.xxbase.dao;
 
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 import com.fantasy.xxbase.method.Page;
 import com.fantasy.xxbase.method.Pageable;
 import com.fantasy.xxbase.method.QueryParam;
@@ -16,7 +16,7 @@ import java.util.List;
  * </pre>
  * Created by lifang on 2015/1/21.
  */
-public interface BaseDao<T extends AbstractBaseEntity, ID extends Long> {
+public interface BaseDao<T extends XXBaseEntity, ID extends Long> {
 
     Page<T> find(List<QueryParam> queryParams);
     Page<T> find(List<QueryParam> queryParams, Pageable pageable);

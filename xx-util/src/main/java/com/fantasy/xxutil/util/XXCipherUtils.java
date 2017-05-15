@@ -25,7 +25,7 @@ public final class XXCipherUtils {
     //指定DES加密解密所用密钥
     private static Key key;
 
-    private static String DEFAULT_SALT = "XX-FANTASY";
+    private static final String DEFAULT_SALT = "XX-FANTASY";
 
     private static final String GENERATOR_DES = "DES";
 
@@ -65,9 +65,11 @@ public final class XXCipherUtils {
 
         String p = append(password, timestamp);
 
-        logger.debug("plaintext : {}", plaintext);
-        logger.debug("     salt : {}", salt);
-        logger.debug(" password : {}\n", p);
+        if(logger.isDebugEnabled()) {
+            logger.debug("plaintext : {}", plaintext);
+            logger.debug("     salt : {}", salt);
+            logger.debug(" password : {}\n", p);
+        }
         return p;
     }
 

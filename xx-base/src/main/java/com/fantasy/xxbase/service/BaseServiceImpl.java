@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.service;
 
-import com.fantasy.xxbase.entity.AbstractBaseEntity;
+import com.fantasy.xxbase.entity.XXBaseEntity;
 import com.fantasy.xxbase.method.Page;
 import com.fantasy.xxbase.method.Pageable;
 import com.fantasy.xxbase.dao.BaseDao;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author li.fang
  * @since 2017/02/18
  */
-public class BaseServiceImpl<T extends AbstractBaseEntity, ID extends Long> implements BaseService<T, ID> {
+public class BaseServiceImpl<T extends XXBaseEntity, ID extends Long> implements BaseService<T, ID> {
 
     public Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 

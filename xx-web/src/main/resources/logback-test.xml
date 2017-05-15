@@ -15,7 +15,7 @@
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="com.fantasy.xxtest" level="debug" additivity="false">
+    <logger name="xxtest" level="debug" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
