@@ -1,7 +1,6 @@
 package com.fantasy.xxbase.captcha;
 
 import com.octo.captcha.component.image.backgroundgenerator.BackgroundGenerator;
-import com.octo.captcha.component.image.backgroundgenerator.FileReaderRandomBackgroundGenerator;
 import com.octo.captcha.component.image.color.RandomListColorGenerator;
 import com.octo.captcha.component.image.fontgenerator.FontGenerator;
 import com.octo.captcha.component.image.fontgenerator.RandomFontGenerator;
@@ -61,13 +60,11 @@ public class CaptchaEngine extends ListImageCaptchaEngine{
 
     @Override
     protected void buildInitialFactories() {
-
         FontGenerator fontGenerator = new RandomFontGenerator(MIN_FONT_SIZE, MAX_FONT_SIZE, FONTS);
 
         String captchaImagePath = new ClassPathResource(BACKGROUND_IMAGE_PATH, this.getClass()).getPath();
 
-        System.out.println("captchaImagePath : " + captchaImagePath);
-        BackgroundGenerator backgroundGenerator = new XXFileReadRandomBackgroundGenerator(IMAGE_WIDTH, IMAGE_HEIGHT, captchaImagePath);
+        BackgroundGenerator backgroundGenerator = new ClassPathResourceBackgroundGenerator(IMAGE_WIDTH, IMAGE_HEIGHT, captchaImagePath);
 
         TextPaster textPaster = new DecoratedRandomTextPaster(MIN_WORD_LENGTH, MAX_WORD_LENGTH, new RandomListColorGenerator(COLORS), new TextDecorator[] {});
 

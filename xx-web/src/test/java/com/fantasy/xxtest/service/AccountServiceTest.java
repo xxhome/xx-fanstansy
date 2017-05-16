@@ -1,5 +1,6 @@
 package com.fantasy.xxtest.service;
 
+import com.fantasy.xxbase.exception.EntityNoExistNameException;
 import com.fantasy.xxbase.method.Operator;
 import com.fantasy.xxbase.method.QueryParam;
 import com.fantasy.xxblog.entity.AccountEntity;
@@ -48,7 +49,7 @@ public class AccountServiceTest extends SpringTest{
     }
 
     @Test
-    public void persist(){
+    public void persist() throws EntityNoExistNameException {
         AccountEntity accountEntity = new AccountEntity();
         accountEntity.setName("cook");
         accountEntity.setEmail("cook@gmail.com");

@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="false" scan="true" scanPeriod="1 seconds">
+
+<!--当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。-->
+<!--设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。-->
+<!--当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。-->
+<configuration debug="false" scan="true" scanPeriod="5 seconds">
 
     <contextName>XX-FANTASY</contextName>
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                OS-FANTASY %d{yyyy/MM/dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+                XX-FANTASY %d{yyyy/MM/dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
             </Pattern>
         </layout>
     </appender>
 
-    <logger name="org.springframework" level="info" additivity="false">
-        <appender-ref ref="STDOUT"/>
+    <logger name="ch.qos.logback" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
     </logger>
 
-    <logger name="xxtest" level="debug" additivity="false">
-        <appender-ref ref="STDOUT"/>
+    <logger name="org.springframework.jdbc" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
     </logger>
 
-    <logger name="com.fantasy.xxbase" level="debug" additivity="false">
-        <appender-ref ref="STDOUT"/>
+    <logger name="org.springframework" level="WARN" additivity="false">
+        <appender-ref ref="console"/>
     </logger>
 
-    <logger name="com.fantasy.xxutil" level="debug" additivity="false">
-        <appender-ref ref="STDOUT"/>
+    <logger name="com.fantasy.xxbase" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
     </logger>
 
-    <logger name="com.fantasy.xxblog" level="debug" additivity="false">
-        <appender-ref ref="STDOUT"/>
+    <logger name="com.fantasy.xxutil" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+    <logger name="com.fantasy.xxblog" level="DEBUG" additivity="false">
+        <appender-ref ref="console"/>
     </logger>
 
     <!-- hibernate SQL and parameters-->
@@ -36,7 +44,7 @@
     <!--<logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="DEBUG"/>-->
     <logger name="org.hibernate.SQL" level="DEBUG"/>
 
-    <root level="error">
-        <appender-ref ref="STDOUT"/>
+    <root level="ERROR">
+        <appender-ref ref="console"/>
     </root>
 </configuration>

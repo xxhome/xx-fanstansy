@@ -1,10 +1,5 @@
 package com.fantasy.xxbase.captcha;
 
-//
-// Source code recreated from a .class file by IntelliJ IDEA
-// (powered by Fernflower decompiler)
-//
-
 
 import com.octo.captcha.component.image.backgroundgenerator.FileReaderRandomBackgroundGenerator;
 import org.springframework.core.io.ClassPathResource;
@@ -12,9 +7,9 @@ import org.springframework.core.io.ClassPathResource;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class XXFileReadRandomBackgroundGenerator extends FileReaderRandomBackgroundGenerator {
+public class ClassPathResourceBackgroundGenerator extends FileReaderRandomBackgroundGenerator {
 
-    public XXFileReadRandomBackgroundGenerator(Integer width, Integer height, String rootPath) {
+    public ClassPathResourceBackgroundGenerator(Integer width, Integer height, String rootPath) {
         super(width, height, rootPath);
     }
 

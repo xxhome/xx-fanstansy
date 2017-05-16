@@ -1,7 +1,6 @@
 package com.fantasy.xxtest.util;
 
 import com.fantasy.xxtest.base.BaseTest;
-import com.fantasy.xxtest.service.StaticSingleton;
 import com.fantasy.xxutil.util.XXClassUtils;
 import com.fantasy.xxblog.entity.AccountEntity;
 import org.springframework.util.CollectionUtils;

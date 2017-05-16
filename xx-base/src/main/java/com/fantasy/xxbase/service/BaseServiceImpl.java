@@ -1,6 +1,7 @@
 package com.fantasy.xxbase.service;
 
 import com.fantasy.xxbase.entity.XXBaseEntity;
+import com.fantasy.xxbase.exception.CommonRuntimeException;
 import com.fantasy.xxbase.method.Page;
 import com.fantasy.xxbase.method.Pageable;
 import com.fantasy.xxbase.dao.BaseDao;
