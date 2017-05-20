@@ -1,14 +1,17 @@
 package com.fantasy.xxutil.util;
 
+import com.alibaba.druid.sql.visitor.functions.Char;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 /**
  * @author li.fang
@@ -38,6 +41,79 @@ public final class XXClassUtils {
     }
 
 
+    public static <T extends Serializable> Object filterFieldToNULL(final T obj,final String...property) throws IOException, ClassNotFoundException {
+        Object cloneObj = deepClone(obj);
+
+        List<Field> objFields = getClassDeclaredFields(cloneObj.getClass());
+        List<String> fields = Arrays.asList(property);
+
+        for(Field field : objFields){
+            try {
+
+                Object subObj = PropertyUtils.getProperty(cloneObj, field.getName());
+
+                if(subObj == null) continue;
+
+                if(isBasicDataTypes(subObj)){
+                    //基本数据类型
+                    if(fields.contains(field.getName())) {
+
+                        BeanUtils.setProperty(cloneObj, field.getName(), null);
+
+                    }
+                }else if(isCollectionDataTypes(subObj)){
+                    //集合类型
+
+                }else{
+                    //
+                }
+
+            } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                logger.error(e.getMessage());
+            }
+        }
+
+        return cloneObj;
+    }
+
+    public static <T> Class getCollectionGenericType(Collection<T> collection){
+
+        return null;
+    }
+
+    public static boolean isCollectionDataTypes(Object obj){
+        if(obj == null) throw new NullPointerException();
+
+        if(obj.getClass().isArray()) return true;
+
+        if(obj instanceof Collection) return true;
+
+        return false;
+    }
+
+    /**
+     * 判断对象是否为基本数据类型
+     * @param obj 判断对象
+     * @return true 基本数据类型， false 非基本数据类型
+     */
+    public static boolean isBasicDataTypes(Object obj){
+
+        if(obj == null) throw new NullPointerException();
+
+        if(obj instanceof String) return true;
+
+        if(obj instanceof Date) return true;
+
+        if(obj instanceof Number) return true;
+
+        if(obj instanceof Char) return true;
+
+        if(obj instanceof Boolean) return true;
+
+        return false;
+    }
+
+
     /**
      * 深度克隆对象，该对象必须实现Serializable接口
      *
@@ -64,9 +140,7 @@ public final class XXClassUtils {
             ois = new ObjectInputStream(bis);
 
             cloneObj = (T) ois.readObject();
-        } catch (IOException e) {
-            throw e;
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw e;
         } finally {
             try {
@@ -90,7 +164,7 @@ public final class XXClassUtils {
      * @throws IOException            IO异常
      * @throws ClassNotFoundException 对象类未找到
      */
-    public static <T extends Serializable> Collection<T> deepClone(Collection<T> collection) throws IOException, ClassNotFoundException {
+    public static <T extends Serializable> Collection<T> deepCloneCollection(Collection<T> collection) throws IOException, ClassNotFoundException {
         Collection<T> cloneCollection = null;
 
         ByteArrayOutputStream bot = null;

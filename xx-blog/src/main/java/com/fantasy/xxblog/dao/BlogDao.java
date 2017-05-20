@@ -6,5 +6,5 @@ import com.fantasy.xxblog.entity.BlogEntity;
 /**
  * Created by admin on 17/02/17.
  */
-public interface BlogDao extends BaseDao<BlogEntity, Long> {
+public interface BlogDao extends BaseDao<BlogEntity, String> {
 }

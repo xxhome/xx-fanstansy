@@ -23,4 +23,12 @@ public class XXSimpleEntity extends XXBaseEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "XXSimpleEntity{" +
+                "id='" + super.getId() + '\'' +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

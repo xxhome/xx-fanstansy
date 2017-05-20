@@ -6,6 +6,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+
 /**
  * @author li.fang
  * @sine 17/02/28
@@ -41,7 +43,7 @@ public class BaseTest {
     }
 
     @Test
-    public void test() {
+    public void test() throws IOException, ClassNotFoundException {
         logger.debug(SpringTest.class.getName());
     }
 

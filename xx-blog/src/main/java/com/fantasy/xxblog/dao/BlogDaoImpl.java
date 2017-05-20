@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by admin on 17/02/17.
  */
 @Repository
-public class BlogDaoImpl extends BaseDaoImpl<BlogEntity, Long> implements BlogDao{
+public class BlogDaoImpl extends BaseDaoImpl<BlogEntity, String> implements BlogDao{
 
 
 }

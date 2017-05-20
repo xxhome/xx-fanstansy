@@ -29,7 +29,7 @@ import java.util.*;
  * @author li.fang
  * @since 2017/02/17
  */
-public abstract class BaseDaoImpl<T extends XXBaseEntity, ID extends Long> implements BaseDao<T, ID> {
+public abstract class BaseDaoImpl<T extends XXBaseEntity, ID extends String> implements BaseDao<T, ID> {
 
     private Logger logger = LoggerFactory.getLogger(BaseDaoImpl.class);
 

@@ -16,10 +16,8 @@ public class BlogServiceTest extends SpringTest {
 
     @Test
     public void testFind(){
-
         blogService.findAll();
         blogService.findAll();
-
     }
 
 }

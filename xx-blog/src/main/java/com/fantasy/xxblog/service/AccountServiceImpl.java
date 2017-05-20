@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
  * Created by admin on 17/02/17.
  */
 @Service
-public class AccountServiceImpl extends BaseServiceImpl<AccountEntity, Long> implements AccountService {
+public class AccountServiceImpl extends BaseServiceImpl<AccountEntity, String> implements AccountService {
 
 
     @Autowired
-    public void setBaseDao(BaseDao<AccountEntity, Long> baseDao) {
+    public void setBaseDao(BaseDao<AccountEntity, String> baseDao) {
         super.setBaseDao(baseDao);
     }
 

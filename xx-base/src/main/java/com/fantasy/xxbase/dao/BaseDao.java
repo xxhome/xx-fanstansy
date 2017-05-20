@@ -16,7 +16,7 @@ import java.util.List;
  * </pre>
  * Created by lifang on 2015/1/21.
  */
-public interface BaseDao<T extends XXBaseEntity, ID extends Long> {
+public interface BaseDao<T extends XXBaseEntity, ID extends String> {
 
     Page<T> find(List<QueryParam> queryParams);
     Page<T> find(List<QueryParam> queryParams, Pageable pageable);

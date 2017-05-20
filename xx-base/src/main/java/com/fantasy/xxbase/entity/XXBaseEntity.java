@@ -29,7 +29,7 @@ public class XXBaseEntity implements Serializable {
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.INCREMENT_PARAM, value = "50"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.OPT_PARAM, value = "pooled-lo")
     })
-    private Long id;
+    private String id;
 
     /**
      * 创建时间，不更新
@@ -45,11 +45,16 @@ public class XXBaseEntity implements Serializable {
     @Column(updatable = false, nullable = false)
     private Date modifyTime;
 
-    public Long getId() {
+    public XXBaseEntity() {
+        createdTime = new Date();
+        modifyTime = new Date();
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

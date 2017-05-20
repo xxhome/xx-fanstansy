@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by admin on 17/02/17.
  */
 @Repository
-public class AccountDaoImpl extends BaseDaoImpl<AccountEntity, Long> implements AccountDao{
+public class AccountDaoImpl extends BaseDaoImpl<AccountEntity, String> implements AccountDao{
 
 
 }
