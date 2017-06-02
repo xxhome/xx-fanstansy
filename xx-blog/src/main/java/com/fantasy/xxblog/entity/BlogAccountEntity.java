@@ -10,8 +10,8 @@ import javax.persistence.Table;
  * @since 2017/02/18
  */
 @Entity
-@Table(name = "t_account")
-public class AccountEntity extends XXAccountEntity {
+@Table(name = "t_blog_account")
+public class BlogAccountEntity extends XXAccountEntity {
 
 
 }

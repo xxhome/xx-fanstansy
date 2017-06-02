@@ -1,5 +1,7 @@
 package com.fantasy.xxbase.entity;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.Column;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;

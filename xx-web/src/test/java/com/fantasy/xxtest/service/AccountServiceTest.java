@@ -3,7 +3,7 @@ package com.fantasy.xxtest.service;
 import com.fantasy.xxbase.exception.EntityNoExistNameException;
 import com.fantasy.xxbase.method.Operator;
 import com.fantasy.xxbase.method.QueryParam;
-import com.fantasy.xxblog.entity.AccountEntity;
+import com.fantasy.xxblog.entity.BlogAccountEntity;
 import com.fantasy.xxblog.service.AccountService;
 import com.fantasy.xxtest.base.SpringTest;
 import com.fantasy.xxutil.util.XXCipherUtils;
@@ -50,10 +50,10 @@ public class AccountServiceTest extends SpringTest{
 
     @Test
     public void persist() throws EntityNoExistNameException {
-        AccountEntity accountEntity = new AccountEntity();
-        accountEntity.setName("cook");
-        accountEntity.setEmail("cook@gmail.com");
-        accountEntity.setPassword(XXCipherUtils.getDesEncryptText("111111"));
-        accountService.persist(accountEntity);
+        BlogAccountEntity blogAccountEntity = new BlogAccountEntity();
+        blogAccountEntity.setName("cook");
+        blogAccountEntity.setEmail("cook@gmail.com");
+        blogAccountEntity.setPassword(XXCipherUtils.getDesEncryptText("111111"));
+        accountService.persist(blogAccountEntity);
     }
 }

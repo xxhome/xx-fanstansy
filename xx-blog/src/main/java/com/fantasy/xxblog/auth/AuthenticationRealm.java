@@ -1,8 +1,8 @@
 package com.fantasy.xxblog.auth;
 
+import com.fantasy.xxblog.entity.BlogAccountEntity;
 import com.fantasy.xxutil.util.XXCipherUtils;
 import com.fantasy.xxbase.vo.SimpleDataVO;
-import com.fantasy.xxblog.entity.AccountEntity;
 import com.fantasy.xxblog.service.AccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
@@ -43,7 +43,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthenticationInfo = new SimpleAuthorizationInfo();
 //        SimpleDataVO principal = (SimpleDataVO) principals.getPrimaryPrincipal();
 
-//        AccountEntity accountEntity = accountService.findById(Long.valueOf(principal.getId()));
+//        BlogAccountEntity accountEntity = accountService.findById(Long.valueOf(principal.getId()));
 //        simpleAuthenticationInfo.setRoles(adminEntity.getStrRoles());
 //        simpleAuthenticationInfo.setStringPermissions(adminEntity.getStrPermission());
 
@@ -74,38 +74,38 @@ public class AuthenticationRealm extends AuthorizingRealm {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(String.valueOf(password))) {
             throw new UnknownAccountException();
         }
-        AccountEntity accountEntity = accountService.findOneByName(username);
-        if (accountEntity != null) {
-            if (accountEntity.isLocked()) {
+        BlogAccountEntity blogAccountEntity = accountService.findOneByName(username);
+        if (blogAccountEntity != null) {
+            if (blogAccountEntity.isLocked()) {
 //                Date nowDate = new Date();
-//                if (nowDate.getTime() - accountEntity.().getTime() > getMillisecond()) {
-//                    accountEntity.setLocked(false);
+//                if (nowDate.getTime() - blogAccountEntity.().getTime() > getMillisecond()) {
+//                    blogAccountEntity.setLocked(false);
 //                } else {
                     throw new LockedAccountException();
 //                }
             }
-            if (XXCipherUtils.isMD5Equal(new String(accountEntity.getPassword()), password)) {
+            if (XXCipherUtils.isMD5Equal(new String(blogAccountEntity.getPassword()), password)) {
                 //登录成功,登录次数加1,失败次数归零,并记录登录日志
-                Long loginCount = accountEntity.getLoginSucceedCount() + 1L;
-                accountEntity.setLoginSucceedCount(loginCount);
-                accountEntity.setLoginFailedCount(0);
-                accountService.merge(accountEntity);
+                Long loginCount = blogAccountEntity.getLoginSucceedCount() + 1L;
+                blogAccountEntity.setLoginSucceedCount(loginCount);
+                blogAccountEntity.setLoginFailedCount(0);
+                accountService.merge(blogAccountEntity);
                 logger.info("登录成功");
 
                 return new SimpleAuthenticationInfo(
-                        new SimpleDataVO(accountEntity.getId(), accountEntity.getName()),
+                        new SimpleDataVO(blogAccountEntity.getId(), blogAccountEntity.getName()),
                         password,
                         getName());
 
             } else {
                 //登录失败,登录失败次数加1
                 logger.info("登录失败");
-                long failedCount = accountEntity.getLoginFailedCount() + 1;
+                long failedCount = blogAccountEntity.getLoginFailedCount() + 1;
                 if (failedCount >= getLockCount()) {
-                    accountEntity.setLocked(true);
+                    blogAccountEntity.setLocked(true);
                 }
-                accountEntity.setLoginFailedCount(failedCount);
-                accountService.merge(accountEntity);
+                blogAccountEntity.setLoginFailedCount(failedCount);
+                accountService.merge(blogAccountEntity);
                 throw new IncorrectCredentialsException();
             }
         }

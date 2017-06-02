@@ -1,9 +1,6 @@
 package com.fantasy.xxbase.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 /**
  * @author li.fang
@@ -16,12 +13,23 @@ public class XXSimpleEntity extends XXBaseEntity {
     @Column(length = 64, nullable = false)
     private String name;
 
+    @Lob
+    private String description;
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override

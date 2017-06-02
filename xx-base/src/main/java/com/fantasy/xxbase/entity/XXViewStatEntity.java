@@ -9,8 +9,8 @@ import javax.persistence.Table;
  * @sine 17/02/20
  */
 @Entity
-@Table(name = "t_page_views_stat")
-public class PageViewsStatEntity extends XXBaseEntity {
+@Table(name = "t_xx_view_stat")
+public class XXViewStatEntity extends XXBaseEntity {
 
     @Column(length = 64)
     private String ip;

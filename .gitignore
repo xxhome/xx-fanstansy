@@ -11,3 +11,4 @@ META-INF/
 rebel.xml
 rebel-remote.xml
 Thumbs.db
+.gradle

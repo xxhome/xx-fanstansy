@@ -484,9 +484,7 @@
                         </systemProperty>
                     </systemProperties>
                     <useTestClasspath>true</useTestClasspath>
-                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/,
-                        xx-blog/target/classes/
-                    </classesDirectory>
+                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/, xx-blog/target/classes/</classesDirectory>
                     <webAppSourceDirectory>${project.basedir}/xx-web/src/main/webapp</webAppSourceDirectory>
                     <testClassesDirectory>${project.basedir}xx-web/src/test/resources</testClassesDirectory>
                     <webAppConfig>

@@ -22,13 +22,14 @@ public class XXBaseEntity implements Serializable {
             parameters = {
                 @org.hibernate.annotations.Parameter(name = "format", value = "%1$d"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
-                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.TABLE_PARAM, value = "t_generator"),
+                @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.TABLE_PARAM, value = "t_xx_generator"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.SEGMENT_COLUMN_PARAM, value = "gen_name"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.VALUE_COLUMN_PARAM, value = "gen_value"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.INITIAL_PARAM, value = "500000"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.INCREMENT_PARAM, value = "50"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.OPT_PARAM, value = "pooled-lo")
     })
+    @Column(length = 64)
     private String id;
 
     /**
