@@ -1,9 +1,9 @@
 package com.fantasy.xxblog.auth;
 
 import com.fantasy.xxblog.entity.BlogAccountEntity;
+import com.fantasy.xxblog.service.BlogAccountService;
 import com.fantasy.xxutil.util.XXCipherUtils;
 import com.fantasy.xxbase.vo.SimpleDataVO;
-import com.fantasy.xxblog.service.AccountService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -23,7 +23,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
     private Logger logger = LoggerFactory.getLogger(AuthenticationRealm.class);
 
     @Autowired
-    private AccountService accountService;
+    private BlogAccountService blogAccountService;
 
     @Value("${system.login.locked.count}")
     private String lockedCount;
@@ -43,7 +43,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthenticationInfo = new SimpleAuthorizationInfo();
 //        SimpleDataVO principal = (SimpleDataVO) principals.getPrimaryPrincipal();
 
-//        BlogAccountEntity accountEntity = accountService.findById(Long.valueOf(principal.getId()));
+//        BlogAccountEntity accountEntity = blogAccountService.findById(Long.valueOf(principal.getId()));
 //        simpleAuthenticationInfo.setRoles(adminEntity.getStrRoles());
 //        simpleAuthenticationInfo.setStringPermissions(adminEntity.getStrPermission());
 
@@ -74,7 +74,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(String.valueOf(password))) {
             throw new UnknownAccountException();
         }
-        BlogAccountEntity blogAccountEntity = accountService.findOneByName(username);
+        BlogAccountEntity blogAccountEntity = blogAccountService.findOneByName(username);
         if (blogAccountEntity != null) {
             if (blogAccountEntity.isLocked()) {
 //                Date nowDate = new Date();
@@ -89,7 +89,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
                 Long loginCount = blogAccountEntity.getLoginSucceedCount() + 1L;
                 blogAccountEntity.setLoginSucceedCount(loginCount);
                 blogAccountEntity.setLoginFailedCount(0);
-                accountService.merge(blogAccountEntity);
+                blogAccountService.merge(blogAccountEntity);
                 logger.info("登录成功");
 
                 return new SimpleAuthenticationInfo(
@@ -105,7 +105,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
                     blogAccountEntity.setLocked(true);
                 }
                 blogAccountEntity.setLoginFailedCount(failedCount);
-                accountService.merge(blogAccountEntity);
+                blogAccountService.merge(blogAccountEntity);
                 throw new IncorrectCredentialsException();
             }
         }

@@ -2,19 +2,20 @@ package com.fantasy.xxblog.service;
 
 import com.fantasy.xxbase.dao.BaseDao;
 import com.fantasy.xxbase.service.BaseServiceImpl;
-import com.fantasy.xxblog.entity.BlogTagEntity;
+import com.fantasy.xxblog.entity.BlogAccountEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @author li.fang
- * @sine 17/03/13
+ * Created by admin on 17/02/17.
  */
 @Service
-public class TagServiceImpl extends BaseServiceImpl<BlogTagEntity, String> implements TagService {
+public class BlogAccountServiceImpl extends BaseServiceImpl<BlogAccountEntity> implements BlogAccountService {
+
 
     @Autowired
-    public void setBaseDao(BaseDao<BlogTagEntity, String> baseDao) {
+    public void setBaseDao(BaseDao<BlogAccountEntity> baseDao) {
         super.setBaseDao(baseDao);
     }
+
 }

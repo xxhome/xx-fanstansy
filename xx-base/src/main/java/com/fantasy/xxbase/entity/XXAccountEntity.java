@@ -36,24 +36,28 @@ public class XXAccountEntity extends XXSimpleEntity {
      * 帐号是否锁定
      * 锁定状态不允许登录
      */
-    @Column(name = "is_locked", nullable = false, columnDefinition = "boolean default false")
+    @ColumnDefault(value = "false")
+    @Column(name = "is_locked", nullable = false)
     private boolean locked = false;
 
     /**
      * 账户是否可用
      * 不可用状态不允许登录
      */
-    @Column(name = "is_enable", nullable = true, columnDefinition = "boolean default false")
+    @Column(name = "is_enable")
+    @ColumnDefault(value = "true")
     private boolean enable = true;
 
     /**
      * 登录成功次数
      */
+    @ColumnDefault(value = "0")
     private long loginSucceedCount = 0L;
 
     /**
      * 登录失败次数
      */
+    @ColumnDefault(value = "0")
     private long loginFailedCount = 0L;
 
     public String getEmail() {

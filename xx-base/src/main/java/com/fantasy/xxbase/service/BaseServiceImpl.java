@@ -19,13 +19,13 @@ import java.util.List;
  * @author li.fang
  * @since 2017/02/18
  */
-public class BaseServiceImpl<T extends XXBaseEntity, ID extends String> implements BaseService<T, ID> {
+public class BaseServiceImpl<T extends XXBaseEntity> implements BaseService<T> {
 
     public Logger logger = LoggerFactory.getLogger(BaseServiceImpl.class);
 
-    private BaseDao<T, ID> baseDao;
+    private BaseDao<T> baseDao;
 
-    public void setBaseDao(BaseDao<T, ID> baseDao) {
+    public void setBaseDao(BaseDao<T> baseDao) {
         this.baseDao = baseDao;
     }
 
@@ -41,7 +41,7 @@ public class BaseServiceImpl<T extends XXBaseEntity, ID extends String> implemen
     }
 
     @Override
-    public T findById(@NotNull ID id) {
+    public T findById(@NotNull String id) {
         if (id != null) {
             return baseDao.findById(id);
         }
@@ -99,7 +99,7 @@ public class BaseServiceImpl<T extends XXBaseEntity, ID extends String> implemen
     }
 
     @Override
-    public void remove(@NotNull ID id) {
+    public void remove(@NotNull String id) {
         if (id != null) {
             T t = findById(id);
             if (t != null) {

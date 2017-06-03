@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
  * @sine 17/03/13
  */
 @Service
-public class BlogServiceImpl extends BaseServiceImpl<BlogEntity, String> implements BlogService {
+public class BlogServiceImpl extends BaseServiceImpl<BlogEntity> implements BlogService {
 
     @Autowired
-    public void setBaseDao(BaseDao<BlogEntity, String> baseDao) {
+    public void setBaseDao(BaseDao<BlogEntity> baseDao) {
         super.setBaseDao(baseDao);
     }
 }

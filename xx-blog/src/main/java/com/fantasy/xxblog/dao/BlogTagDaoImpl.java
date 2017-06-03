@@ -5,10 +5,11 @@ import com.fantasy.xxblog.entity.BlogTagEntity;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by admin on 17/02/17.
+ * @author li.fang
+ * @sine 17/03/13
  */
 @Repository
-public class TagDaoImpl extends BaseDaoImpl<BlogTagEntity, String> implements TagDao{
+public class BlogTagDaoImpl extends BaseDaoImpl<BlogTagEntity> implements BlogTagDao {
 
 
 }

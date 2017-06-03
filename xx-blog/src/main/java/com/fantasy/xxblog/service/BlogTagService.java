@@ -7,5 +7,5 @@ import com.fantasy.xxblog.entity.BlogTagEntity;
  * @author li.fang
  * @sine 17/03/13
  */
-public interface TagService extends BaseService<BlogTagEntity, String> {
+public interface BlogTagService extends BaseService<BlogTagEntity> {
 }

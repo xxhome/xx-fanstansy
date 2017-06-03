@@ -6,6 +6,6 @@ import com.fantasy.xxblog.entity.BlogAccountEntity;
 /**
  * Created by admin on 17/02/17.
  */
-public interface AccountService extends BaseService<BlogAccountEntity, String>{
+public interface BlogAccountService extends BaseService<BlogAccountEntity>{
 
 }

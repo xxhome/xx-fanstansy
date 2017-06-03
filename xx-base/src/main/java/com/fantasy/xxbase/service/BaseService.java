@@ -13,13 +13,13 @@ import java.util.List;
 /**
  * Created by lifang on 2015/1/22.
  */
-public interface BaseService<T extends XXBaseEntity, ID extends Serializable> {
+public interface BaseService<T extends XXBaseEntity> {
 
     Page<T> find(List<QueryParam> queryParams);
 
     Page<T> find(List<QueryParam> queryParams, Pageable pageable);
 
-    T findById(@NotNull ID id);
+    T findById(@NotNull String id);
 
     T findOneByName(String name);
 
@@ -35,7 +35,7 @@ public interface BaseService<T extends XXBaseEntity, ID extends Serializable> {
 
     void remove(@NotNull T t);
 
-    void remove(@NotNull ID id);
+    void remove(@NotNull String id);
 
     Page<T> findByName(String name);
 

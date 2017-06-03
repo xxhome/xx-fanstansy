@@ -4,7 +4,7 @@ import com.fantasy.xxbase.exception.EntityNoExistNameException;
 import com.fantasy.xxbase.method.Operator;
 import com.fantasy.xxbase.method.QueryParam;
 import com.fantasy.xxblog.entity.BlogAccountEntity;
-import com.fantasy.xxblog.service.AccountService;
+import com.fantasy.xxblog.service.BlogAccountService;
 import com.fantasy.xxtest.base.SpringTest;
 import com.fantasy.xxutil.util.XXCipherUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,24 +17,24 @@ import java.util.List;
  * @author li.fang
  * @sine 17/02/19
  */
-public class AccountServiceTest extends SpringTest{
+public class BlogAccountServiceTest extends SpringTest{
 
     @Autowired
-    private AccountService accountService;
+    private BlogAccountService blogAccountService;
 
     @Test
     public void testFindAll(){
-        accountService.findAll();
+        blogAccountService.findAll();
     }
 
     @Test
     public void testFindPages(){
-        accountService.findPages(2, 10);
+        blogAccountService.findPages(2, 10);
     }
 
     @Test
     public void testFindOneByName(){
-        accountService.findOneByName("lisi");
+        blogAccountService.findOneByName("lisi");
     }
 
     @Test
@@ -44,8 +44,8 @@ public class AccountServiceTest extends SpringTest{
         queryParamList.add(new QueryParam("id", "1000", Operator.EQ));
         queryParamList.add(new QueryParam("name", "lisi", Operator.LIKE));
 
-        accountService.find(queryParamList);
-        accountService.find(queryParamList);
+        blogAccountService.find(queryParamList);
+        blogAccountService.find(queryParamList);
     }
 
     @Test
@@ -54,6 +54,6 @@ public class AccountServiceTest extends SpringTest{
         blogAccountEntity.setName("cook");
         blogAccountEntity.setEmail("cook@gmail.com");
         blogAccountEntity.setPassword(XXCipherUtils.getDesEncryptText("111111"));
-        accountService.persist(blogAccountEntity);
+        blogAccountService.persist(blogAccountEntity);
     }
 }

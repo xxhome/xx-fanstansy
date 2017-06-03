@@ -22,14 +22,14 @@ public class XXRoleEntity extends XXSimpleEntity {
 
     @Lob
     @Type(type = "StrList")
-    @Column(name = "role_ids")
-    private List<String> roleIds = new ArrayList<>();
+    @Column(name = "account_ids")
+    private List<String> accountIds = new ArrayList<>();
 
-    public List<String> getRoleIds() {
-        return roleIds;
+    public List<String> getAccountIds() {
+        return accountIds;
     }
 
-    public void setRoleIds(List<String> roleIds) {
-        this.roleIds = roleIds;
+    public void setAccountIds(List<String> accountIds) {
+        this.accountIds = accountIds;
     }
 }

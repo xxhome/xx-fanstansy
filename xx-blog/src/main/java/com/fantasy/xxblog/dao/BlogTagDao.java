@@ -4,7 +4,8 @@ import com.fantasy.xxbase.dao.BaseDao;
 import com.fantasy.xxblog.entity.BlogTagEntity;
 
 /**
- * Created by admin on 17/02/17.
+ * @author li.fang
+ * @sine 17/03/13
  */
-public interface TagDao extends BaseDao<BlogTagEntity, String> {
+public interface BlogTagDao extends BaseDao<BlogTagEntity> {
 }

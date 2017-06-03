@@ -7,6 +7,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.dialect.Dialect;
 import org.hibernate.dialect.MySQL5Dialect;
+import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 import org.hibernate.tool.schema.Action;
 import org.springframework.beans.factory.annotation.Value;
@@ -62,10 +63,11 @@ public class XXHibernateGenerateDDLUtilsTest extends SpringTest {
 
         Metadata metadata = metadataSources.buildMetadata();
 
-        SchemaUpdate schemaExport = new SchemaUpdate();
-        schemaExport.setDelimiter(";");
-        schemaExport.setFormat(false);
-        schemaExport.execute(EnumSet.of(STDOUT), metadata);
+//        SchemaUpdate executor = new SchemaUpdate();
+        SchemaExport executor = new SchemaExport();
+        executor.setDelimiter(";");
+        executor.setFormat(false);
+        executor.execute(EnumSet.of(STDOUT), SchemaExport.Action.BOTH, metadata);
         metadata.buildSessionFactory().close();
     }
 }

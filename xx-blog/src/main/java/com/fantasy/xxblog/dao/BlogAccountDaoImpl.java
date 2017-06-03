@@ -5,10 +5,11 @@ import com.fantasy.xxblog.entity.BlogAccountEntity;
 import org.springframework.stereotype.Repository;
 
 /**
- * Created by admin on 17/02/17.
+ * @author li.fang
+ * @sine 17/03/13
  */
 @Repository
-public class AccountDaoImpl extends BaseDaoImpl<BlogAccountEntity, String> implements AccountDao{
+public class BlogAccountDaoImpl extends BaseDaoImpl<BlogAccountEntity> implements BlogAccountDao {
 
 
 }

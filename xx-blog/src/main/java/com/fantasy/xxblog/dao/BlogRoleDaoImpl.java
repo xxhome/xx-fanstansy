@@ -1,15 +1,13 @@
 package com.fantasy.xxblog.dao;
 
 import com.fantasy.xxbase.dao.BaseDaoImpl;
-import com.fantasy.xxblog.entity.BlogEntity;
+import com.fantasy.xxblog.entity.BlogRoleEntity;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author li.fang
- * @sine 17/03/13
+ * @since 2017/6/3
  */
 @Repository
-public class BlogDaoImpl extends BaseDaoImpl<BlogEntity> implements BlogDao{
-
-
+public class BlogRoleDaoImpl extends BaseDaoImpl<BlogRoleEntity> implements BlogRoleDao {
 }

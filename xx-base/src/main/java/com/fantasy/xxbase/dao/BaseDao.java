@@ -16,12 +16,12 @@ import java.util.List;
  * </pre>
  * Created by lifang on 2015/1/21.
  */
-public interface BaseDao<T extends XXBaseEntity, ID extends String> {
+public interface BaseDao<T extends XXBaseEntity> {
 
     Page<T> find(List<QueryParam> queryParams);
     Page<T> find(List<QueryParam> queryParams, Pageable pageable);
 
-    T findById(@NotNull ID id);
+    T findById(@NotNull String id);
 
     Page<T> findByName(String name) throws EntityNoExistNameException;
 

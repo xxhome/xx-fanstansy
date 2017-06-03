@@ -29,7 +29,7 @@ import java.util.*;
  * @author li.fang
  * @since 2017/02/17
  */
-public abstract class BaseDaoImpl<T extends XXBaseEntity, ID extends String> implements BaseDao<T, ID> {
+public abstract class BaseDaoImpl<T extends XXBaseEntity> implements BaseDao<T> {
 
     private Logger logger = LoggerFactory.getLogger(BaseDaoImpl.class);
 
@@ -58,7 +58,7 @@ public abstract class BaseDaoImpl<T extends XXBaseEntity, ID extends String> imp
     }
 
     @Override
-    public T findById(@NotNull ID id) {
+    public T findById(@NotNull String id) {
         return entityManager.find(clazz, id);
     }
 
