@@ -7,9 +7,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Great Taste Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
 
-    <@resource path="${src}/xx-base/bootstrap/css/bootstrap.css, ${src}/xx-blog/css/style.css"/>
+    <@resource base="${src}/xx-base" path="/bootstrap/css/bootstrap.css, /font-awesome/css/font-awesome.min.css"/>
+    <@resource base="${src}/xx-blog" path="/css/style.css"/>
+    <@resource base="${src}/xx-base" path="/js/jquery-1.11.1.min.js"/>
 
-    <@resource path="${src}/xx-base/js/jquery-1.11.1.min.js"/>
 </head>
 
 <body>
@@ -26,7 +27,7 @@
 
                     <#list [1,2,3,4,5,6,7,9] as e>
                         <a href="${path}/xxblog/view/context.xhtml">
-                            <div class="col-md-6 banner-left banner-margin">
+                            <div class="col-md-6 banner-left banner-top banner-height">
                                 <div class="col-xs-1 banner-left1">
                                     <div class="banner-left11">
                                         <span>  </span>

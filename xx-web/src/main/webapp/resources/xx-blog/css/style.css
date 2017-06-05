@@ -138,7 +138,9 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	width: 90%;
 }
 .navbar-nav > li > a i {
-    padding-left: 2em;
+    /*padding-left: 2em;*/
+	margin-right: 10px;
+	font-size:16px;
 }
 .navbar-nav {
     float: none;
@@ -324,10 +326,14 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
     -o-transition: .5s ease-in;
     -ms-transition: .5s ease-in;
 }
-.banner-margin{
+.banner-top{
 	margin-top: 10px;
+}
+
+.banner-height{
 	height: 260px;
 }
+
 .banner-left22 span{
 	background:url(../images/img-sp.png) no-repeat -19px -61px;
 	display:block;
@@ -1909,4 +1915,12 @@ h2.typoh2{
 
 .banner-footer span{
 	margin-right: 8px;
+}
+
+.tab-content .tab-pane{
+	border: 1px solid #ddd;
+	border-top: 0px;
+	padding: 12px;
+	margin-top: -17px;
+	min-height: 1050px;
 }

@@ -83,9 +83,7 @@
     <!-- 获取国际化资源 -->
     <bean id="messageMethod" class="com.fantasy.xxbase.tag.MessageTemplateTag"/>
     <!-- 获取script标签 -->
-    <bean id="resourceTemplateTag" class="com.fantasy.xxbase.tag.ResourceTemplateTag">
-        <property name="isDevModel" value="true"></property>
-    </bean>
+    <bean id="resourceTemplateTag" class="com.fantasy.xxbase.tag.ResourceTemplateTag"/>
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>

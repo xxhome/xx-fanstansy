@@ -22,22 +22,27 @@
                     <ul class="nav navbar-nav">
                         <li class="active">
                             <a href="${path}/xxblog/view/index.xhtml">
-                                <i class="home"></i>主页
+                                <i class="glyphicon glyphicon-home"></i>主页
+                            </a>
+                        </li>
+                        <li>
+                            <a href="${path}/xxblog/view/setting.xhtml" class="hvr-underline-from-left">
+                                <i class="glyphicon glyphicon-cog"></i>设置
                             </a>
                         </li>
                         <li>
                             <a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left">
-                                <i class="edit1"></i>博客
+                                <i class="glyphicon glyphicon-pencil"></i>博客
                             </a>
                         </li>
                         <li>
                             <a href="${path}/xxblog/view/photos.xhtml" class="hvr-underline-from-left">
-                                <i class="picture1"></i>照片
+                                <i class="glyphicon glyphicon-picture"></i>照片
                             </a>
                         </li>
                         <li>
                             <a href="${path}/xxblog/view/about.xhtml" class="hvr-underline-from-left">
-                                <i class="envelope1"></i>关于
+                                <i class="glyphicon glyphicon-envelope"></i>关于
                             </a>
                         </li>
                     </ul>
