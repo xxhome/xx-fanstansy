@@ -1,6 +1,6 @@
 package com.fantasy.xxblog.entity;
 
-import com.fantasy.xxbase.entity.XXPermissionEntity;
+import com.fantasy.xxbase.entity.XXAuthorityEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,6 +10,6 @@ import javax.persistence.Table;
  * @since 2017/6/2
  */
 @Entity
-@Table(name = "t_blog_permission")
-public class BlogPermissionEntity extends XXPermissionEntity{
+@Table(name = "t_blog_authority")
+public class BlogAuthorityEntity extends XXAuthorityEntity {
 }

@@ -1,10 +1,12 @@
 package com.fantasy.xxblog.controller.vo;
 
+import java.io.Serializable;
+
 /**
  * @author li.fang
  * @sine 17/02/28
  */
-public class LoginVO {
+public class LoginVO implements Serializable {
 
     private String password;
 
@@ -12,7 +14,7 @@ public class LoginVO {
 
     private String captcha;
 
-    private boolean isRememberMe = false;
+    private boolean rememberMe = false;
 
     public String getPassword() {
         return password;
@@ -39,10 +41,10 @@ public class LoginVO {
     }
 
     public boolean isRememberMe() {
-        return isRememberMe;
+        return rememberMe;
     }
 
     public void setRememberMe(boolean rememberMe) {
-        isRememberMe = rememberMe;
+        this.rememberMe = rememberMe;
     }
 }

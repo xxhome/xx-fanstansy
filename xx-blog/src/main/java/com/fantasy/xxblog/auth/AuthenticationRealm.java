@@ -1,9 +1,12 @@
 package com.fantasy.xxblog.auth;
 
+import com.fantasy.xxbase.entity.XXAuthorityEntity;
+import com.fantasy.xxbase.method.Principal;
 import com.fantasy.xxblog.entity.BlogAccountEntity;
+import com.fantasy.xxblog.entity.BlogAuthorityEntity;
 import com.fantasy.xxblog.service.BlogAccountService;
+import com.fantasy.xxblog.service.BlogAuthorityService;
 import com.fantasy.xxutil.util.XXCipherUtils;
-import com.fantasy.xxbase.vo.SimpleDataVO;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -15,6 +18,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 /**
  * Created by lifang on 2015/1/24.
  */
@@ -24,6 +32,8 @@ public class AuthenticationRealm extends AuthorizingRealm {
 
     @Autowired
     private BlogAccountService blogAccountService;
+    @Autowired
+    private BlogAuthorityService blogAuthorityService;
 
     @Value("${system.login.locked.count}")
     private String lockedCount;
@@ -33,7 +43,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
 
 
     /**
-     * 权限认证
+     * 权限认证, 在权限校验时执行
      *
      * @param principals
      * @return
@@ -41,15 +51,17 @@ public class AuthenticationRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         SimpleAuthorizationInfo simpleAuthenticationInfo = new SimpleAuthorizationInfo();
-//        SimpleDataVO principal = (SimpleDataVO) principals.getPrimaryPrincipal();
+        Principal principal = (Principal) principals.getPrimaryPrincipal();
 
-//        BlogAccountEntity accountEntity = blogAccountService.findById(Long.valueOf(principal.getId()));
-//        simpleAuthenticationInfo.setRoles(adminEntity.getStrRoles());
-//        simpleAuthenticationInfo.setStringPermissions(adminEntity.getStrPermission());
+        //设置用户的权限
+        BlogAccountEntity blogAccountEntity = blogAccountService.findById(principal.getId());
+        List<BlogAuthorityEntity> blogAuthorityEntityList = blogAuthorityService.findByAccountId(principal.getId());
+        Set<String> strPermissions = blogAuthorityEntityList.stream().map(XXAuthorityEntity::getAuthorities).collect(Collectors.toSet());
+        simpleAuthenticationInfo.setRoles(new HashSet<>(blogAccountEntity.getRoleIds()));
+        simpleAuthenticationInfo.setStringPermissions(strPermissions);
 
-        WildcardPermissionEx wildcardPermissionEx = new WildcardPermissionEx();
-
-        simpleAuthenticationInfo.addObjectPermission(wildcardPermissionEx);
+//        WildcardPermissionEx wildcardPermissionEx = new WildcardPermissionEx();
+//        simpleAuthenticationInfo.addObjectPermission(wildcardPermissionEx);
         return simpleAuthenticationInfo;
     }
 
@@ -77,14 +89,9 @@ public class AuthenticationRealm extends AuthorizingRealm {
         BlogAccountEntity blogAccountEntity = blogAccountService.findOneByName(username);
         if (blogAccountEntity != null) {
             if (blogAccountEntity.isLocked()) {
-//                Date nowDate = new Date();
-//                if (nowDate.getTime() - blogAccountEntity.().getTime() > getMillisecond()) {
-//                    blogAccountEntity.setLocked(false);
-//                } else {
-                    throw new LockedAccountException();
-//                }
+                throw new LockedAccountException();
             }
-            if (XXCipherUtils.isMD5Equal(new String(blogAccountEntity.getPassword()), password)) {
+            if (StringUtils.equals(blogAccountEntity.getPassword(), XXCipherUtils.getDesEncryptText(password))) {
                 //登录成功,登录次数加1,失败次数归零,并记录登录日志
                 Long loginCount = blogAccountEntity.getLoginSucceedCount() + 1L;
                 blogAccountEntity.setLoginSucceedCount(loginCount);
@@ -93,7 +100,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
                 logger.info("登录成功");
 
                 return new SimpleAuthenticationInfo(
-                        new SimpleDataVO(blogAccountEntity.getId(), blogAccountEntity.getName()),
+                        new Principal(blogAccountEntity.getId(), blogAccountEntity.getName()),
                         password,
                         getName());
 
@@ -125,27 +132,6 @@ public class AuthenticationRealm extends AuthorizingRealm {
     @Override
     public void clearCache(PrincipalCollection principals) {
         super.clearCache(principals);
-    }
-
-    public void clearAllCachedAuthorizationInfo() {
-        getAuthorizationCache().clear();
-    }
-
-    public void clearAllCachedAuthenticationInfo() {
-        getAuthenticationCache().clear();
-    }
-
-    public void clearAllCache() {
-        clearAllCachedAuthenticationInfo();
-        clearAllCachedAuthorizationInfo();
-    }
-
-    private long getMillisecond() {
-        if (StringUtils.isBlank(lockedSeconds)) {
-            return 30 * 1000 * 60;
-        }
-        Integer second = Integer.valueOf(lockedSeconds);
-        return second * 1000 * 60;
     }
 
     private int getLockCount() {

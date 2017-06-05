@@ -21,15 +21,17 @@
             <tx:method name="persist*" read-only="false" propagation="REQUIRED"></tx:method>
             <tx:method name="merge*" read-only="false" propagation="REQUIRED"></tx:method>
             <tx:method name="remove*" read-only="false" propagation="REQUIRED"></tx:method>
+            <tx:method name="clean*" read-only="false" propagation="REQUIRED"></tx:method>
 
             <tx:method name="get*" read-only="true" propagation="REQUIRED"></tx:method>
             <tx:method name="find*" read-only="true" propagation="REQUIRED"></tx:method>
+            <tx:method name="page*" read-only="true" propagation="REQUIRED"></tx:method>
             <tx:method name="query*" read-only="true" propagation="REQUIRED"></tx:method>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut id="allServiceMethod" expression="execution(* *..service*..*(..))" />
+        <aop:pointcut id="allServiceMethod" expression="execution(* *..service..*(..))" />
         <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice" />
     </aop:config>
 

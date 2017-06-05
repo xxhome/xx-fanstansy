@@ -9,11 +9,8 @@ import org.slf4j.LoggerFactory;
  */
 public class WildcardPermissionEx implements Permission {
 
-    private Logger logger = LoggerFactory.getLogger(WildcardPermissionEx.class);
-
     @Override
     public boolean implies(Permission permission) {
-        logger.info("shiro authentication");
         return true;
     }
 }

@@ -10,7 +10,7 @@
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                XX-FANTASY %d{yyyy/MM/dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+                XX-FANTASY %d{yyyy/MM/dd HH:mm:ss} [%thread] %-5level %logger{64} - %msg%n
             </Pattern>
         </layout>
     </appender>

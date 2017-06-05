@@ -1,17 +1,23 @@
 package com.fantasy.xxbase.entity;
 
+import com.fantasy.xxbase.usertype.JSONColumn;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
 
-import javax.persistence.Column;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by admin on 17/02/17.
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@TypeDefs(value = {
+        @TypeDef(name = "StringList", typeClass = JSONColumn.class, parameters = {@org.hibernate.annotations.Parameter(name = "StringList", value = "true")})
+})
 public class XXAccountEntity extends XXSimpleEntity {
 
     /**
@@ -59,6 +65,12 @@ public class XXAccountEntity extends XXSimpleEntity {
      */
     @ColumnDefault(value = "0")
     private long loginFailedCount = 0L;
+
+    @Lob
+    @Type(type = "StringList")
+    @Column(name = "role_ids")
+    private List<String> roleIds = new ArrayList<>();
+
 
     public String getEmail() {
         return email;
@@ -114,5 +126,13 @@ public class XXAccountEntity extends XXSimpleEntity {
 
     public void setLoginFailedCount(long loginFailedCount) {
         this.loginFailedCount = loginFailedCount;
+    }
+
+    public List<String> getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(List<String> roleIds) {
+        this.roleIds = roleIds;
     }
 }

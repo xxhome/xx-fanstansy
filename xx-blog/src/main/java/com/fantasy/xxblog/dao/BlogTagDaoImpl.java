@@ -11,5 +11,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BlogTagDaoImpl extends BaseDaoImpl<BlogTagEntity> implements BlogTagDao {
 
-
 }

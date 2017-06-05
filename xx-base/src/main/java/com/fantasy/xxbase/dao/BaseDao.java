@@ -29,7 +29,7 @@ public interface BaseDao<T extends XXBaseEntity> {
 
     Page<T> findAll();
 
-    Page<T> findPages(int pageNo, int pageSize);
+    Page<T> page(int pageNo, int pageSize);
 
     long count();
 
@@ -38,4 +38,6 @@ public interface BaseDao<T extends XXBaseEntity> {
     T merge(@NotNull T t);
 
     void remove(@NotNull T t);
+
+    long clean();
 }

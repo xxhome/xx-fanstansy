@@ -17,7 +17,7 @@ import java.util.List;
  * @author li.fang
  * @sine 17/02/19
  */
-public class BlogAccountServiceTest extends SpringTest{
+public class BlogAccountServiceTest extends SpringTest {
 
     @Autowired
     private BlogAccountService blogAccountService;
@@ -28,8 +28,8 @@ public class BlogAccountServiceTest extends SpringTest{
     }
 
     @Test
-    public void testFindPages(){
-        blogAccountService.findPages(2, 10);
+    public void testPage(){
+        blogAccountService.page(2, 10);
     }
 
     @Test
@@ -50,10 +50,13 @@ public class BlogAccountServiceTest extends SpringTest{
 
     @Test
     public void persist() throws EntityNoExistNameException {
+        blogAccountService.clean();
         BlogAccountEntity blogAccountEntity = new BlogAccountEntity();
         blogAccountEntity.setName("cook");
         blogAccountEntity.setEmail("cook@gmail.com");
         blogAccountEntity.setPassword(XXCipherUtils.getDesEncryptText("111111"));
+        blogAccountEntity.getRoleIds().add("BR500000");
+        blogAccountEntity.getRoleIds().add("BR500001");
         blogAccountService.persist(blogAccountEntity);
     }
 }

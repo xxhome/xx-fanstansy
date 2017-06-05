@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 
@@ -43,9 +44,9 @@ public class JSONColumn implements UserType, ParameterizedType {
     public Class returnedClass() {
 
         if (stringListColumn) {
-            return List.class;
+            return Collection.class;
         } else if (jsonListColumn) {
-            return List.class;
+            return Collection.class;
         } else {
             return getObjectClass();
         }

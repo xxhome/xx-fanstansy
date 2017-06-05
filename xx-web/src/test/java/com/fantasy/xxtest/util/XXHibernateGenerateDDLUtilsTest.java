@@ -1,8 +1,10 @@
 package com.fantasy.xxtest.util;
 
+import com.fantasy.xxbase.method.XXImprovedNamingStrategy;
 import com.fantasy.xxtest.base.SpringTest;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.dialect.Dialect;
@@ -51,6 +53,7 @@ public class XXHibernateGenerateDDLUtilsTest extends SpringTest {
                 .applySetting(FORMAT_SQL, false)
                 .applySetting(HBM2DDL_AUTO, Action.NONE)
                 .applySetting(ORDER_UPDATES, false)
+                .applySetting(PHYSICAL_NAMING_STRATEGY, XXImprovedNamingStrategy.INSTANCE)
                 .applySetting(STORAGE_ENGINE, STORAGE_ENGINE_INNODB)
                 .applySetting(USE_SECOND_LEVEL_CACHE, false)
                 .build();
@@ -63,11 +66,12 @@ public class XXHibernateGenerateDDLUtilsTest extends SpringTest {
 
         Metadata metadata = metadataSources.buildMetadata();
 
-//        SchemaUpdate executor = new SchemaUpdate();
-        SchemaExport executor = new SchemaExport();
+        SchemaUpdate executor = new SchemaUpdate();
+        //SchemaExport executor = new SchemaExport();
         executor.setDelimiter(";");
         executor.setFormat(false);
-        executor.execute(EnumSet.of(STDOUT), SchemaExport.Action.BOTH, metadata);
+        executor.execute(EnumSet.of(STDOUT), metadata);
+        //executor.execute(EnumSet.of(STDOUT), SchemaExport.Action.BOTH, metadata);
         metadata.buildSessionFactory().close();
     }
 }

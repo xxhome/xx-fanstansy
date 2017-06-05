@@ -25,7 +25,7 @@ public interface BaseService<T extends XXBaseEntity> {
 
     Page<T> findAll();
 
-    Page<T> findPages(int pageNo, int pageSize);
+    Page<T> page(int pageNo, int pageSize);
 
     void persist(@NotNull T t);
 
@@ -36,6 +36,8 @@ public interface BaseService<T extends XXBaseEntity> {
     void remove(@NotNull T t);
 
     void remove(@NotNull String id);
+
+    long clean();
 
     Page<T> findByName(String name);
 

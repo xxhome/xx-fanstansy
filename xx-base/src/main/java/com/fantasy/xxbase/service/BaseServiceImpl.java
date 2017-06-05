@@ -64,8 +64,8 @@ public class BaseServiceImpl<T extends XXBaseEntity> implements BaseService<T> {
     }
 
     @Override
-    public Page<T> findPages(int pageNo, int pageSize) {
-        return baseDao.findPages(pageNo, pageSize);
+    public Page<T> page(int pageNo, int pageSize) {
+        return baseDao.page(pageNo, pageSize);
     }
 
     @Override
@@ -106,6 +106,11 @@ public class BaseServiceImpl<T extends XXBaseEntity> implements BaseService<T> {
                 baseDao.remove(t);
             }
         }
+    }
+
+    @Override
+    public long clean() {
+        return baseDao.clean();
     }
 
     @Override

@@ -19,6 +19,9 @@ import org.springframework.util.CollectionUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.Root;
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -34,13 +37,13 @@ public abstract class BaseDaoImpl<T extends XXBaseEntity> implements BaseDao<T> 
     private Logger logger = LoggerFactory.getLogger(BaseDaoImpl.class);
 
     @PersistenceContext
-    public EntityManager entityManager;
+    protected EntityManager entityManager;
 
-    private Class<T> clazz = null;
+    protected Class<T> clazz = null;
 
-    private List<Field> classDeclaredFields = new ArrayList<>();
+    protected List<Field> classDeclaredFields = new ArrayList<>();
 
-    private final static Map<Class, List<Field>> classDeclaredFieldMap = new HashMap<>();
+    protected final static Map<Class, List<Field>> classDeclaredFieldMap = new HashMap<>();
 
     public BaseDaoImpl() {
         Type type = getClass().getGenericSuperclass();
@@ -159,15 +162,15 @@ public abstract class BaseDaoImpl<T extends XXBaseEntity> implements BaseDao<T> 
     }
 
     @Override
-    public Page<T> findPages(int pageNo, int pageSize) {
-        PathBuilder<T> pathBuilder = new PathBuilder<>(clazz, "o");
-
+    public Page<T> page(int pageNo, int pageSize) {
         JPAQuery jpaQuery = new JPAQuery(entityManager);
 
+        PathBuilder<T> pathBuilder1 = new PathBuilder<>(clazz, "o1");
         int offset = Math.max(0, pageNo - 1) * pageSize;
-        List<T> result = jpaQuery.from(pathBuilder).offset(offset).limit(pageSize).list(pathBuilder);
+        List<T> result = jpaQuery.from(pathBuilder1).offset(offset).limit(pageSize).list(pathBuilder1);
 
-        long total = jpaQuery.from(pathBuilder).count();
+        PathBuilder<T> pathBuilder2 = new PathBuilder<>(clazz, "o2");
+        long total = jpaQuery.from(pathBuilder2).count();
 
         return new Page<>(total, result);
     }
@@ -197,6 +200,14 @@ public abstract class BaseDaoImpl<T extends XXBaseEntity> implements BaseDao<T> 
     @Override
     public void remove(@NotNull T t) {
         entityManager.remove(t);
+    }
+
+    @Override
+    public long clean() {
+        CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+        CriteriaDelete<T> delete = builder.createCriteriaDelete(clazz);
+        delete.from(clazz);
+        return entityManager.createQuery(delete).executeUpdate();
     }
 
     @Override

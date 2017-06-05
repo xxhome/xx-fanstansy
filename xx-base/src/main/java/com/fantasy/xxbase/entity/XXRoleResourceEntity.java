@@ -8,7 +8,7 @@ import javax.persistence.*;
  */
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class XXRoleResourceEntity extends XXSimpleEntity{
+public class XXRoleResourceEntity extends XXBaseEntity{
 
     @Column(length = 64, nullable = false)
     private String roleId;

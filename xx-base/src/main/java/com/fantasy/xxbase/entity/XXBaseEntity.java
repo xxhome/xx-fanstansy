@@ -18,7 +18,7 @@ public class XXBaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TableStringGenerator")
-    @GenericGenerator(name = "TableStringGenerator", strategy = "enhanced-table",
+    @GenericGenerator(name = "TableStringGenerator", strategy = "com.fantasy.xxbase.method.XXTableStringGenerator",
             parameters = {
                 @org.hibernate.annotations.Parameter(name = "format", value = "%1$d"),
                 @org.hibernate.annotations.Parameter(name = org.hibernate.id.enhanced.TableGenerator.CONFIG_PREFER_SEGMENT_PER_ENTITY, value = "true"),
