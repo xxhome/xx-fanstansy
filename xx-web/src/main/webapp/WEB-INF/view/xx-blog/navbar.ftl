@@ -60,14 +60,20 @@
             <div id="panel-list-group">
                 <div class="panel list-group">
 
-                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#panel-list-group">
-                        MESSAGES
-                    </a>
-
-                    <div id="sm" class="sublinks collapse">
-                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> inbox</a>
-                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> sent</a>
-                    </div>
+                    <@http url="http://127.0.0.1/xx-fantasy/xxblog/group/list.xhtml">
+                        <#assign json=responseBody?eval />
+                        <#if json.code == 0>
+                            <#list json.data as item>
+                                <a href="javascript:void(0)" class="list-group-item nav-list-group-item glyphicon glyphicon-folder-open" data-toggle="collapse" data-target="#sm-${item.id}" data-parent="#panel-list-group">
+                                    ${item.name}
+                                </a>
+                                <div id="sm-${item.id}" class="sublinks collapse">
+                                    <a class="list-group-item nav-list-group-item sub-nav-list-group-item" href="#"><span class="glyphicon glyphicon glyphicon-link"></span> inbox</a>
+                                    <a class="list-group-item nav-list-group-item sub-nav-list-group-item" href="#"><span class="glyphicon glyphicon glyphicon-link"></span> sent</a>
+                                </div>
+                            </#list>
+                        </#if>
+                    </@http>
 
                 </div>
             </div>

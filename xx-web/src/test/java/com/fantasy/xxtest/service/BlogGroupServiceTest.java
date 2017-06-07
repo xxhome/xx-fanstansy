@@ -20,6 +20,7 @@ public class BlogGroupServiceTest extends SpringTest{
 
     @Test
     public void persist(){
+        blogGroupService.clean();
         blogGroupService.persist(getBlogGroupList());
     }
 
@@ -41,6 +42,11 @@ public class BlogGroupServiceTest extends SpringTest{
         BlogGroupEntity blogGroupEntity3 = new BlogGroupEntity();
         blogGroupEntity3.setName("Nginx");
         blogGroupEntities.add(blogGroupEntity3);
+
+        //3
+        BlogGroupEntity blogGroupEntity4 = new BlogGroupEntity();
+        blogGroupEntity4.setName("MySQL");
+        blogGroupEntities.add(blogGroupEntity4);
 
         return blogGroupEntities;
     }

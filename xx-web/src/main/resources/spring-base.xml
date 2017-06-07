@@ -6,15 +6,17 @@
 
     <!-- 需要解密的文件 -->
     <bean class="com.fantasy.xxbase.method.EncryptPropertyConfigurer" lazy-init="true">
-        <property name="ignoreUnresolvablePlaceholders" value="true"/>
-        <property name="location" value="classpath:xx-jdbc.properties"/>
-        <property name="fileEncoding" value="UTF-8"/>
-    </bean>
-
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" lazy-init="true">
         <property name="order" value="1"/>
+        <property name="fileEncoding" value="UTF-8"/>
         <property name="ignoreUnresolvablePlaceholders" value="true"/>
-        <property name="location" value="classpath:xx-config.properties"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:xx-jdbc.properties</value>
+                <value>classpath*:xx-redis.properties</value>
+                <value>classpath*:xx-config.properties</value>
+                <value>classpath*:xx-quartz.properties</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">

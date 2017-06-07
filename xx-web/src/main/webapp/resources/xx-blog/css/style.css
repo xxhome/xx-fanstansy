@@ -1924,3 +1924,20 @@ h2.typoh2{
 	margin-top: -17px;
 	min-height: 1050px;
 }
+
+.nav-list-group-item{
+	border:0px;
+	padding: 8px 0px 8px 0px;
+	margin-bottom: 10px;
+	background-color: transparent;
+}
+
+.sub-nav-list-group-item{
+	padding-left: 8px;
+}
+
+a.nav-list-group-item:hover, a.nav-list-group-item:focus{
+	color: #D57D39  !important;
+	background-color: transparent;
+	cursor: hand;
+}
