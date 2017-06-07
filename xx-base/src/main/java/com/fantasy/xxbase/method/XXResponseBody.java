@@ -16,6 +16,12 @@ public class XXResponseBody<T> {
 
     private String runtime;
 
+    private XXResponseBody(){}
+
+    public XXResponseBody(T data){
+        this.data = data;
+    }
+
     public long getCode() {
         return code;
     }

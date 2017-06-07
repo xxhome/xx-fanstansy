@@ -357,6 +357,13 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.3</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.octo.captcha</groupId>
             <artifactId>jcaptcha-all</artifactId>
             <version>1.0-RC6</version>

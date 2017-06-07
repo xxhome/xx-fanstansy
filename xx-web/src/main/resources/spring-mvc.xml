@@ -50,16 +50,16 @@
             <props>
                 <prop key="defaultEncoding">UTF-8</prop>
                 <prop key="url_escaping_charset">UTF-8</prop>
-                <prop key="locale">${system.locale}</prop>
+                <prop key="locale">zh_CN</prop>
                 <prop key="template_update_delay">15</prop>
                 <prop key="tag_syntax">auto_detect</prop>
                 <prop key="whitespace_stripping">true</prop>
                 <prop key="classic_compatible">true</prop>
                 <prop key="number_format">${template.number_format}</prop>
                 <prop key="boolean_format">true,false</prop>
-                <prop key="datetime_format">${template.datetime_format}</prop>
-                <prop key="date_format">${template.date_format}</prop>
-                <prop key="time_format">${template.time_format}</prop>
+                <prop key="datetime_format">0</prop>
+                <prop key="date_format">yyyy-MM-dd</prop>
+                <prop key="time_format">HH:mm:ss</prop>
                 <prop key="object_wrapper">freemarker.ext.beans.BeansWrapper</prop>
             </props>
         </property>
@@ -74,16 +74,19 @@
                 <entry key="src" value="#{servletContext.contextPath}/resources"/>
                 <!--&lt;!&ndash; 解析XML配置文件 &ndash;&gt;-->
                 <!--<entry key="setting" value="#{T(com.xxutil.utils.SettingUtils).get()}"/>-->
-                <entry key="msg" value-ref="messageMethod"/>
+                <entry key="msg" value-ref="messageTemplateTag"/>
                 <entry key="resource" value-ref="resourceTemplateTag"/>
+                <entry key="http" value-ref="requestTemplateTag"/>
             </map>
         </property>
     </bean>
 
     <!-- 获取国际化资源 -->
-    <bean id="messageMethod" class="com.fantasy.xxbase.tag.MessageTemplateTag"/>
+    <bean id="messageTemplateTag" class="com.fantasy.xxbase.tag.MessageTemplateTag"/>
     <!-- 获取script标签 -->
     <bean id="resourceTemplateTag" class="com.fantasy.xxbase.tag.ResourceTemplateTag"/>
+
+    <bean id="requestTemplateTag" class="com.fantasy.xxbase.tag.RequestTemplateTag"/>
 
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
         <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>

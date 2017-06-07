@@ -1,4 +1,3 @@
-
 <div class="col-xs-2 banner-body-left" id="banner-body-left">
     <div class="logo">
         <h1><a href="index.ftl">Great <span>Taste</span></a></h1>
@@ -20,28 +19,28 @@
             <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                 <nav class="stroke">
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="${path}/xxblog/view/index.xhtml">
+                        <li class="${(active=='index')?string('active', '')}">
+                            <a href="${path}/xxblog/view/index.xhtml?active=index">
                                 <i class="glyphicon glyphicon-home"></i>主页
                             </a>
                         </li>
-                        <li>
-                            <a href="${path}/xxblog/view/setting.xhtml" class="hvr-underline-from-left">
+                        <li class="${(active=='setting')?string('active', '')}">
+                            <a href="${path}/xxblog/view/setting.xhtml?active=setting" class="hvr-underline-from-left">
                                 <i class="glyphicon glyphicon-cog"></i>设置
                             </a>
                         </li>
-                        <li>
-                            <a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left">
+                        <li class="${(active=='blog' || active=='context')?string('active', '')}">
+                            <a href="${path}/xxblog/view/blog.xhtml?active=blog" class="hvr-underline-from-left">
                                 <i class="glyphicon glyphicon-pencil"></i>博客
                             </a>
                         </li>
-                        <li>
-                            <a href="${path}/xxblog/view/photos.xhtml" class="hvr-underline-from-left">
+                        <li class="${(active=='photos')?string('active', '')}">
+                            <a href="${path}/xxblog/view/photos.xhtml?active=photos" class="hvr-underline-from-left">
                                 <i class="glyphicon glyphicon-picture"></i>照片
                             </a>
                         </li>
-                        <li>
-                            <a href="${path}/xxblog/view/about.xhtml" class="hvr-underline-from-left">
+                        <li class="${(active=='about')?string('active', '')}">
+                            <a href="${path}/xxblog/view/about.xhtml?active=about" class="hvr-underline-from-left">
                                 <i class="glyphicon glyphicon-envelope"></i>关于
                             </a>
                         </li>
@@ -58,58 +57,64 @@
     <div class="latest-news">
         <h2>博客分类</h2>
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                           aria-expanded="true" aria-controls="collapseOne">
-                            Michael Vol
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                     aria-labelledby="headingOne">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+            <div id="panel-list-group">
+                <div class="panel list-group">
+
+                    <a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#panel-list-group">
+                        MESSAGES
+                    </a>
+
+                    <div id="sm" class="sublinks collapse">
+                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> inbox</a>
+                        <a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> sent</a>
                     </div>
+
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Andrew Rich
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                     aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingThree">
-                    <h4 class="panel-title">
-                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
-                           href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Rita Rock
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                    <div class="panel-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
-                    </div>
-                </div>
-            </div>
+
+            <#--<div class="panel list-group">-->
+                <#--<a href="#" class="list-group-item" data-toggle="collapse" data-target="#sm" data-parent="#menu">MESSAGES <span class="label label-info">5</span> <span class="glyphicon glyphicon-envelope pull-right"></span></a>-->
+                <#--<div id="sm" class="sublinks collapse">-->
+                    <#--<a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> inbox</a>-->
+                    <#--<a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> sent</a>-->
+                <#--</div>-->
+                <#--<a href="#" class="list-group-item" data-toggle="collapse" data-target="#sl" data-parent="#menu">TASKS <span class="glyphicon glyphicon-tag pull-right"></span></a>-->
+                <#--<div id="sl" class="sublinks collapse">-->
+                    <#--<a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> saved tasks</a>-->
+                    <#--<a class="list-group-item small"><span class="glyphicon glyphicon-chevron-right"></span> add new task</a>-->
+                <#--</div>-->
+                <#--<a href="#" class="list-group-item">ANOTHER LINK ...<span class="glyphicon glyphicon-stats pull-right"></span></a>-->
+            <#--</div>-->
+            <#--
+            <@http url="http://127.0.0.1/xx-fantasy/xxblog/group/list.xhtml">
+                <#assign json=responseBody?eval />
+                <#if json.code == 0>
+                    <#list json.data as item>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#${item.id}" aria-expanded="true" aria-controls="collapseOne">
+                                        ${item.name}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="${item.id}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry.
+                                </div>
+                            </div>
+                        </div>
+                    </#list>
+                </#if>
+            </@http>
+            -->
         </div>
+        <!--
         <div class="join">
             <a href="single.html">Learn More</a>
         </div>
-        <h3>Benefits</h3>
+        -->
+        <h3>说说</h3>
         <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
     </div>
 </div>

@@ -22,7 +22,7 @@ public class LoginController extends BaseController {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken("cook", "111111");
         subject.login(token);
-        return new XXResponseBody();
+        return XXResponseBody.SUCCEED;
     }
 
 }

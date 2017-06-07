@@ -23,14 +23,14 @@ public class ResourceTemplateTag implements TemplateDirectiveModel {
     private static final long VERSION = System.currentTimeMillis();
 
     @Override
-    public void execute(Environment env, Map map, TemplateModel[] templateModels,
+    public void execute(Environment env, Map params, TemplateModel[] templateModels,
                         TemplateDirectiveBody templateDirectiveBody)
             throws TemplateException, IOException {
 
-        if (map == null) return;
+        if (params == null) return;
 
-        String base = map.getOrDefault("base", "").toString();
-        String paths = map.getOrDefault("path", "").toString();
+        String base = params.getOrDefault("base", "").toString();
+        String paths = params.getOrDefault("path", "").toString();
         String[] resources = StringUtils.split(paths, ",");
 
         long version = getIsDevMode() ? System.currentTimeMillis() : VERSION;
