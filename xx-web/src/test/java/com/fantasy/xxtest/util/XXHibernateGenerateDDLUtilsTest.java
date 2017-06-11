@@ -27,7 +27,7 @@ import static org.hibernate.tool.schema.TargetType.STDOUT;
  * @since 2017/5/9
  */
 public class XXHibernateGenerateDDLUtilsTest extends SpringTest {
-    @Value(value = "${jdbc.url}")
+    @Value(value = "${jdbc.url.blog}")
     private String url;
 
     @Value(value = "${jdbc.username}")

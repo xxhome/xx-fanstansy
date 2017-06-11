@@ -1,7 +1,7 @@
 package com.fantasy.xxblog.controller;
 
 import com.fantasy.xxbase.controller.BaseController;
-import com.fantasy.xxbase.method.Page;
+import com.fantasy.xxbase.vo.Page;
 import com.fantasy.xxbase.method.XXResponseBody;
 import com.fantasy.xxblog.entity.BlogGroupEntity;
 import com.fantasy.xxblog.service.BlogGroupService;

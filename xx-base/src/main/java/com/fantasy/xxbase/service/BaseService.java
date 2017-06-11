@@ -1,12 +1,11 @@
 package com.fantasy.xxbase.service;
 
 import com.fantasy.xxbase.entity.XXBaseEntity;
-import com.fantasy.xxbase.method.Page;
-import com.fantasy.xxbase.method.Pageable;
-import com.fantasy.xxbase.method.QueryParam;
+import com.fantasy.xxbase.vo.Page;
+import com.fantasy.xxbase.vo.Pageable;
+import com.fantasy.xxbase.vo.QueryParam;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 

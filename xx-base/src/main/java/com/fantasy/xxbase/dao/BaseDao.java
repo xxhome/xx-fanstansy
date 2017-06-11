@@ -2,9 +2,9 @@ package com.fantasy.xxbase.dao;
 
 
 import com.fantasy.xxbase.entity.XXBaseEntity;
-import com.fantasy.xxbase.method.Page;
-import com.fantasy.xxbase.method.Pageable;
-import com.fantasy.xxbase.method.QueryParam;
+import com.fantasy.xxbase.vo.Page;
+import com.fantasy.xxbase.vo.Pageable;
+import com.fantasy.xxbase.vo.QueryParam;
 import com.fantasy.xxbase.exception.EntityNoExistNameException;
 
 import javax.validation.constraints.NotNull;

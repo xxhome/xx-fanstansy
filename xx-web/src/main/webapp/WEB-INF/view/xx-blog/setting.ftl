@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Home</title>
@@ -33,12 +33,33 @@
                             </ul>
 
                             <div class="tab-content">
+
                                 <div class="tab-pane active" id="1">
-                                    <h3>Standard tab panel created on bootstrap using nav-tabs</h3>
+
+                                    <div class="panel panel-default panel-box" style="width: 50%;min-height: 500px;">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">头像设置</h3>
+                                        </div>
+                                        <div class="panel-body" style="text-align: center;">
+                                            <img src="${src}/xx-blog/images/icon_mg.png">
+                                        </div>
+                                    </div>
+
                                 </div>
+
                                 <div class="tab-pane" id="2">
-                                    <h3>Notice the gap between the content and tab after applying a background color</h3>
+
+                                    <div class="panel panel-default panel-box" style="width: 50%;min-height: 500px;">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">博客分类</h3>
+                                        </div>
+                                        <div class="panel-body" style="text-align: center;">
+                                            <img src="${src}/xx-blog/images/icon_mg.png">
+                                        </div>
+                                    </div>
+
                                 </div>
+
                                 <div class="tab-pane" id="3">
                                     <h3>add clearfix to tab-content (see the css)</h3>
                                 </div>

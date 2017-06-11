@@ -28,7 +28,7 @@ body a:hover{
 	padding:2em 0;
 }
 .banner-body-content {
-    padding: 1em 1em;
+    padding: 1em 1em 1em 0.5em;
     background: #fff;
 	box-shadow:0px 0px 10px #E0E0E0;
 	-webkit-box-shadow:0px 0px 10px #E0E0E0;
@@ -220,8 +220,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 	text-decoration:none;
 }
 .panel-heading {
-    padding: 10px 5px 10px 40px;
-    background: url(../images/img-sp.png) no-repeat -19px -183px;
+    padding: 10px 5px 10px 10px;
 }
 .panel-default {
     border: none;
@@ -235,6 +234,11 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 .panel {
     box-shadow: none;
 }
+
+.panel-box{
+	border: 1px solid #ddd;
+}
+
 .join a{
 	padding:8px 35px;
 	color:#999;
@@ -1929,6 +1933,7 @@ h2.typoh2{
 	border:0px;
 	padding: 8px 0px 8px 0px;
 	margin-bottom: 10px;
+	color:#212121 !important;
 	background-color: transparent;
 }
 
@@ -1940,4 +1945,8 @@ a.nav-list-group-item:hover, a.nav-list-group-item:focus{
 	color: #D57D39  !important;
 	background-color: transparent;
 	cursor: hand;
+}
+
+#banner-body-left .latest-news{
+	width: 102%;
 }

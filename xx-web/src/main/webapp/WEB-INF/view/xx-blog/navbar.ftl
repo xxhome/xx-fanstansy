@@ -1,6 +1,6 @@
 <div class="col-xs-2 banner-body-left" id="banner-body-left">
     <div class="logo">
-        <h1><a href="index.ftl">Great <span>Taste</span></a></h1>
+        <h1><a href="index.xhtml">Great <span>Taste</span></a></h1>
     </div>
     <div class="top-nav">
         <nav class="navbar navbar-default">
@@ -20,22 +20,22 @@
                 <nav class="stroke">
                     <ul class="nav navbar-nav">
                         <li class="${(active=='index')?string('active', '')}">
-                            <a href="${path}/xxblog/view/index.xhtml?active=index">
+                            <a href="${path}/xxblog/view/index.xhtml">
                                 <i class="glyphicon glyphicon-home"></i>主页
                             </a>
                         </li>
                         <li class="${(active=='setting')?string('active', '')}">
-                            <a href="${path}/xxblog/view/setting.xhtml?active=setting" class="hvr-underline-from-left">
+                            <a href="${path}/xxblog/view/setting.xhtml" class="hvr-underline-from-left">
                                 <i class="glyphicon glyphicon-cog"></i>设置
                             </a>
                         </li>
                         <li class="${(active=='blog' || active=='context')?string('active', '')}">
-                            <a href="${path}/xxblog/view/blog.xhtml?active=blog" class="hvr-underline-from-left">
-                                <i class="glyphicon glyphicon-pencil"></i>博客
+                            <a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left">
+                                <i class="glyphicon glyphicon-book"></i>博客
                             </a>
                         </li>
                         <li class="${(active=='photos')?string('active', '')}">
-                            <a href="${path}/xxblog/view/photos.xhtml?active=photos" class="hvr-underline-from-left">
+                            <a href="${path}/xxblog/view/photos.xhtml" class="hvr-underline-from-left">
                                 <i class="glyphicon glyphicon-picture"></i>照片
                             </a>
                         </li>
@@ -64,7 +64,7 @@
                         <#assign json=responseBody?eval />
                         <#if json.code == 0>
                             <#list json.data as item>
-                                <a href="javascript:void(0)" class="list-group-item nav-list-group-item glyphicon glyphicon-folder-open" data-toggle="collapse" data-target="#sm-${item.id}" data-parent="#panel-list-group">
+                                <a href="javascript:void(0)" class="list-group-item nav-list-group-item glyphicon glyphicon-tags" data-toggle="collapse" data-target="#sm-${item.id}" data-parent="#panel-list-group">
                                     ${item.name}
                                 </a>
                                 <div id="sm-${item.id}" class="sublinks collapse">
@@ -120,7 +120,12 @@
             <a href="single.html">Learn More</a>
         </div>
         -->
-        <h3>说说</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+        <h3>心灵鸡汤</h3>
+        <p style="text-indent:28px">
+            站在时光的路口回望曾经，盘点每一份经历过的心情，人生有太多得不到的美好，有太多想不到的结局。终有一天，我们热望过的，贪念过的，彷徨过的，握紧过的，放手过的，都将化作尘埃随风飞去.
+        </p>
+        <span style="float: right;color:#999;">
+            -- ${date?substring(0, 10)}
+        </span>
     </div>
 </div>

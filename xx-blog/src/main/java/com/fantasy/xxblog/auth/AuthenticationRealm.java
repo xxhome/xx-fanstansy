@@ -1,7 +1,7 @@
 package com.fantasy.xxblog.auth;
 
 import com.fantasy.xxbase.entity.XXAuthorityEntity;
-import com.fantasy.xxbase.method.Principal;
+import com.fantasy.xxbase.vo.Principal;
 import com.fantasy.xxblog.entity.BlogAccountEntity;
 import com.fantasy.xxblog.entity.BlogAuthorityEntity;
 import com.fantasy.xxblog.service.BlogAccountService;

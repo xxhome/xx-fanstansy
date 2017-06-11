@@ -1,8 +1,8 @@
 package com.fantasy.xxtest.service;
 
 import com.fantasy.xxbase.exception.EntityNoExistNameException;
-import com.fantasy.xxbase.method.Operator;
-import com.fantasy.xxbase.method.QueryParam;
+import com.fantasy.xxbase.vo.Operator;
+import com.fantasy.xxbase.vo.QueryParam;
 import com.fantasy.xxblog.entity.BlogAccountEntity;
 import com.fantasy.xxblog.service.BlogAccountService;
 import com.fantasy.xxtest.base.SpringTest;

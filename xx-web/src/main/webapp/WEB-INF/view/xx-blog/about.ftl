@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Home</title>
@@ -37,19 +37,12 @@
 <!-- //banner-body -->
 
 <!-- for bootstrap working -->
-<@resource path="${src}/xx-base/js/bootstrap.js"/>
+<@resource base="${src}/xx-base" path="/bootstrap/js/bootstrap.js"/>
 <!-- //for bootstrap working -->
 
-<@resource path="${src}/xx-base/markdown/lib/marked.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/prettify.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/marked.min.js, /prettify.min.js, /raphael.min.js, /underscore.min.js, /sequence-diagram.min.js, /flowchart.min.js, /jquery.flowchart.min.js"/>
 
-<@resource path="${src}/xx-base/markdown/lib/raphael.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/underscore.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/sequence-diagram.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/flowchart.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/jquery.flowchart.min.js"/>
-
-<@resource path="${src}/xx-base/markdown/js/editormd.js"/>
+<@resource base="${src}/xx-base/markdown" path="/js/editormd.js"/>
 
 <script type="text/javascript">
     $(function() {

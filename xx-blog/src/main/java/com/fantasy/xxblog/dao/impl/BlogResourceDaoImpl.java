@@ -1,6 +1,7 @@
-package com.fantasy.xxblog.dao;
+package com.fantasy.xxblog.dao.impl;
 
 import com.fantasy.xxbase.dao.BaseDaoImpl;
+import com.fantasy.xxblog.dao.BlogResourceDao;
 import com.fantasy.xxblog.entity.BlogResourceEntity;
 import org.springframework.stereotype.Repository;
 

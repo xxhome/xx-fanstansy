@@ -1,4 +1,4 @@
-package com.fantasy.xxbase.method;
+package com.fantasy.xxbase.vo;
 
 import com.fantasy.xxbase.entity.XXBaseEntity;
 

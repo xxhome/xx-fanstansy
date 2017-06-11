@@ -18,6 +18,8 @@ public class XXDateUtils {
 
     private static Logger logger = LoggerFactory.getLogger(XXDateUtils.class);
 
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
     public static Date getDate(String dateString) {
         if (StringUtils.isBlank(dateString)) {
             return null;
@@ -38,7 +40,18 @@ public class XXDateUtils {
         if (date == null) {
             return null;
         }
-        return new SimpleDateFormat("yyyy-MM-dd").format(date);
+        return sdf.format(date);
+    }
+
+    public static String getStrDate(@NotNull Date date, String pattern) {
+        if (date == null) {
+            return null;
+        }
+        return new SimpleDateFormat(pattern).format(date);
+    }
+
+    public static String getNow(){
+        return getStrDate(new Date(), "yyyy-MM-dd HH:mm:ss");
     }
 
     public static Date getDate(Date date, int day) {

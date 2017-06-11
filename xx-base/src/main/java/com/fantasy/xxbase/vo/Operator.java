@@ -1,4 +1,4 @@
-package com.fantasy.xxbase.method;
+package com.fantasy.xxbase.vo;
 
 /**
  * @author li.fang

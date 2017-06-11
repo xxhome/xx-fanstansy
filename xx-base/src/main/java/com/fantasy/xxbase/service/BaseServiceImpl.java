@@ -1,12 +1,11 @@
 package com.fantasy.xxbase.service;
 
 import com.fantasy.xxbase.entity.XXBaseEntity;
-import com.fantasy.xxbase.exception.CommonRuntimeException;
-import com.fantasy.xxbase.method.Page;
-import com.fantasy.xxbase.method.Pageable;
+import com.fantasy.xxbase.vo.Page;
+import com.fantasy.xxbase.vo.Pageable;
 import com.fantasy.xxbase.dao.BaseDao;
 import com.fantasy.xxbase.exception.EntityNoExistNameException;
-import com.fantasy.xxbase.method.QueryParam;
+import com.fantasy.xxbase.vo.QueryParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.CollectionUtils;

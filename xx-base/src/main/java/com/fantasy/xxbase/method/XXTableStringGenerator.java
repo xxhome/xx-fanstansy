@@ -3,13 +3,14 @@ package com.fantasy.xxbase.method;
 import com.fantasy.xxutil.util.XXStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.MappingException;
+import org.hibernate.dialect.Dialect;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.enhanced.TableGenerator;
-import org.hibernate.internal.CoreMessageLogger;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.LongType;
 import org.hibernate.type.Type;
-import org.jboss.logging.Logger;
+import org.springframework.test.context.ContextConfiguration;
+import org.testng.annotations.Test;
 
 import java.io.Serializable;
 import java.util.Properties;
@@ -18,12 +19,12 @@ import java.util.Properties;
  * @author li.fang
  * @since 2017/6/3
  */
+@Test
+@ContextConfiguration(locations = "classpath:spring-base.xml")
 public class XXTableStringGenerator extends TableGenerator {
 
-    private static final CoreMessageLogger LOG = Logger.getMessageLogger(
-            CoreMessageLogger.class,
-            TableGenerator.class.getName()
-    );
+    private static final String TABLE = "t_xx_generator";
+    private static final String DB_TABLE = "db_fantasy_base.t_xx_generator";
 
     @Override
     public void configure(Type type, Properties params, ServiceRegistry serviceRegistry) throws MappingException {
@@ -37,5 +38,23 @@ public class XXTableStringGenerator extends TableGenerator {
         sb.append(prefix);
         sb.append(super.generate(session, obj));
         return sb.toString();
+    }
+
+    @Override
+    protected String buildSelectQuery(Dialect dialect) {
+        String sql = super.buildSelectQuery(dialect);
+        return StringUtils.replace(sql, TABLE, DB_TABLE);
+    }
+
+    @Override
+    protected String buildUpdateQuery() {
+        String sql = super.buildUpdateQuery();
+        return StringUtils.replace(sql, TABLE, DB_TABLE);
+    }
+
+    @Override
+    protected String buildInsertQuery() {
+        String sql = super.buildInsertQuery();
+        return StringUtils.replace(sql, TABLE, DB_TABLE);
     }
 }

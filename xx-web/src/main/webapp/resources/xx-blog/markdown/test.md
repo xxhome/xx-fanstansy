@@ -139,7 +139,7 @@ testBox.add("jQuery").remove("jQuery");
 #### HTML 代码 HTML codes
 
 ```html
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
     <head>
         <mate charest="utf-8" />
