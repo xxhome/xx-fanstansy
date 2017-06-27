@@ -11,6 +11,8 @@
     <@resource base="${src}/xx-blog" path="/css/style.css"/>
     <@resource base="${src}/xx-base" path="/js/jquery-1.11.1.min.js"/>
 
+    <link href="${src}/xx-blog/favicon.ico" rel="icon" type="image/x-icon" />
+
 </head>
 
 <body>

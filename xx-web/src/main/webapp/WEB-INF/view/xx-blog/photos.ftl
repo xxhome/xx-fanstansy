@@ -9,6 +9,8 @@
 
     <@resource path="${src}/xx-base/bootstrap/css/bootstrap.css, ${src}/xx-blog/css/style.css, ${src}/xx-base/markdown/css/editormd.css"/>
     <@resource path="${src}/xx-base/js/jquery-1.11.1.min.js"/>
+
+    <link href="${src}/xx-blog/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 
 <body>

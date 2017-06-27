@@ -1,3 +1,5 @@
+<!DOCTYPE HTML>
+
 <div class="col-xs-2 banner-body-left" id="banner-body-left">
     <div class="logo">
         <h1><a href="index.xhtml">Great <span>Taste</span></a></h1>
