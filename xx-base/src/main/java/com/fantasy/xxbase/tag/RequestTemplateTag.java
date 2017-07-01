@@ -24,6 +24,8 @@ public class RequestTemplateTag implements TemplateDirectiveModel {
 
         if(StringUtils.isBlank(url)) return;
 
+        url = new StringBuilder("http://127.0.0.1").append(url).toString();
+
         String result = XXHttpUtils.get(url);
 
         if(StringUtils.isBlank(result)) return;

@@ -1,9 +1,10 @@
-package com.fantasy.xxblog.service;
+package com.fantasy.xxblog.service.impl;
 
 import com.fantasy.xxbase.dao.BaseDao;
 import com.fantasy.xxbase.service.BaseServiceImpl;
 import com.fantasy.xxblog.dao.BlogAuthorityDao;
 import com.fantasy.xxblog.entity.BlogAuthorityEntity;
+import com.fantasy.xxblog.service.BlogAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

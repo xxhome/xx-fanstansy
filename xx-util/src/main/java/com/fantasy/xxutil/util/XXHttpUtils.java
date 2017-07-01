@@ -27,11 +27,14 @@ public final class XXHttpUtils {
 
     public static String get(final String url) {
         String result = null;
+
         try (CloseableHttpClient httpclient = HttpClients.createDefault()) {
             HttpGet httpget = new HttpGet(url);
+
             try (CloseableHttpResponse response = httpclient.execute(httpget)) {
-                // 获取响应实体
+                // 获取响应实
                 HttpEntity entity = response.getEntity();
+
                 logger.debug("---------------------------------------------------------------------------------------");
                 // 打印响应状态
                 logger.debug("Response status : {}", response.getStatusLine());
@@ -42,7 +45,6 @@ public final class XXHttpUtils {
                     logger.debug("Response content length : {}", entity.getContentLength());
                     // 打印响应内容
                     logger.debug("Response content : {}", result);
-
                 }
                 logger.debug("---------------------------------------------------------------------------------------");
             }

@@ -41,7 +41,7 @@
                                 <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
 
                                 <div class="bootstrap-tagsinput tags-list">
-                                    <#list [1,2,3,4,5] as t>
+                                    <#list [1,2,3,4] as t>
                                         <span class="tag label tag-label-info">Amsterdam<span data-role="remove"></span></span>
                                     </#list>
                                 </div>

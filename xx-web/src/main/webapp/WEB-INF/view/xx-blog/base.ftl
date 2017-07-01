@@ -37,7 +37,7 @@
     <!-- //banner-body -->
 
     <!-- for bootstrap working -->
-    <@resource path="${src}/xx-base/js/bootstrap.js"/>
+    <@resource base="${src}/xx-base/bootstrap" path="/js/bootstrap.js"/>
     <!-- //for bootstrap working -->
 
 </body>

@@ -365,7 +365,7 @@ i.envelope,.navbar-default .navbar-nav > li > a:hover i.envelope1{
 .banner-right1 h3{
 	color:#212121;
     font-size: 1.3em;
-    margin: .5em 0 0;
+    margin: 0em 0 0;
     line-height: 1.5em;
 	text-transform:capitalize;
 	transition: .5s ease-in;
@@ -1135,9 +1135,10 @@ section#tables  p {
   font-weight: 300 !important;
 }
 .label {
-  padding: 4px 6px;
+  padding: 4px 12px;
   border: none;
   text-shadow: none;
+  margin-right: 5px;
 }
 .nav-tabs {
   margin-bottom: 1em;
@@ -1897,7 +1898,8 @@ h2.typoh2{
 }
 
 .tags-list{
-	margin-top: 30px;
+	line-height: 45px;
+	margin-top: 15px;
 }
 
 .bootstrap-tagsinput .tag-label-info{
@@ -1914,11 +1916,11 @@ h2.typoh2{
 	float: right;
 	color: #999;
 	font-size: 10px;
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 .banner-footer span{
-	margin-right: 8px;
+	margin-right: 12px;
 }
 
 .tab-content .tab-pane{

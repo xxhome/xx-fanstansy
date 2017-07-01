@@ -1,6 +1,5 @@
 package com.fantasy.xxbase.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
 
 import javax.persistence.Column;
 import javax.persistence.Inheritance;
@@ -24,7 +23,6 @@ public class XXAuthorityEntity extends XXBaseEntity {
      */
     private String authorities;
 
-    @JSONField(deserialize = false, serialize = false)
     public void setAuthorities(String accountId, String resource, XXPermissionActionEnum action) {
         String permission;
         switch (action) {

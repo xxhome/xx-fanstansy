@@ -1,6 +1,7 @@
 package com.fantasy.xxblog.entity;
 
 import com.fantasy.xxbase.entity.XXSimpleEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -16,14 +17,15 @@ import javax.persistence.*;
 public class BlogTagEntity extends XXSimpleEntity {
 
     @ManyToOne
-    @JoinColumn(name = "blog_id")
-    private BlogEntity blogEntity;
+    @JoinColumn(name = "blog_content_id")
+    @JsonIgnore
+    private BlogContentEntity blogContentEntity;
 
-    public BlogEntity getBlogEntity() {
-        return blogEntity;
+    public BlogContentEntity getBlogContentEntity() {
+        return blogContentEntity;
     }
 
-    public void setBlogEntity(BlogEntity blogEntity) {
-        this.blogEntity = blogEntity;
+    public void setBlogContentEntity(BlogContentEntity blogContentEntity) {
+        this.blogContentEntity = blogContentEntity;
     }
 }

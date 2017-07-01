@@ -21,13 +21,14 @@ public class BaseTest {
     @BeforeClass
     public void before(){
         this.startTime = System.currentTimeMillis();
-        logger.debug("===================================================================================================================================================");
+        logger.debug("==================================================================================================");
     }
 
     @AfterClass
     public void after(){
-        logger.debug("End of run, take {} seconds", (System.currentTimeMillis() - startTime) / 1000F);
-        logger.debug("===================================================================================================================================================");
+        logger.debug("runtime : {}s", (System.currentTimeMillis() - startTime) / 1000F);
+        logger.debug("run class : {}", this.getClass().getName());
+        logger.debug("==================================================================================================");
     }
 
     public void sleep(int seconds){
@@ -40,11 +41,6 @@ public class BaseTest {
         } catch (InterruptedException e) {
             logger.error(e.getMessage(), e);
         }
-    }
-
-    @Test
-    public void test() throws IOException, ClassNotFoundException {
-        logger.debug(SpringTest.class.getName());
     }
 
 }

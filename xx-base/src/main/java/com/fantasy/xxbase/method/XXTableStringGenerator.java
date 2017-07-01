@@ -19,8 +19,6 @@ import java.util.Properties;
  * @author li.fang
  * @since 2017/6/3
  */
-@Test
-@ContextConfiguration(locations = "classpath:spring-base.xml")
 public class XXTableStringGenerator extends TableGenerator {
 
     private static final String TABLE = "t_xx_generator";

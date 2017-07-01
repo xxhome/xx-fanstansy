@@ -21,31 +21,18 @@
             <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                 <nav class="stroke">
                     <ul class="nav navbar-nav">
-                        <li class="${(active=='index')?string('active', '')}">
-                            <a href="${path}/xxblog/view/index.xhtml">
-                                <i class="glyphicon glyphicon-home"></i>主页
-                            </a>
-                        </li>
-                        <li class="${(active=='setting')?string('active', '')}">
-                            <a href="${path}/xxblog/view/setting.xhtml" class="hvr-underline-from-left">
-                                <i class="glyphicon glyphicon-cog"></i>设置
-                            </a>
-                        </li>
-                        <li class="${(active=='blog' || active=='context')?string('active', '')}">
-                            <a href="${path}/xxblog/view/blog.xhtml" class="hvr-underline-from-left">
-                                <i class="glyphicon glyphicon-book"></i>博客
-                            </a>
-                        </li>
-                        <li class="${(active=='photos')?string('active', '')}">
-                            <a href="${path}/xxblog/view/photos.xhtml" class="hvr-underline-from-left">
-                                <i class="glyphicon glyphicon-picture"></i>照片
-                            </a>
-                        </li>
-                        <li class="${(active=='about')?string('active', '')}">
-                            <a href="${path}/xxblog/view/about.xhtml?active=about" class="hvr-underline-from-left">
-                                <i class="glyphicon glyphicon-envelope"></i>关于
-                            </a>
-                        </li>
+
+                        <@http url="${path}/xxblog/menu/list.xhtml">
+                            <#assign json=responseBody?eval />
+                            <#list json.data as menu>
+                                <li class="${(active?default("home")==menu.mark)?string('active', '')}">
+                                    <a href="${path}${menu.url}?active=${menu.mark}" class="hvr-underline-from-left">
+                                        <i class="${menu.glyphicon}"></i>${menu.name}
+                                    </a>
+                                </li>
+                            </#list>
+                        </@http>
+
                     </ul>
                 </nav>
             </div>
@@ -62,7 +49,7 @@
             <div id="panel-list-group">
                 <div class="panel list-group">
 
-                    <@http url="http://127.0.0.1/xx-fantasy/xxblog/group/list.xhtml">
+                    <@http url="${path}/xxblog/group/list.xhtml">
                         <#assign json=responseBody?eval />
                         <#if json.code == 0>
                             <#list json.data as item>

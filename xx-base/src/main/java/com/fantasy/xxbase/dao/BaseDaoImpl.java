@@ -21,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -204,9 +205,11 @@ public abstract class BaseDaoImpl<T extends XXBaseEntity> implements BaseDao<T> 
     @Override
     public long clean() {
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-        CriteriaDelete<T> delete = builder.createCriteriaDelete(clazz);
-        delete.from(clazz);
-        return entityManager.createQuery(delete).executeUpdate();
+        CriteriaQuery<T> criteriaQuery = builder.createQuery(clazz);
+        criteriaQuery.from(clazz);
+        List<T> list = entityManager.createQuery(criteriaQuery).getResultList();
+        list.stream().forEach(this::remove);
+        return list.size();
     }
 
     @Override

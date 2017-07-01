@@ -1,10 +1,12 @@
 package com.fantasy.xxbase.method;
 
+import java.io.Serializable;
+
 /**
  * @author li.fang
  * @sine 17/02/28
  */
-public class XXResponseBody<T> {
+public class XXResponseBody<T> implements Serializable{
 
     public static final XXResponseBody SUCCEED = new XXResponseBody();
 

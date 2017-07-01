@@ -1,11 +1,11 @@
 package com.fantasy.xxblog.service;
 
 import com.fantasy.xxbase.service.BaseService;
-import com.fantasy.xxblog.entity.BlogEntity;
+import com.fantasy.xxblog.entity.BlogContentEntity;
 
 /**
  * @author li.fang
  * @sine 17/03/13
  */
-public interface BlogService extends BaseService<BlogEntity> {
+public interface BlogContentService extends BaseService<BlogContentEntity> {
 }

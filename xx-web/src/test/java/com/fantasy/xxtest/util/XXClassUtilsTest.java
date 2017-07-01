@@ -1,7 +1,7 @@
 package com.fantasy.xxtest.util;
 
 import com.fantasy.xxblog.entity.BlogAccountEntity;
-import com.fantasy.xxblog.entity.BlogEntity;
+import com.fantasy.xxblog.entity.BlogContentEntity;
 import com.fantasy.xxblog.entity.BlogTagEntity;
 import com.fantasy.xxtest.base.BaseTest;
 import com.fantasy.xxutil.util.XXClassUtils;
@@ -38,25 +38,25 @@ public class XXClassUtilsTest extends BaseTest {
         XXClassUtils.getCollectionGenericType(getBlogEntity().getTags());
     }
 
-    private BlogEntity getBlogEntity(){
-        BlogEntity blogEntity = new BlogEntity();
-        blogEntity.setId("10000");
+    private BlogContentEntity getBlogEntity(){
+        BlogContentEntity blogContentEntity = new BlogContentEntity();
+        blogContentEntity.setId("10000");
 
         List<BlogTagEntity> tags = new ArrayList<>();
 
         BlogTagEntity tag1 = new BlogTagEntity();
-        tag1.setBlogEntity(blogEntity);
+        tag1.setBlogContentEntity(blogContentEntity);
         tag1.setId("1");
         tag1.setName("Java");
         tags.add(tag1);
 
         BlogTagEntity tag2 = new BlogTagEntity();
-        tag2.setBlogEntity(blogEntity);
+        tag2.setBlogContentEntity(blogContentEntity);
         tag2.setId("2");
         tag2.setName("C++");
         tags.add(tag2);
 
-        blogEntity.setTags(tags);
-        return blogEntity;
+        blogContentEntity.setTags(tags);
+        return blogContentEntity;
     }
 }

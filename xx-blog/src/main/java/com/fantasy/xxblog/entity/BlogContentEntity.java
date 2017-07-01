@@ -13,12 +13,14 @@ import java.util.List;
  * @sine 17/03/13
  */
 @Entity
-@Table(name = "t_blog")
+@Table(name = "t_blog_content")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class BlogEntity extends XXSimpleEntity {
+public class BlogContentEntity extends XXSimpleEntity {
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name="blog_tag_id")
+    @Lob
+    private String content;
+
+    @OneToMany(mappedBy = "blogContentEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<BlogTagEntity> tags = new ArrayList<>();
 
     public List<BlogTagEntity> getTags() {
@@ -28,4 +30,13 @@ public class BlogEntity extends XXSimpleEntity {
     public void setTags(List<BlogTagEntity> tags) {
         this.tags = tags;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 }
