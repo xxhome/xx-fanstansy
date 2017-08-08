@@ -1,6 +1,7 @@
-package com.fantasy.xxbase.service;
+package com.fantasy.xxbase.service.impl;
 
 import com.fantasy.xxbase.entity.XXBaseEntity;
+import com.fantasy.xxbase.service.BaseService;
 import com.fantasy.xxbase.vo.Page;
 import com.fantasy.xxbase.vo.Pageable;
 import com.fantasy.xxbase.dao.BaseDao;

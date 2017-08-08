@@ -1,5 +1,6 @@
-package com.fantasy.xxbase.service;
+package com.fantasy.xxbase.service.impl;
 
+import com.fantasy.xxbase.service.CaptchaService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
