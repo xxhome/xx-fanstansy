@@ -1952,3 +1952,6 @@ a.nav-list-group-item:hover, a.nav-list-group-item:focus{
 #banner-body-left .latest-news{
 	width: 102%;
 }
+.border-solid-ddd{
+	border:1px solid #ddd
+}

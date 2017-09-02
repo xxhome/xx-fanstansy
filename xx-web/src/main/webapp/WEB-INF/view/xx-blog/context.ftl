@@ -22,7 +22,7 @@
             <#include "/xx-blog/navbar.ftl"/>
 
                 <div class="col-xs-10 banner-body-right">
-                    <div class="banner-bottom">
+                    <div class="banner-bottom border-solid-ddd">
                         <div id="editormd-view">
                             <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
                         </div>

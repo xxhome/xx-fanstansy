@@ -4,9 +4,11 @@ import com.fantasy.xxblog.entity.BlogContentEntity;
 import com.fantasy.xxblog.entity.BlogTagEntity;
 import com.fantasy.xxblog.service.BlogContentService;
 import com.fantasy.xxtest.base.SpringTest;
+import com.fantasy.xxutil.util.XXClassUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class BlogContentServiceTest extends SpringTest {
     }
 
     @Test
-    public void testPersist() {
+    public void testPersist() throws IOException, ClassNotFoundException {
         blogContentService.clean();
 
         BlogContentEntity blogContentEntity1 = new BlogContentEntity();
@@ -61,6 +63,7 @@ public class BlogContentServiceTest extends SpringTest {
         blogContentEntity3.setName("Android基于UPnP/DLNA的智能设备媒体互联");
         blogContentEntity3.setDescription("工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...");
         blogContentService.persist(blogContentEntity3);
+
     }
 
     private List<BlogTagEntity> getBlogTagEntityList() {
