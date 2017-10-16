@@ -19,23 +19,23 @@ public class XXResponseBodyInterceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(XXResponseBodyInterceptor.class);
 
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
+    @Pointcut("@annotation(com.fantasy.xxbase.annotation.XXRequestMapping)")
     public void doAroundRequestMapping() {
     }
 
 
     @Around("doAroundRequestMapping()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        long startTime = System.currentTimeMillis();
+        final long startTime = System.currentTimeMillis();
 
         Object obj = null;
         try {
             obj = pjp.proceed();
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.error(e.getMessage(), e);
         }
 
-        String runtime = (System.currentTimeMillis() - startTime) / 1000F + "ms";
+        final String runtime = ((System.currentTimeMillis() - startTime) / 1000F) + "ms";
 
         if(obj instanceof XXResponseBody){
             ((XXResponseBody) obj).setRuntime(runtime);

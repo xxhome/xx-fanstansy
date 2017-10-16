@@ -1,5 +1,7 @@
 package com.fantasy.xxbase.controller;
 
+import com.fantasy.xxbase.annotation.XXRequestMapping;
+import com.fantasy.xxbase.annotation.XXRestController;
 import com.fantasy.xxbase.service.CaptchaService;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -17,14 +19,13 @@ import java.awt.image.BufferedImage;
 /**
  * Created by admin on 17/02/18.
  */
-@RestController
-@RequestMapping("/xxbase/captcha")
+@XXRestController(path = "/xxbase/captcha")
 public class CaptchaController extends BaseController {
 
     @Autowired
     private CaptchaService captchaService;
 
-    @RequestMapping("/get")
+    @XXRequestMapping("/get")
     public void get(@RequestParam String captchaId, HttpServletRequest request, HttpServletResponse response) {
 
         if (StringUtils.isEmpty(captchaId)) {

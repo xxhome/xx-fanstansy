@@ -20,11 +20,6 @@ public final class XXHttpUtils {
 
     private static Logger logger = LoggerFactory.getLogger(XXHttpUtils.class);
 
-    public static void main(String[] args) {
-        get("http://127.0.0.1/xx-fantasy/xxblog/group/list.xhtml");
-    }
-
-
     public static String get(final String url) {
         String result = null;
 
@@ -36,13 +31,18 @@ public final class XXHttpUtils {
                 HttpEntity entity = response.getEntity();
 
                 logger.debug("---------------------------------------------------------------------------------------");
+
                 // 打印响应状态
                 logger.debug("Response status : {}", response.getStatusLine());
                 if (entity != null) {
                     result = EntityUtils.toString(entity);
 
+                    // 打印内容编码
+                    logger.debug("Response content encoding : {}", entity.getContentEncoding());
+
                     // 打印响应内容长度
                     logger.debug("Response content length : {}", entity.getContentLength());
+
                     // 打印响应内容
                     logger.debug("Response content : {}", result);
                 }
