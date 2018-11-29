@@ -1,10 +1,10 @@
-package com.fantasy.xxbase.datasource;
+package com.fantasy.xxcore.datasource;
 
 /**
  * @author li.fang
  * @since 2017/6/8
  */
-public class DynamicDataSourceHolder {
+public class XXDynamicDataSourceHolder {
 
     public static final String DATASOURCE_BASE = "dataSourceBase";
     public static final String DATASOURCE_BLOG = "dataSourceBlog";
@@ -12,7 +12,7 @@ public class DynamicDataSourceHolder {
     /**
      * 注意：数据源标识保存在线程变量中，避免多线程操作数据源时互相干扰
      */
-    private static final ThreadLocal<String> THREAD_DATA_SOURCE = new ThreadLocal<String>();
+    private static final ThreadLocal<String> THREAD_DATA_SOURCE = new ThreadLocal<>();
 
     public static String getDataSource() {
         return THREAD_DATA_SOURCE.get();

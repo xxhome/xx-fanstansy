@@ -1,11 +1,10 @@
 package com.fantasy.xxbase.controller;
 
-import com.fantasy.xxbase.annotation.XXRequestMapping;
-import com.fantasy.xxbase.annotation.XXRestController;
 import com.fantasy.xxbase.service.CaptchaService;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,13 +18,14 @@ import java.awt.image.BufferedImage;
 /**
  * Created by admin on 17/02/18.
  */
-@XXRestController(path = "/xxbase/captcha")
+@RestController
+@RequestMapping(value = "/xxbase/captcha", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CaptchaController extends BaseController {
 
     @Autowired
     private CaptchaService captchaService;
 
-    @XXRequestMapping("/get")
+    @RequestMapping("/get")
     public void get(@RequestParam String captchaId, HttpServletRequest request, HttpServletResponse response) {
 
         if (StringUtils.isEmpty(captchaId)) {

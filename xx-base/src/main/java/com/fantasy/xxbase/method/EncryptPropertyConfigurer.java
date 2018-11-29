@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.method;
 
-import com.fantasy.xxutil.util.XXCipherUtils;
+import com.fantasy.xxutil.util.XXCodecUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
@@ -22,12 +22,13 @@ public class EncryptPropertyConfigurer extends PropertyPlaceholderConfigurer {
      */
     @Override
     protected String convertProperty(String propertyName, String propertyValue) {
+        String value;
         if (isEncryptProp(propertyName)) {
-            String decryptValue = XXCipherUtils.getDesDecryptText(propertyValue);
-            return decryptValue;
+            value = XXCodecUtils.getDesDecryptText(propertyValue);
         } else {
-            return propertyValue;
+            value = propertyValue;
         }
+        return value;
     }
 
     /**

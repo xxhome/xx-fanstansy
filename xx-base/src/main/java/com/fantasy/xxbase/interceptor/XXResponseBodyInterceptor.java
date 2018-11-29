@@ -19,7 +19,7 @@ public class XXResponseBodyInterceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(XXResponseBodyInterceptor.class);
 
-    @Pointcut("@annotation(com.fantasy.xxbase.annotation.XXRequestMapping)")
+    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping)")
     public void doAroundRequestMapping() {
     }
 

@@ -5,6 +5,8 @@ import com.fantasy.xxbase.service.impl.BaseServiceImpl;
 import com.fantasy.xxblog.dao.BlogAuthorityDao;
 import com.fantasy.xxblog.entity.BlogAuthorityEntity;
 import com.fantasy.xxblog.service.BlogAuthorityService;
+import com.fantasy.xxcore.datasource.XXDynamicDataSource;
+import com.fantasy.xxcore.datasource.XXDynamicDataSourceHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import java.util.List;
  * @since 2017/6/3
  */
 @Service
+@XXDynamicDataSource(XXDynamicDataSourceHolder.DATASOURCE_BLOG)
 public class BlogAuthorityServiceImpl extends BaseServiceImpl<BlogAuthorityEntity> implements BlogAuthorityService {
 
     @Autowired

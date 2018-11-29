@@ -17,6 +17,17 @@ public final class XXJsonUtils {
 
     private static Logger logger = LoggerFactory.getLogger(XXJsonUtils.class);
 
+    public static boolean isJsonStr(String str, Class clazz){
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            mapper.readValue(str, clazz);
+            return true;
+        } catch (IOException e) {
+            logger.error(e.getMessage());
+        }
+        return false;
+    }
+
     public static String toJsonStr(Object object) {
         try {
             ObjectMapper mapper = new ObjectMapper();

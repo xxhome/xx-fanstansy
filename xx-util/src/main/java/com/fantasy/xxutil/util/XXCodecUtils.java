@@ -1,8 +1,7 @@
 package com.fantasy.xxutil.util;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.shiro.crypto.hash.Md5Hash;
-import org.hibernate.validator.constraints.NotBlank;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,9 +17,9 @@ import java.security.SecureRandom;
  * @author li.fang
  * @since 2017/02/19
  */
-public final class XXCipherUtils {
+public final class XXCodecUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(XXCipherUtils.class);
+    private static Logger logger = LoggerFactory.getLogger(XXCodecUtils.class);
 
     //指定DES加密解密所用密钥
     private static Key key;
@@ -51,17 +50,17 @@ public final class XXCipherUtils {
      * @param plaintext
      * @return
      */
-    public static String getTime64MD5(@NotBlank String plaintext) {
+    public static String getTime64MD5(String plaintext) {
         return getTime64MD5(plaintext, DEFAULT_SALT);
     }
 
 
-    public static String getTime64MD5(@NotBlank String plaintext, String salt) {
+    public static String getTime64MD5(String plaintext, String salt) {
         String nano = String.valueOf(System.nanoTime());
 
-        String password = new Md5Hash(plaintext, salt, CIPHER_COUNT).toHex();
+        String password = DigestUtils.md5Hex(plaintext);
 
-        String timestamp = new Md5Hash(nano, DEFAULT_SALT, CIPHER_COUNT).toHex();
+        String timestamp = DigestUtils.md5Hex(nano);
 
         String p = append(password, timestamp);
 
@@ -93,7 +92,7 @@ public final class XXCipherUtils {
      * @param md5Str2 输入的密码
      * @return
      */
-    public static boolean isMD5Equal(@NotBlank String md5Str1, @NotBlank String md5Str2) {
+    public static boolean isMD5Equal(String md5Str1, String md5Str2) {
         if (md5Str1 == null || md5Str2 == null) {
             return false;
         } else if (md5Str2.length() != 64) {

@@ -24,10 +24,9 @@ public class BlogMenuController extends BaseController {
     private BlogMenuService blogMenuService;
 
     @RequestMapping(value = "/list")
-    public XXResponseBody<List<BlogGroupEntity>> list(){
+    public XXResponseBody<List<BlogMenuEntity>> list(){
         Page<BlogMenuEntity> page = blogMenuService.findAll();
-        XXResponseBody responseBody = new XXResponseBody<>(page.getContext());
-        return responseBody;
+        return new XXResponseBody<>(page.getContext());
     }
 
 }

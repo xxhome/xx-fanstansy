@@ -6,7 +6,7 @@ import com.fantasy.xxblog.entity.BlogAccountEntity;
 import com.fantasy.xxblog.entity.BlogAuthorityEntity;
 import com.fantasy.xxblog.service.BlogAccountService;
 import com.fantasy.xxblog.service.BlogAuthorityService;
-import com.fantasy.xxutil.util.XXCipherUtils;
+import com.fantasy.xxutil.util.XXCodecUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -91,7 +91,7 @@ public class AuthenticationRealm extends AuthorizingRealm {
             if (blogAccountEntity.isLocked()) {
                 throw new LockedAccountException();
             }
-            if (StringUtils.equals(blogAccountEntity.getPassword(), XXCipherUtils.getDesEncryptText(password))) {
+            if (StringUtils.equals(blogAccountEntity.getPassword(), XXCodecUtils.getDesEncryptText(password))) {
                 //登录成功,登录次数加1,失败次数归零,并记录登录日志
                 Long loginCount = blogAccountEntity.getLoginSucceedCount() + 1L;
                 blogAccountEntity.setLoginSucceedCount(loginCount);

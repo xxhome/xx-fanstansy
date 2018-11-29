@@ -11,5 +11,4 @@ public final class XXMathUtils {
         return bytes / 1024 / 1024;
     }
 
-
 }

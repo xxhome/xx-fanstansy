@@ -11,6 +11,17 @@ public final class XXStringUtils {
     private XXStringUtils() {
     }
 
+    /**
+     * 获取字符串中大写字母
+     * <pre>
+     *     1. XXStringUtils.getUpperCase("ABC") = ABC
+     *     2. XXStringUtils.getUpperCase("ABc") = AB
+     *     3. XXStringUtils.getUpperCase("abc") = ""
+     *     4. XXStringUtils.getUpperCase("") = ""
+     * </pre>
+     * @param str 字符串
+     * @return 字符串中的出现的大写字母
+     */
     public static String getUpperCase(final String str) {
         if (StringUtils.isBlank(str)) return "";
 
@@ -23,5 +34,13 @@ public final class XXStringUtils {
             }
         }
         return sb.toString();
+    }
+
+    public static boolean isBlank(final String str){
+        return StringUtils.isBlank(str);
+    }
+
+    public static boolean isNotBlank(final String str){
+        return StringUtils.isNotBlank(str);
     }
 }

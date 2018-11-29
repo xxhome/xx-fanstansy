@@ -22,7 +22,7 @@ public class XXMessageUtils implements ApplicationContextAware, DisposableBean {
 
     private static ApplicationContext applicationContext;
 
-    private XXMessageUtils() {
+    public XXMessageUtils() {
     }
 
     public void setApplicationContext(ApplicationContext applicationContext) {

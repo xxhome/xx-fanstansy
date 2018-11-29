@@ -1,9 +1,14 @@
 package com.fantasy.xxbase.tag;
 
+import com.fantasy.xxbase.method.XXResponseBody;
+import com.fantasy.xxbase.usertype.JSONColumn;
 import com.fantasy.xxutil.util.XXHttpUtils;
+import com.fantasy.xxutil.util.XXJsonUtils;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import freemarker.core.Environment;
 import freemarker.ext.beans.BeansWrapperBuilder;
 import freemarker.template.*;
+import org.activiti.engine.impl.util.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -30,8 +35,10 @@ public class RequestTemplateTag implements TemplateDirectiveModel {
 
         if(StringUtils.isBlank(result)) return;
 
-        env.setVariable("responseBody", new BeansWrapperBuilder(Configuration.VERSION_2_3_23).build().wrap(result));
-        body.render(env.getOut());
-        env.getOut().flush();
+        if(XXJsonUtils.isJsonStr(result, XXResponseBody.class)){
+            env.setVariable("responseBody", new BeansWrapperBuilder(Configuration.VERSION_2_3_23).build().wrap(result));
+            body.render(env.getOut());
+            env.getOut().flush();
+        }
     }
 }

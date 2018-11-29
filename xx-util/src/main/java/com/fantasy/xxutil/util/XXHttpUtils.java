@@ -20,6 +20,7 @@ public final class XXHttpUtils {
 
     private static Logger logger = LoggerFactory.getLogger(XXHttpUtils.class);
 
+
     public static String get(final String url) {
         String result = null;
 
