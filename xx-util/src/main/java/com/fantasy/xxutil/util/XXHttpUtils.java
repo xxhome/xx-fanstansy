@@ -50,7 +50,7 @@ public final class XXHttpUtils {
                 logger.debug("---------------------------------------------------------------------------------------");
             }
         } catch (ParseException | IOException e) {
-            logger.debug(e.getMessage(), e);
+            logger.debug("error message:{}, url:{}", e.getMessage(), url);
         }
         return result;
     }

@@ -23,7 +23,15 @@
 
                 <div class="col-xs-10 banner-body-right">
                     <div class="banner-bottom">
-                        <div id="editormd-view">
+                        <div id="editormd-view1">
+                            <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
+                        </div>
+
+                        <div id="editormd-view2">
+                            <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
+                        </div>
+
+                        <div id="editormd-view3">
                             <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
                         </div>
                     </div>
@@ -45,11 +53,47 @@
         var testEditor;
 
         $(function () {
-            testEditor = editormd("editormd-view", {
+            testEditor = editormd("editormd-view1", {
                 width: "100%",
-                height: 1050,
+                height: 80,
+                watch:false,
                 syncScrolling: "single",
-                path: "${src}/xx-base/markdown/lib/"
+                theme: "dark",
+                placeholder:"这里输入文章标题......",
+                path: "${src}/xx-base/markdown/lib/",
+                toolbarIcons : function() {
+                    return ["preview"];
+                }
+            });
+        });
+
+        $(function () {
+            testEditor = editormd("editormd-view2", {
+                width: "100%",
+                height: 300,
+                watch:false,
+                syncScrolling: "single",
+                theme: "dark",
+                placeholder:"这里输入文章标题......",
+                path: "${src}/xx-base/markdown/lib/",
+                toolbarIcons : function() {
+                    return ["preview"];
+                }
+            });
+        });
+
+        $(function () {
+            testEditor = editormd("editormd-view3", {
+                width: "100%",
+                height: 500,
+                watch:false,
+                syncScrolling: "single",
+                theme: "dark",
+                placeholder:"这里输入文章标题......",
+                path: "${src}/xx-base/markdown/lib/",
+                toolbarIcons : function() {
+                    return ["preview"];
+                }
             });
         });
     </script>

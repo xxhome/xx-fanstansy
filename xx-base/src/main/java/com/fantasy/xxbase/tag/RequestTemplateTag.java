@@ -1,14 +1,11 @@
 package com.fantasy.xxbase.tag;
 
 import com.fantasy.xxbase.method.XXResponseBody;
-import com.fantasy.xxbase.usertype.JSONColumn;
 import com.fantasy.xxutil.util.XXHttpUtils;
 import com.fantasy.xxutil.util.XXJsonUtils;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import freemarker.core.Environment;
 import freemarker.ext.beans.BeansWrapperBuilder;
 import freemarker.template.*;
-import org.activiti.engine.impl.util.json.JSONObject;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -28,8 +25,6 @@ public class RequestTemplateTag implements TemplateDirectiveModel {
         String url = params.getOrDefault("url", "").toString();
 
         if(StringUtils.isBlank(url)) return;
-
-        url = new StringBuilder("http://127.0.0.1:8088").append(url).toString();
 
         String result = XXHttpUtils.get(url);
 

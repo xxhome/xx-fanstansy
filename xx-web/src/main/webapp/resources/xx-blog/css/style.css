@@ -1955,3 +1955,7 @@ a.nav-list-group-item:hover, a.nav-list-group-item:focus{
 .border-solid-ddd{
 	border:1px solid #ddd
 }
+
+.editormd-toolbar-container{
+	float: right;
+}

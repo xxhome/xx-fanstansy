@@ -11,7 +11,7 @@
     <@resource base="${src}/xx-blog" path="/css/style.css"/>
     <@resource base="${src}/xx-base" path="/js/jquery-1.11.1.min.js"/>
 
-    <link href="${src}/xx-blog/favicon.ico" rel="icon" type="image/x-icon" />${requestURL}
+    <link href="${src}/xx-blog/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 
                 <div class="banner-bottom">
 
-                    <@http url="${path}/xxblog/content/list.xhtml">
+                    <@http url="${localhost}/xxblog/content/list.xhtml">
                         <#assign json=responseBody?eval/>
                         <#list json.data as content>
                             <a href="${path}/xxblog/view/context.xhtml?id=${content.id}">

@@ -22,7 +22,7 @@
                 <nav class="stroke">
                     <ul class="nav navbar-nav">
 
-                        <@http url="${path}/xxblog/menu/list.xhtml">
+                        <@http url="${localhost}/xxblog/menu/list.xhtml">
                             <#assign json=responseBody?eval />
                             <#list json.data as menu>
                                 <li class="${(active?default("home")==menu.mark)?string('active', '')}">
