@@ -51,6 +51,7 @@
 
     <!-- 视图解析器  -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="com.fantasy.xxweb.ftl.XXFreeMarkerView"/>
         <property name="contentType" value="${template.content.type}"/>
         <property name="suffix" value=".ftl"/>
     </bean>
