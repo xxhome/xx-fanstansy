@@ -471,6 +471,17 @@
             <version>2.4.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-core</artifactId>
+            <version>4.0.0-RC2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-namespace</artifactId>
+            <version>4.0.0-RC2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.activemq</groupId>
