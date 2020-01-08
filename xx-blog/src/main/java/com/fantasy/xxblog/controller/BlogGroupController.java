@@ -28,8 +28,7 @@ public class BlogGroupController extends BaseController{
     public XXResponseBody<List<BlogGroupEntity>> list(){
         Page<BlogGroupEntity> page = blogGroupService.findAll();
 
-        XXResponseBody responseBody = new XXResponseBody<>(page.getContext());
-        return responseBody;
+        return new XXResponseBody<>(page.getContext());
     }
 
 }

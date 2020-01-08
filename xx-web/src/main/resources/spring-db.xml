@@ -3,20 +3,26 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:sharding="http://shardingsphere.apache.org/schema/shardingsphere/sharding"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://shardingsphere.apache.org/schema/shardingsphere/sharding
+       http://shardingsphere.apache.org/schema/shardingsphere/sharding/sharding.xsd">
 
-    <context:component-scan base-package="com.fantasy.xxbase, com.fantasy.xxblog" use-default-filters="true">
+    <aop:aspectj-autoproxy/>
+
+    <context:component-scan base-package="com.fantasy" use-default-filters="true">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
+
     <!-- Alibaba DruId连接池 -->
     <bean id="dataSourceBase" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${jdbc.url.base}"/>
+        <property name="url" value="${jdbc.url}"/>
         <property name="username" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
 
@@ -47,57 +53,88 @@
         <property name="filters" value="stat"/>
     </bean>
 
-
-    <bean id="dataSourceBlog" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <property name="url" value="${jdbc.url.blog}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-
-        <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="1"/>
-        <property name="minIdle" value="1"/>
-        <property name="maxActive" value="20"/>
-
-        <!-- 配置获取连接等待超时的时间 -->
-        <property name="maxWait" value="60000"/>
-
-        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
-
-        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-        <property name="minEvictableIdleTimeMillis" value="300000"/>
-
-        <property name="validationQuery" value="SELECT 'x'"/>
-        <property name="testWhileIdle" value="true"/>
-        <property name="testOnBorrow" value="false"/>
-        <property name="testOnReturn" value="false"/>
-
-        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true"/>
-        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
-
-        <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
-        <property name="filters" value="stat"/>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSourceBase"></property>
     </bean>
 
-    <bean id="dynamicDataSource" class="com.fantasy.xxbase.datasource.DynamicDataSource">
-        <property name="targetDataSources">
-            <map key-type="java.lang.String">
-                <!-- 指定lookupKey和与之对应的数据源 -->
-                <entry key="dataSourceBase" value-ref="dataSourceBase"></entry>
-                <entry key="dataSourceBlog" value-ref="dataSourceBlog"></entry>
-            </map>
-        </property>
-        <!-- 这里可以指定默认的数据源 -->
-        <property name="defaultTargetDataSource" ref="dataSourceBlog"/>
+    <!--<bean id="dataSourceBlog" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
+        <!--<property name="url" value="${jdbc.url.blog}"/>-->
+        <!--<property name="username" value="${jdbc.username}"/>-->
+        <!--<property name="password" value="${jdbc.password}"/>-->
+
+        <!--&lt;!&ndash; 配置初始化大小、最小、最大 &ndash;&gt;-->
+        <!--<property name="initialSize" value="1"/>-->
+        <!--<property name="minIdle" value="1"/>-->
+        <!--<property name="maxActive" value="20"/>-->
+
+        <!--&lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="60000"/>-->
+
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000"/>-->
+
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000"/>-->
+
+        <!--<property name="validationQuery" value="SELECT 'x'"/>-->
+        <!--<property name="testWhileIdle" value="true"/>-->
+        <!--<property name="testOnBorrow" value="false"/>-->
+        <!--<property name="testOnReturn" value="false"/>-->
+
+        <!--&lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
+        <!--<property name="poolPreparedStatements" value="true"/>-->
+        <!--<property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>-->
+
+        <!--&lt;!&ndash; 配置监控统计拦截的filters，去掉后监控界面sql无法统计 &ndash;&gt;-->
+        <!--<property name="filters" value="stat"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="dynamicDataSource" class="com.fantasy.xxcore.datasource.XXDynamicRoutingDataSource">-->
+        <!--<property name="targetDataSources">-->
+            <!--<map key-type="java.lang.String">-->
+                <!--&lt;!&ndash; 指定lookupKey和与之对应的数据源 &ndash;&gt;-->
+                <!--<entry key="dataSourceBase" value-ref="dataSourceBase"></entry>-->
+                <!--<entry key="dataSourceBlog" value-ref="dataSourceBlog"></entry>-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--&lt;!&ndash; 这里可以指定默认的数据源 &ndash;&gt;-->
+        <!--<property name="defaultTargetDataSource" ref="dataSourceBase"/>-->
+    <!--</bean>-->
+
+
+    <!--<bean id="dataSourceAspect" class="com.fantasy.xxcore.datasource.XXDynamicDataSourceAspect" />-->
+
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="dataSourceAspect">-->
+            <!--&lt;!&ndash; 拦截所有service方法 &ndash;&gt;-->
+            <!--<aop:pointcut id="dataSourcePointcut" expression="@annotation(com.fantasy.xxcore.datasource.XXDynamicDataSource)"/>-->
+            <!--<aop:before pointcut-ref="dataSourcePointcut" method="intercept" />-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <bean id="preciseModuloTableShardingAlgorithm" class="com.fantasy.xxtest.sharding.PreciseModuloTableShardingAlgorithm">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
     </bean>
 
+    <sharding:standard-strategy id="tableShardingStrategy" sharding-column="order_id" precise-algorithm-ref="preciseModuloTableShardingAlgorithm" />
+
+    <sharding:data-source id="shardingDataSource">
+        <sharding:sharding-rule data-source-names="dataSourceBase">
+            <sharding:table-rules>
+                <sharding:table-rule logic-table="t_order_item" table-strategy-ref="tableShardingStrategy"/>
+            </sharding:table-rules>
+            <sharding:binding-table-rules>
+                <sharding:binding-table-rule logic-tables="t_order_item" />
+            </sharding:binding-table-rules>
+        </sharding:sharding-rule>
+    </sharding:data-source>
 
 
     <!-- JPA配置  EntityManager配置 -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dynamicDataSource"/>
-        <property name="packagesToScan" value="com.fantasy.xxbase.entity, com.fantasy.xxblog.entity"></property>
+        <property name="dataSource" ref="shardingDataSource"/>
+
+        <property name="packagesToScan" value="com.fantasy.xxbase.entity,com.fantasy.xxtest.sharding.entity"></property>
         <!--<property name="persistenceUnitName" value="persistenceUnit"/>-->
         <!--<property name="persistenceXmlLocation" value="classpath:persistence.xml"></property>-->
         <property name="jpaVendorAdapter">
@@ -118,9 +155,9 @@
                 <prop key="hibernate.jdbc.batch_size">${hibernate.jdbc.batch_size}</prop>
                 <prop key="hibernate.connection.isolation">2</prop>
                 <prop key="javax.persistence.validation.mode">none</prop>
-                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider
-                </prop>
+                <prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.FSDirectoryProvider</prop>
                 <prop key="hibernate.search.default.indexBase">${java.io.tmpdir}/${system.project_name}/index</prop>
+                <prop key="hibernate.id.new_generator_mappings">true</prop>
             </props>
         </property>
     </bean>

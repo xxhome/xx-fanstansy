@@ -26,34 +26,37 @@
 
                 <div class="banner-bottom">
 
-                    <#list [1,2,3,4,5,6,7,9] as e>
-                        <a href="${path}/xxblog/view/context.xhtml">
-                            <div class="col-md-6 banner-left banner-top banner-height">
-                                <div class="col-xs-1 banner-left1">
-                                    <div class="banner-left11">
-                                        <span>  </span>
+                    <@http url="${localhost}/xxblog/content/list.xhtml">
+                        <#assign json=responseBody?eval/>
+                        <#list json.data as content>
+                            <a href="${path}/xxblog/view/context.xhtml?id=${content.id}">
+                                <div class="col-md-6 banner-left banner-top banner-height">
+                                    <div class="col-xs-1 banner-left1">
+                                        <div class="banner-left11">
+                                            <span>  </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-10 banner-right1">
+                                        <h3>${content.name}</h3>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                    <p>${content.description}</p>
+
+                                    <div class="bootstrap-tagsinput tags-list">
+                                        <#list content.tags as tag>
+                                            <span class="tag label tag-label-info">${tag.name}<span data-role="remove"></span></span>
+                                        </#list>
+                                    </div>
+
+                                    <div class="banner-footer">
+                                        <span>莫某 发布于 2小时前</span>
+                                        <span>阅读(1000)</span>
+                                        <span>点赞(2)</span>
                                     </div>
                                 </div>
-                                <div class="col-xs-10 banner-right1">
-                                    <h3>日志级别动态调整——小工具解决大问题</h3>
-                                </div>
-                                <div class="clearfix"></div>
-                                <p>工欲善其事，必先利其器。一个好的工具，能够节省大量的时间，提高整体工作效率。本文主要依据一线工程师的日常工作，从使用最频繁的日志着手，介绍了如何在保障...</p>
-
-                                <div class="bootstrap-tagsinput tags-list">
-                                    <#list [1,2,3,4,5] as t>
-                                        <span class="tag label tag-label-info">Amsterdam<span data-role="remove"></span></span>
-                                    </#list>
-                                </div>
-
-                                <div class="banner-footer">
-                                    <span>莫某 发布于 2小时前</span>
-                                    <span>阅读(1000)</span>
-                                    <span>点赞(2)</span>
-                                </div>
-                            </div>
-                        </a>
-                    </#list>
+                            </a>
+                        </#list>
+                    </@http>
 
                     <div class="clearfix"></div>
 

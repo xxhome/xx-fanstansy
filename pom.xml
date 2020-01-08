@@ -14,22 +14,65 @@
         <module>xx-util</module>
         <module>xx-base</module>
         <module>xx-blog</module>
+        <module>xx-core</module>
+        <module>xx-test</module>
     </modules>
 
     <properties>
-        <antlr4.version>4.6</antlr4.version>
-        <shiro.version>1.3.2</shiro.version>
-        <lucene.version>6.4.2</lucene.version>
-        <quartz.version>2.2.3</quartz.version>
-        <jackson.version>2.8.7</jackson.version>
-        <activiti.version>5.22.0</activiti.version>
-        <aspectjrt.version>1.8.10</aspectjrt.version>
+        <poi.version>3.17</poi.version>
+        <antlr4.version>4.7</antlr4.version>
+        <shiro.version>1.4.0</shiro.version>
+        <lucene.version>6.6.2</lucene.version>
+        <quartz.version>2.3.0</quartz.version>
+        <activiti.version>6.0.0</activiti.version>
+        <ehcache.version>2.6.11</ehcache.version>
+        <activemq.version>5.7.0</activemq.version>
+        <httpclient.version>4.5.3</httpclient.version>
+        <freemarker.version>2.3.23</freemarker.version>
+        <javax.servlet.version>4.0.0</javax.servlet.version>
+
+        <commons.io.version>2.5</commons.io.version>
+        <commons.codec.version>1.10</commons.codec.version>
+
+        <!--logger-->
+        <slf4j.version>1.7.25</slf4j.version>
+        <testng.version>6.11</testng.version>
+        <mockito.version>2.11.0</mockito.version>
+        <logback.classic.version>1.2.3</logback.classic.version>
+
+        <!--spring-->
+        <jackson.version>2.10.1</jackson.version>
+        <aspectjrt.version>1.8.11</aspectjrt.version>
+        <spring.version>5.0.0.RELEASE</spring.version>
+        <spring.session.version>1.3.0.RELEASE</spring.session.version>
+        <spring.data.redis.version>1.8.3.RELEASE</spring.data.redis.version>
+        <redis.clients.version>2.9.0</redis.clients.version>
+
+        <!--hibernate-->
+        <querydsl.version>3.7.4</querydsl.version>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <hibernate.validator.version>6.0.3.Final</hibernate.validator.version>
+
+        <!--mysql-->
+        <druid.version>1.1.4</druid.version>
+        <mysql.connector.java.version>8.0.17</mysql.connector.java.version>
+
         <jetty.version>9.4.1.v20170120</jetty.version>
-        <spring.version>4.3.7.RELEASE</spring.version>
-        <hibernate.version>5.2.10.Final</hibernate.version>
+        <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.0.2</maven.resources.plugin.version>
     </properties>
 
     <repositories>
+        <repository>
+            <id>alimaven</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>maven.net.cn</id>
+            <name>oneof the central mirrors in china</name>
+            <url>http://maven.net.cn/content/groups/public/</url>
+        </repository>
         <repository>
             <id>mvn repository</id>
             <name>mvn repository</name>
@@ -39,6 +82,13 @@
 
     <dependencies>
         <!--=========================================================================================================-->
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -124,19 +174,19 @@
         <dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session</artifactId>
-            <version>1.3.1.RELEASE</version>
+            <version>${spring.session.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>1.8.3.RELEASE</version>
+            <version>${spring.data.redis.version}</version>
         </dependency>
 
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
+            <version>${redis.clients.version}</version>
         </dependency>
 
         <!--=========================================================================================================-->
@@ -144,19 +194,19 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.8.7</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.8.7</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.8.7</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <!--=========================================================================================================-->
@@ -209,7 +259,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>5.4.0.Final</version>
+            <version>${hibernate.validator.version}</version>
         </dependency>
 
         <!--=========================================================================================================-->
@@ -256,13 +306,13 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.6</version>
+            <version>${mysql.connector.java.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.0.29</version>
+            <version>${druid.version}</version>
         </dependency>
 
         <!--=========================================================================================================-->
@@ -290,19 +340,19 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.5</version>
+            <version>${commons.io.version}</version>
         </dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.10</version>
+            <version>${commons.codec.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi</artifactId>
-            <version>3.15</version>
+            <version>${poi.version}</version>
         </dependency>
 
         <!--=========================================================================================================-->
@@ -310,38 +360,38 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>1.7.25</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>${logback.classic.version}</version>
         </dependency>
 
         <!--=========================================================================================================-->
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-core</artifactId>
-            <version>3.7.4</version>
+            <version>${querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.mysema.querydsl</groupId>
             <artifactId>querydsl-jpa</artifactId>
-            <version>3.7.4</version>
+            <version>${querydsl.version}</version>
         </dependency>
 
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
-            <version>2.6.11</version>
+            <version>${ehcache.version}</version>
         </dependency>
 
         <dependency>
@@ -353,33 +403,35 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
+            <version>${javax.servlet.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
-            <version>2.3.23</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.29</version>
+            <version>${freemarker.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>2.7.17</version>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.3</version>
+            <version>${httpclient.version}</version>
         </dependency>
-
 
         <dependency>
             <groupId>com.octo.captcha</groupId>
@@ -422,15 +474,27 @@
         </dependency>
 
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.11</version>
+            <groupId>xerces</groupId>
+            <artifactId>xerces</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-core</artifactId>
+            <version>4.0.0-RC2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-namespace</artifactId>
+            <version>4.0.0-RC2</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-core</artifactId>
-            <version>5.7.0</version>
+            <version>${activemq.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>
@@ -469,7 +533,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -487,7 +551,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>${maven.resources.plugin.version}</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
@@ -509,7 +573,7 @@
                         </systemProperty>
                     </systemProperties>
                     <useTestClasspath>true</useTestClasspath>
-                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/, xx-blog/target/classes/</classesDirectory>
+                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/, xx-blog/target/classes/, xx-core/target/classes/, xx-test/target/classes/</classesDirectory>
                     <webAppSourceDirectory>${project.basedir}/xx-web/src/main/webapp</webAppSourceDirectory>
                     <testClassesDirectory>${project.basedir}xx-web/src/test/resources</testClassesDirectory>
                     <webAppConfig>

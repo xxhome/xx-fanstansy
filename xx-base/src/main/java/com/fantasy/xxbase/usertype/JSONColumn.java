@@ -1,6 +1,6 @@
 package com.fantasy.xxbase.usertype;
 
-import com.alibaba.fastjson.JSON;
+import com.fantasy.xxutil.util.XXJsonUtils;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.usertype.ParameterizedType;
@@ -128,12 +128,12 @@ public class JSONColumn implements UserType, ParameterizedType {
             return null;
         }
 
-        String json = JSON.toJSONString(value);
+        String json = XXJsonUtils.toJsonStr(value);
 
         if (jsonListColumn || stringListColumn) {
-            return JSON.parseArray(json, getObjectClass());
+            return XXJsonUtils.parseArray(json, getObjectClass());
         } else {
-            return JSON.parseObject(json, getObjectClass());
+            return XXJsonUtils.parseObject(json, getObjectClass());
         }
 
     }
@@ -161,9 +161,9 @@ public class JSONColumn implements UserType, ParameterizedType {
         String value = rs.getString(strings[0]);
         if (value != null && !value.isEmpty()) {
             if (jsonListColumn || stringListColumn) {
-                return JSON.parseArray(value, getObjectClass());
+                return XXJsonUtils.parseArray(value, getObjectClass());
             } else {
-                return JSON.parseObject(value, getObjectClass());
+                return XXJsonUtils.parseObject(value, getObjectClass());
             }
         }
         return null;
@@ -174,7 +174,7 @@ public class JSONColumn implements UserType, ParameterizedType {
         if (o == null)
             st.setString(i, "");
         else {
-            String s = JSON.toJSONString(o);
+            String s = XXJsonUtils.toJsonStr(o);
             st.setString(i, s);
         }
     }

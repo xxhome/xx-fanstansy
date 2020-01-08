@@ -21,13 +21,13 @@
 
             <#include "/xx-blog/navbar.ftl"/>
 
-            <div class="col-xs-10 banner-body-right">
-                <div class="banner-bottom">
-                    <div id="editormd-view">
-                        <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
+                <div class="col-xs-10 banner-body-right">
+                    <div class="banner-bottom border-solid-ddd">
+                        <div id="editormd-view">
+                            <textarea style="display:none;" name="test-editormd-markdown-doc"></textarea>
+                        </div>
                     </div>
                 </div>
-            </div>
 
             <div class="clearfix"></div>
             <#include "/xx-blog/footer.ftl"/>
@@ -37,27 +37,28 @@
 <!-- //banner-body -->
 
 <!-- for bootstrap working -->
-<@resource path="${src}/xx-base/js/bootstrap.js"/>
+<@resource base="${src}/xx-base/bootstrap" path="/js/bootstrap.js"/>
 <!-- //for bootstrap working -->
 
-<@resource path="${src}/xx-base/markdown/lib/marked.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/prettify.min.js"/>
-
-<@resource path="${src}/xx-base/markdown/lib/raphael.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/underscore.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/sequence-diagram.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/flowchart.min.js"/>
-<@resource path="${src}/xx-base/markdown/lib/jquery.flowchart.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/marked.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/prettify.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/raphael.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/underscore.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/sequence-diagram.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/flowchart.min.js"/>
+<@resource base="${src}/xx-base/markdown/lib" path="/jquery.flowchart.min.js"/>
 
 <@resource path="${src}/xx-base/markdown/js/editormd.js"/>
 
 <script type="text/javascript">
+
+    var id = getUrlParam("id");
+
     $(function() {
-
-        $.get("${src}/xx-blog/markdown/test.md", function(markdown) {
-
+        $.get("${path}/xxblog/content/markdown.xhtml?id=" + id, function(markdown) {
+            var mdText = markdown.data.content;
             testEditormdView = editormd.markdownToHTML("editormd-view", {
-                markdown        : markdown ,//+ "\r\n" + $("#append-test").text(),
+                markdown        : mdText ,//+ "\r\n" + $("#append-test").text(),
                 //htmlDecode      : true,       // 开启 HTML 标签解析，为了安全性，默认不开启
                 htmlDecode      : "style,script,iframe",  // you can filter tags decode
                 //toc             : false,
@@ -73,8 +74,13 @@
                 sequenceDiagram : true,  // 默认不解析
             });
         });
-
     });
+
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
 </script>
 
 </body>

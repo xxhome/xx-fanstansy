@@ -16,10 +16,12 @@
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="save*" read-only="false" propagation="REQUIRED"></tx:method>
-            <tx:method name="update*" read-only="false" propagation="REQUIRED"></tx:method>
             <tx:method name="insert*" read-only="false" propagation="REQUIRED"></tx:method>
             <tx:method name="persist*" read-only="false" propagation="REQUIRED"></tx:method>
+
+            <tx:method name="update*" read-only="false" propagation="REQUIRED"></tx:method>
             <tx:method name="merge*" read-only="false" propagation="REQUIRED"></tx:method>
+
             <tx:method name="remove*" read-only="false" propagation="REQUIRED"></tx:method>
             <tx:method name="clean*" read-only="false" propagation="REQUIRED"></tx:method>
 

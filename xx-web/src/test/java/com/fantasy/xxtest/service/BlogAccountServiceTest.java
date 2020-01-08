@@ -6,7 +6,7 @@ import com.fantasy.xxbase.vo.QueryParam;
 import com.fantasy.xxblog.entity.BlogAccountEntity;
 import com.fantasy.xxblog.service.BlogAccountService;
 import com.fantasy.xxtest.base.SpringTest;
-import com.fantasy.xxutil.util.XXCipherUtils;
+import com.fantasy.xxutil.util.XXCodecUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.testng.annotations.Test;
 
@@ -54,7 +54,7 @@ public class BlogAccountServiceTest extends SpringTest {
         BlogAccountEntity blogAccountEntity = new BlogAccountEntity();
         blogAccountEntity.setName("cook");
         blogAccountEntity.setEmail("cook@gmail.com");
-        blogAccountEntity.setPassword(XXCipherUtils.getDesEncryptText("111111"));
+        blogAccountEntity.setPassword(XXCodecUtils.getDesEncryptText("111111"));
         blogAccountEntity.getRoleIds().add("BR500000");
         blogAccountEntity.getRoleIds().add("BR500001");
         blogAccountService.persist(blogAccountEntity);

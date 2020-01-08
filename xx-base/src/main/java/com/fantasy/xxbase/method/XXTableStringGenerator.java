@@ -9,8 +9,6 @@ import org.hibernate.id.enhanced.TableGenerator;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.LongType;
 import org.hibernate.type.Type;
-import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
 
 import java.io.Serializable;
 import java.util.Properties;
@@ -19,12 +17,10 @@ import java.util.Properties;
  * @author li.fang
  * @since 2017/6/3
  */
-@Test
-@ContextConfiguration(locations = "classpath:spring-base.xml")
 public class XXTableStringGenerator extends TableGenerator {
 
     private static final String TABLE = "t_xx_generator";
-    private static final String DB_TABLE = "db_fantasy_base.t_xx_generator";
+    private static final String DB_TABLE = "db_fantasy.t_xx_generator";
 
     @Override
     public void configure(Type type, Properties params, ServiceRegistry serviceRegistry) throws MappingException {

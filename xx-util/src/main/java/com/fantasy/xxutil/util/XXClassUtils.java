@@ -1,10 +1,8 @@
 package com.fantasy.xxutil.util;
 
 import com.alibaba.druid.sql.visitor.functions.Char;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

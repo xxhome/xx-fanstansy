@@ -63,12 +63,12 @@
         <property name="schedulerName" value="${org.quartz.scheduler.instanceName}"/>
 
         <!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动 -->
-        <property name="startupDelay" value="${startupDelay}"/>
+        <property name="startupDelay" value="${org.quartz.startupDelay}"/>
 
         <property name="applicationContextSchedulerContextKey" value="applicationContextKey"/>
 
         <!--可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了 -->
-        <property name="overwriteExistingJobs" value="false"/>
+        <property name="overwriteExistingJobs" value="${org.quartz.overwriteExistingJobs}"/>
 
         <!-- 设置自动启动 -->
         <property name="autoStartup" value="true"/>

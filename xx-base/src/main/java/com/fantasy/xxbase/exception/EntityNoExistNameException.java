@@ -13,4 +13,6 @@ public class EntityNoExistNameException extends CommonException {
     public EntityNoExistNameException(String message, String... args) {
         super(String.format(message, args));
     }
+
+
 }

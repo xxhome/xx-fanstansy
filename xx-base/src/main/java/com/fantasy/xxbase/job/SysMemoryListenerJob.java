@@ -1,5 +1,6 @@
 package com.fantasy.xxbase.job;
 
+import com.fantasy.xxbase.cache.RedisCacheProvider;
 import com.fantasy.xxutil.util.XXMathUtils;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -16,9 +17,16 @@ public class SysMemoryListenerJob extends QuartzJobBean{
 
     private Logger logger = LoggerFactory.getLogger(SysMemoryListenerJob.class);
 
+//    private RedisCacheProvider redisCacheProvider;
+
+    public SysMemoryListenerJob(){
+//        this.redisCacheProvider = XXApplicationContextUtils.getBean(RedisCacheProvider.class);
+    }
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+
+//        if(redisCacheProvider == null) redisCacheProvider = XXApplicationContextUtils.getBean(RedisCacheProvider.class);
 
         Runtime run = Runtime.getRuntime();
 
@@ -31,5 +39,6 @@ public class SysMemoryListenerJob extends QuartzJobBean{
 
         logger.debug("trigger name : {}", triggerName);
         logger.debug("total memory : {}, max memory : {}, free memory : {}", totalMemory, maxMemory, freeMemory);
+
     }
 }
