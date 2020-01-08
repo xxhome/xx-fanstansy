@@ -43,7 +43,7 @@
     <import resource="classpath:spring-db.xml"/>
     <import resource="classpath:spring-tx.xml"/>
     <import resource="classpath:spring-cache.xml"/>
-    <import resource="classpath:spring-shiro.xml"/>
+<!--    <import resource="classpath:spring-shiro.xml"/>-->
     <import resource="classpath:spring-captcha.xml"/>
     <import resource="classpath:spring-task.xml"/>
     <import resource="classpath:spring-activiti.xml"/>

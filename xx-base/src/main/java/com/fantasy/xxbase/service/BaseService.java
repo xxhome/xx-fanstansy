@@ -1,5 +1,6 @@
 package com.fantasy.xxbase.service;
 
+import com.fantasy.xxbase.dao.BaseDao;
 import com.fantasy.xxbase.entity.XXBaseEntity;
 import com.fantasy.xxbase.vo.Page;
 import com.fantasy.xxbase.vo.Pageable;
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by lifang on 2015/1/22.
  */
 public interface BaseService<T extends XXBaseEntity> {
+
 
     Page<T> find(List<QueryParam> queryParams);
 

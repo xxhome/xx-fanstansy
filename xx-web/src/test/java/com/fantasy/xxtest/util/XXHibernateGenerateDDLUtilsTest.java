@@ -27,7 +27,7 @@ import static org.hibernate.tool.schema.TargetType.STDOUT;
  * @since 2017/5/9
  */
 public class XXHibernateGenerateDDLUtilsTest extends SpringTest {
-    @Value(value = "${jdbc.url.blog}")
+    @Value(value = "${jdbc.url}")
     private String url;
 
     @Value(value = "${jdbc.username}")
@@ -38,6 +38,9 @@ public class XXHibernateGenerateDDLUtilsTest extends SpringTest {
 
     @Test
     public void generateSchemaDDL() {
+        logger.info("url:{}", url);
+        logger.info("username:{}", username);
+        logger.info("password:{}", password);
         generateSchemaDDL(MySQL5Dialect.class, "com.fantasy.**.entity");
     }
 

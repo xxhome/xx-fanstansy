@@ -15,6 +15,7 @@
         <module>xx-base</module>
         <module>xx-blog</module>
         <module>xx-core</module>
+        <module>xx-test</module>
     </modules>
 
     <properties>
@@ -54,7 +55,7 @@
 
         <!--mysql-->
         <druid.version>1.1.4</druid.version>
-        <mysql.connector.java.version>6.0.6</mysql.connector.java.version>
+        <mysql.connector.java.version>8.0.17</mysql.connector.java.version>
 
         <jetty.version>9.4.1.v20170120</jetty.version>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
@@ -81,6 +82,13 @@
 
     <dependencies>
         <!--=========================================================================================================-->
+
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -471,6 +479,17 @@
             <version>2.4.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-core</artifactId>
+            <version>4.0.0-RC2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>sharding-jdbc-spring-namespace</artifactId>
+            <version>4.0.0-RC2</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.activemq</groupId>
@@ -554,7 +573,7 @@
                         </systemProperty>
                     </systemProperties>
                     <useTestClasspath>true</useTestClasspath>
-                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/, xx-blog/target/classes/, xx-core/target/classes/</classesDirectory>
+                    <classesDirectory>xx-web/target/classes/, xx-util/target/classes/, xx-base/target/classes/, xx-blog/target/classes/, xx-core/target/classes/, xx-test/target/classes/</classesDirectory>
                     <webAppSourceDirectory>${project.basedir}/xx-web/src/main/webapp</webAppSourceDirectory>
                     <testClassesDirectory>${project.basedir}xx-web/src/test/resources</testClassesDirectory>
                     <webAppConfig>

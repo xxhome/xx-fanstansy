@@ -3,18 +3,22 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:sharding="http://shardingsphere.apache.org/schema/shardingsphere/sharding"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd">
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://shardingsphere.apache.org/schema/shardingsphere/sharding
+       http://shardingsphere.apache.org/schema/shardingsphere/sharding/sharding.xsd">
 
     <aop:aspectj-autoproxy/>
 
     <context:component-scan base-package="com.fantasy" use-default-filters="true">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
+
 
     <!-- Alibaba DruId连接池 -->
     <bean id="dataSourceBase" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -49,6 +53,9 @@
         <property name="filters" value="stat"/>
     </bean>
 
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSourceBase"></property>
+    </bean>
 
     <!--<bean id="dataSourceBlog" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">-->
         <!--<property name="url" value="${jdbc.url.blog}"/>-->
@@ -105,11 +112,29 @@
         <!--</aop:aspect>-->
     <!--</aop:config>-->
 
+    <bean id="preciseModuloTableShardingAlgorithm" class="com.fantasy.xxtest.sharding.PreciseModuloTableShardingAlgorithm">
+        <property name="jdbcTemplate" ref="jdbcTemplate"></property>
+    </bean>
+
+    <sharding:standard-strategy id="tableShardingStrategy" sharding-column="order_id" precise-algorithm-ref="preciseModuloTableShardingAlgorithm" />
+
+    <sharding:data-source id="shardingDataSource">
+        <sharding:sharding-rule data-source-names="dataSourceBase">
+            <sharding:table-rules>
+                <sharding:table-rule logic-table="t_order_item" table-strategy-ref="tableShardingStrategy"/>
+            </sharding:table-rules>
+            <sharding:binding-table-rules>
+                <sharding:binding-table-rule logic-tables="t_order_item" />
+            </sharding:binding-table-rules>
+        </sharding:sharding-rule>
+    </sharding:data-source>
+
 
     <!-- JPA配置  EntityManager配置 -->
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSourceBase"/>
-        <property name="packagesToScan" value="com.fantasy.xxbase.entity, com.fantasy.xxblog.entity"></property>
+        <property name="dataSource" ref="shardingDataSource"/>
+
+        <property name="packagesToScan" value="com.fantasy.xxbase.entity,com.fantasy.xxtest.sharding.entity"></property>
         <!--<property name="persistenceUnitName" value="persistenceUnit"/>-->
         <!--<property name="persistenceXmlLocation" value="classpath:persistence.xml"></property>-->
         <property name="jpaVendorAdapter">
