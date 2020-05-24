@@ -45,7 +45,11 @@ public class BlogAccountServiceTest extends SpringTest {
         queryParamList.add(new QueryParam("name", "lisi", Operator.LIKE));
 
         blogAccountService.find(queryParamList);
-        blogAccountService.find(queryParamList);
+    }
+
+    @Test
+    public void test() {
+        blogAccountService.update1();
     }
 
     @Test

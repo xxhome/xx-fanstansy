@@ -54,7 +54,7 @@
         <hibernate.validator.version>6.0.3.Final</hibernate.validator.version>
 
         <!--mysql-->
-        <druid.version>1.1.4</druid.version>
+        <druid.version>1.1.22</druid.version>
         <mysql.connector.java.version>8.0.17</mysql.connector.java.version>
 
         <jetty.version>9.4.1.v20170120</jetty.version>

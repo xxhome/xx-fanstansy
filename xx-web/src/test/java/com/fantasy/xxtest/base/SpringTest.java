@@ -8,6 +8,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.ExecutionException;
+
 /**
  * @author li.fang
  * @sine 17/02/19
@@ -45,7 +47,7 @@ public class SpringTest extends AbstractTestNGSpringContextTests {
     }
 
     @Test
-    public void test() {
+    public void test() throws InterruptedException, ExecutionException {
         logger.debug(SpringTest.class.getName());
     }
 

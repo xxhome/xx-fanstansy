@@ -117,7 +117,10 @@ public abstract class BaseDaoImpl<T extends XXBaseEntity> implements BaseDao<T> 
 
             if (StringUtils.isAnyBlank(field, value)) continue;
 
-            Field fieldObj = classDeclaredFields.stream().filter(f -> StringUtils.equals(f.getName(), field)).findFirst().orElse(null);
+            Field fieldObj = classDeclaredFields.stream()
+                    .filter(f -> StringUtils.equals(f.getName(), field))
+                    .findFirst()
+                    .orElse(null);
 
             if(fieldObj == null) {
                 logger.error("{}不存在名称为{}的属性", clazz.getName(), field);

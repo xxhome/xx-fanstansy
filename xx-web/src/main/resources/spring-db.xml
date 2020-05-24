@@ -134,7 +134,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="shardingDataSource"/>
 
-        <property name="packagesToScan" value="com.fantasy.xxbase.entity,com.fantasy.xxtest.sharding.entity"></property>
+        <property name="packagesToScan" value="com.fantasy.xxbase.entity,com.fantasy.xxblog.entity,com.fantasy.xxtest.sharding.entity"></property>
         <!--<property name="persistenceUnitName" value="persistenceUnit"/>-->
         <!--<property name="persistenceXmlLocation" value="classpath:persistence.xml"></property>-->
         <property name="jpaVendorAdapter">
