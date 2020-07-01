@@ -23,7 +23,7 @@
         <antlr4.version>4.7</antlr4.version>
         <shiro.version>1.4.0</shiro.version>
         <lucene.version>8.4.0</lucene.version>
-        <quartz.version>2.3.0</quartz.version>
+        <quartz.version>2.3.2</quartz.version>
         <activiti.version>6.0.0</activiti.version>
         <ehcache.version>2.6.11</ehcache.version>
         <activemq.version>5.7.0</activemq.version>
